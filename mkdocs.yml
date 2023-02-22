@@ -3,3 +3,10 @@ theme:
   name: material
   features:
   - content.code.copy
+  - content.code.annotate
+  markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+
+  
