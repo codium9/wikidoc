@@ -40,23 +40,25 @@ markdown_extensions:
 theme:
   name: material
   features:
-    - navigation.tabs
-    - navigation.tabs.sticky
+    - navigation.indexes
     - navigation.instant
     - navigation.sections
     - content.code.copy
     - content.code.annotate
     - content.action.edit
     - content.action.view
+    - toc.follow
+    - navigation.top
 
   palette:
     primary: "indigo"
     accent: "lime"
 
-#  include_sidebar: true
+  include_sidebar: true
 
 plugins:
-  - search
+  - search:
+      lang: fr
   - git-revision-date-localized:
       enable_creation_date: true
 
@@ -82,7 +84,7 @@ nav:
     - Apache: "Middleware/Apache.md"
     - Postfix: "Middleware/Postfix.md"
   - Security:
-    - OpenSSL: "Security/Openssl.md"
+    - OpenSSL: "Security/OpenSSL.md"
   - Database:
     - DB2: "Database/DB2.md"
     - Oracle: "Database/Oracle.md"
@@ -90,7 +92,7 @@ nav:
   - Containers:
     - Docker: "Docker/Containers.md"
   - Terraform:
-    - Terraform: "Terraform/Terraform.md"
+    - :material-terraform: Terraform: "Terraform/Terraform.md"
   - Deprecated:
     - AIX: "Unix/Aix.md"
     - TSM: "Backup/TSM.md"
