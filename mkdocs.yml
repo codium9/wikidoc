@@ -4,7 +4,6 @@ repo_url: https://github.com/codium9/wikidoc
 site_url: https://codium9.github.io/wikidoc
 edit_uri: edit/main/docs/
 
-    #- awesome-pages
 # Extensions
 markdown_extensions:
   - admonition
@@ -16,8 +15,7 @@ markdown_extensions:
   - md_in_html
   - pymdownx.arithmatex:
       generic: true
-  - pymdownx.betterem:
-      smart_enable: all
+  - pymdownx.betterem
   - pymdownx.caret
   - pymdownx.critic
   - pymdownx.details
@@ -29,8 +27,6 @@ markdown_extensions:
   - pymdownx.keys
   - pymdownx.mark
   - pymdownx.smartsymbols
-  - pymdownx.snippets:
-      check_paths: true
   - pymdownx.superfences:
       custom_fences:
         - name: mermaid
@@ -50,6 +46,8 @@ theme:
     - navigation.sections
     - content.code.copy
     - content.code.annotate
+    - content.action.edit
+    - content.action.view
 
   palette:
     primary: "indigo"
@@ -60,7 +58,7 @@ theme:
 plugins:
   - search
   - git-revision-date-localized:
-    enable_creation_date: true
+      enable_creation_date: true
 
 nav:
   - Welcome:
