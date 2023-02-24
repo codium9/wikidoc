@@ -66,13 +66,13 @@ nav:
 #      - How it works: "how-it-works.md"
 #      - Troubleshooting: "troubleshooting.md"
 #      - kubectl plugin: "kubectl-plugin.md"
-#  - Deployment:
+  - Linux:
 #      - Installation Guide: "deploy/index.md"
 #      - Bare-metal considerations: "deploy/baremetal.md"
 #      - Role Based Access Control (RBAC): "deploy/rbac.md"
 #      - Upgrade: "deploy/upgrade.md"
 #      - Hardening guide: "deploy/hardening-guide.md"
-#  - User guide:
+  - Windows:
 #      - NGINX Configuration:
 #          - Introduction: "user-guide/nginx-configuration/index.md"
 #          - Basic usage: "user-guide/basic-usage.md"
@@ -94,7 +94,7 @@ nav:
 #      - Third party addons:
 #          - ModSecurity Web Application Firewall: "user-guide/third-party-addons/modsecurity.md"
 #          - OpenTracing: "user-guide/third-party-addons/opentracing.md"
-#  - Examples:
+  - Code:
 #      - Introduction: "examples/index.md"
 #      - Prerequisites: "examples/PREREQUISITES.md"
 #      - Sticky Sessions: "examples/affinity/cookie/README.md"
@@ -118,6 +118,10 @@ nav:
 #      - Static IPs: "examples/static-ip/README.md"
 #      - TLS termination: "examples/tls-termination/README.md"
 #      - Pod Security Policy (PSP): "examples/psp/README.md"
-#  - Developer Guide:
+  - Middleware:
+  - Database:
+  - Docker:
+  - Terraform:
+  - Savegarde:
 #      - Getting Started: "developer-guide/getting-started.md"
 #      - Code Overview: "developer-guide/code-overview.md"  
