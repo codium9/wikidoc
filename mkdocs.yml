@@ -73,7 +73,7 @@ nav:
 #      - Upgrade: "deploy/upgrade.md"
 #      - Hardening guide: "deploy/hardening-guide.md"
   - Windows:
-      - Win stuff: "Windows/Windows.md"
+      - Win_stuff: "Microsoft/Windows.md"
 #          - Introduction: "user-guide/nginx-configuration/index.md"
 #          - Basic usage: "user-guide/basic-usage.md"
 #          - Annotations: "user-guide/nginx-configuration/annotations.md"
