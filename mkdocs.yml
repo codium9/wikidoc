@@ -92,7 +92,7 @@ nav:
   - Containers:
     - Docker: "Docker/Containers.md"
   - Terraform:
-    - :material-terraform: Terraform: "Terraform/Terraform.md"
+    - Terraform: "Terraform/Terraform.md"
   - Deprecated:
     - AIX: "Unix/Aix.md"
     - TSM: "Backup/TSM.md"
