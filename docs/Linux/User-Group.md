@@ -34,12 +34,12 @@ usermod -a -G <group1>,<group2>,<group3> <user>
 
 **option pour usermod**
 
->-d répertoire utilisateur
--g définit le GID principal
--l identifiant utilisateur
--u UID utilisateur
--s shell par défaut
--G ajoute l’utilisateur à des groupes secondaires
--m déplace le contenu du répertoire personnel vers le nouvel emplacement
-{.is-info}
+!!! info
+    -d répertoire utilisateur
+    -g définit le GID principal
+    -l identifiant utilisateur
+    -u UID utilisateur
+    -s shell par défaut
+    -G ajoute l’utilisateur à des groupes secondaires
+    -m déplace le contenu du répertoire personnel vers le nouvel emplacement
 

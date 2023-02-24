@@ -12,9 +12,9 @@
 db2adutl query database <DB> full 
 ```
 
-> Depuis un serveur distant
-> `db2adutl query full db <DB> nodename <SRV> owner <USER_DB>`
-{.is-info}
+Depuis un serveur distant
+> db2adutl query full db <DB> nodename <SRV> owner <USER_DB>`
+
 
 &nbsp;
 
@@ -39,8 +39,8 @@ db2adutl grant user <USER> on nodename <SRV_CIBLE> for db <DB_CIBLE>
 
 ### Rollfoward pending
 !!! note
-il se peut que lors d'un refresh de base DB2, des logs DB2 existe sur l'environnemnt cible et que celles-ci soient confondus avec les logs de la base source.
-Dans ce cas présent, le plus simple étant de supprimer totalement les logs db2 encore présent sur l'environnement cible
+    il se peut que lors d'un refresh de base DB2, des logs DB2 existe sur l'environnemnt cible et que celles-ci soient confondus avec les logs de la base source.
+    Dans ce cas présent, le plus simple étant de supprimer totalement les logs db2 encore présent sur l'environnement cible
 
 **Exemple de suppression des fichiers de logs**
 

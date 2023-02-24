@@ -34,9 +34,9 @@ Ren "!old!" "!new!"
 :next
 ```
 
-> Le FINDSTR permet de cibler un type particulier de fichier
-> Remplacer le nombre dans la variable NEW pour tronquer un nombre de caractere precis (espace inclus)  
-{.is-info}
+!!! info
+    Le FINDSTR permet de cibler un type particulier de fichier
+    Remplacer le nombre dans la variable NEW pour tronquer un nombre de caractere precis (espace inclus)  
 
 ## Equivalent SED
 
@@ -125,7 +125,8 @@ for /f %%i in ('echo %PATH%\Fichier.txt') do if %%~zi GTR 0 goto error
 
        %~ftza1     - étend %1 en DIR comme ligne en sortie
 
-Dans les exemples ci-dessus %1 et PATH peuvent être remplacés par d'autres valeurs valides. La syntaxe %~ se termine par un numéro d'argument valide. Vous ne pouvez pas utiliser les modificateurs %~ avec %*
+!!! abstract
+    Dans les exemples ci-dessus %1 et PATH peuvent être remplacés par d'autres valeurs valides. La syntaxe %~ se termine par un numéro d'argument valide. Vous ne pouvez pas utiliser les modificateurs %~ avec %*
 
 ## Substring
 

@@ -38,8 +38,8 @@ Editer le fichier /etc/DIR_COLORS et remplacer
 par
 `DIR 00;32       # directory`
 
-> Les répertoires vont apparaitre en vert au lieu de bleu
-{.is-info}
+!!! info
+    Les répertoires vont apparaitre en vert au lieu de bleu
 
 &nbsp;
 

@@ -50,8 +50,10 @@ mkdir <FS>
 mount -a <FS>
 df -h <FS> ==> pour vérifier
 ```
-> Si la commande `umount` ne marche pas, faire un `lsof`du FS pour voir si un process tente d'y accéder, sinon utiliser commande `umount -l`
-{.is-info}
+
+!!! note
+    Si la commande `umount` ne marche pas, faire un `lsof`du FS pour voir si un process tente d'y accéder, sinon utiliser commande `umount -l`
+
 
 &nbsp;
 ### Manipuler un volume logique
@@ -64,11 +66,12 @@ resize2fs <Volume_du_FS>
 mount <FS>
 df -h <FS> ==> Pour vérifier
 ```
-> **<center>variante XFS</center>**
->Remplacer 
-`resize2fs` <Volume_du_FS>
-Par
-`xfs_growfs` <Volume_du_FS>
+variante XFS
+!!! note
+    Remplacer 
+        `resize2fs` <Volume_du_FS>
+    Par
+        `xfs_growfs` <Volume_du_FS>
 
 
 

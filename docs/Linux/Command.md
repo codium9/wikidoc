@@ -55,8 +55,8 @@ printf "failed \n"
 fi
 ```
 
-> variante one-liner
-{.is-info}
+!!! info
+    variante one-liner
 
 
 ```bash
@@ -90,8 +90,8 @@ ssh -D 1080 root@machine 2
 yum install --downloadonly --downloaddir=<path> <package>
 ```
 
-> Prérequis : Installer le package yum-downloadonly
-{.is-info}
+!!! info
+    Prérequis : Installer le package yum-downloadonly
 
 &nbsp;
 
@@ -100,8 +100,8 @@ yum install --downloadonly --downloaddir=<path> <package>
 ```
 umask 022
 ```
-> (avec 022 = chmod 755)
-{.is-info}
+!!! info
+    (avec 022 = chmod 755)
 
 
 ### Affichage espace libre ou occupé

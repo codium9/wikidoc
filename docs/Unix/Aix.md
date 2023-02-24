@@ -19,9 +19,9 @@
 
 ### Lister les package
 `lslpp -L`
-> Par date:
-lslpp -qch | awk -F: '{printf "%-12s %-40s %-12s %-10s %-10s\n",$7,$2,$3,$5,$6}' | sort | uniq | sed 's/70/-70/' | sort -t '/' -k 3,3n -k 1,1n -k 2,2n | sed 's/-70/70/'
-{.is-info}
+!!! info
+    Par date:
+    lslpp -qch | awk -F: '{printf "%-12s %-40s %-12s %-10s %-10s\n",$7,$2,$3,$5,$6}' | sort | uniq | sed 's/70/-70/' | sort -t '/' -k 3,3n -k 1,1n -k 2,2n | sed 's/-70/70/'
 
 ## Gestion des FileSystem
 ### Agrandir ou diminuer un FS

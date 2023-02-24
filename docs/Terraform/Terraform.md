@@ -21,5 +21,6 @@ resource "aws_s3_bucket_object" "chroot_folder_keep_file_input" {
 }
 ```
 
-l'usage de la fonction `split` terraform permet le découpage selon un pattern, ici le retour chariot
-la fonction `compact` permet de gérer les lignes vide et de les supprimer de la liste si besoin
+!!! info
+    l'usage de la fonction `split` terraform permet le découpage selon un pattern, ici le retour chariot
+    la fonction `compact` permet de gérer les lignes vide et de les supprimer de la liste si besoin

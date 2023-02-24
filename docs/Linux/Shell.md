@@ -15,8 +15,8 @@ Editer le fichier /etc/DIR_COLORS et remplacer
 par
 `DIR 00;32       # directory`
 
-> Les répertoires vont apparaitre en vert au lieu de bleu
-{.is-info}
+!!! note
+    Les répertoires vont apparaitre en vert au lieu de bleu
 
 &nbsp;
 
@@ -40,8 +40,8 @@ $((a + 200))      # Add 200 to $a
 $(($RANDOM%200))  # Random number 0..199
 ```
 
-> Permet de faire un calcul , notamment dans ce cas précis, ou un résultat égale à 0 fait planter expr
-{.is-info}
+!!! note
+    Permet de faire un calcul , notamment dans ce cas précis, ou un résultat égale à 0 fait planter expr
 
 &nbsp;
 
@@ -54,16 +54,17 @@ echo $ans
 ```
 &nbsp;
 
-> lecture STDIN si option, sinon, fichier
-```bash
-test() { 
-if [ "$1" == "-" ]; then 
-	cat <&0 
-else 
-	cat "$1"
-fi 
-}
-```
+!!! note
+    lecture STDIN si option, sinon, fichier
+    ```bash
+    test() { 
+    if [ "$1" == "-" ]; then 
+    	cat <&0 
+    else 
+	    cat "$1"
+    fi 
+    }
+    ```
 
 &nbsp;
 
@@ -304,8 +305,8 @@ for i in "${arrayName[@]}"; do
 done
 ```
 
-> ${#inftstd[*]} = nombre d'occurence (ici 6)
-{.is-info}
+!!! note
+    ${#inftstd[*]} = nombre d'occurence (ici 6)
 
 
 &nbsp;
@@ -459,8 +460,8 @@ awk 'sub(/^M/, "");1' <ficsource> <ficmaj>
 awk -F"\t"  '{ print $56 }'
 ```
 
-> Afficher le premier champ de chaque ligne avec tabulation en séparateur de champ
-{.is-info}
+!!! note
+    Afficher le premier champ de chaque ligne avec tabulation en séparateur de champ
 
 &nbsp;
 ### Remplacer EXPR par AWK
@@ -509,8 +510,8 @@ sed -i 's/^.\{10\}//g' fichier.txt
 ```bash
 <code>sed -n 1p check_toto.txt
 ```
-> Ici la première ligne
-{.is-info}
+!!! note
+    Ici la première ligne
 
 &nbsp;
 
@@ -563,13 +564,14 @@ find / -xdev -type f -exec grep -i toto {} /dev/null \;
 ```
 &nbsp;
 
-> recherche récursive de tous les fichiers qui contiennent le mot « toto » (ou TOTO… ou ToTo…)
-{.is-info}
+!!! note
+    recherche récursive de tous les fichiers qui contiennent le mot « toto » (ou TOTO… ou ToTo…)
 
-> Attention : « \; » obligatoire à la fin de la commande
-{.is-warning}
+!!! warning
+    Attention : « \; » obligatoire à la fin de la commande
 
-> N.B : L’option xdev permet de ne pas franchir les limites du systeme de fichiers
+!!! info
+    N.B : L’option xdev permet de ne pas franchir les limites du systeme de fichiers
 
 &nbsp;
 
