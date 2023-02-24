@@ -2,7 +2,7 @@ site_name: Wikidoc
 repo_name: "codium9/wikidoc"
 repo_url: https://github.com/codium9/wikidoc
 site_url: https://codium9.github.io/wikidoc
-#edit_uri: edit/main/docs/
+edit_uri: edit/main/docs/
 
 # Extensions
 markdown_extensions:
@@ -12,7 +12,6 @@ markdown_extensions:
   - def_list
   - footnotes
   - meta
-  - md_in_html
   - toc:
       # insert a blank space before the character
       permalink: " ¶"
@@ -54,18 +53,16 @@ theme:
     - content.code.annotate
 
   palette:
-    primary: "teal"
-    accent: "yellow"
+    primary: "indigo"
+    accent: "lime"
 
   include_sidebar: true
 
 plugins:
   - search
   - awesome-pages
-  - minify:
-      minify_html: true
-
-extra_css: [extra.css]
+  - git-revision-date-localized:
+    enable_creation_date: true
 
 nav:
   - Welcome:
