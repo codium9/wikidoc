@@ -1,12 +1,3 @@
----
-title: Terraform
-description: 
-published: true
-date: 2022-03-24T15:10:41.043Z
-tags: terraform iac
-editor: markdown
-dateCreated: 2022-03-24T15:10:41.043Z
----
 
 ## Utiliser une liste d'items dans un fichier texte
 

@@ -1,12 +1,3 @@
----
-title: Shell
-description: Shell stuff
-published: true
-date: 2022-03-10T16:15:11.708Z
-tags: linux, bash, shell, vim
-editor: markdown
-dateCreated: 2021-05-06T15:15:00.668Z
----
 
 ## En vrac
 ### "Strict mode" bash

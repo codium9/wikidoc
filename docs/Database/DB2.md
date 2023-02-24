@@ -1,12 +1,3 @@
----
-title: IBM DB2
-description: 
-published: true
-date: 2021-01-22T13:18:36.198Z
-tags: 
-editor: undefined
-dateCreated: 2021-01-22T13:18:31.969Z
----
 
 ## DB2 en vrac
 ### Logs DB2

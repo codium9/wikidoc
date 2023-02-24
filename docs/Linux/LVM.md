@@ -1,12 +1,3 @@
----
-title: LVM
-description: 
-published: true
-date: 2021-01-21T17:33:48.149Z
-tags: 
-editor: undefined
-dateCreated: 2021-01-21T17:29:56.806Z
----
 
 ### Créer une partition + PV associés
 ```

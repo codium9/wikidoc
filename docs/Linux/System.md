@@ -1,12 +1,3 @@
----
-title: System (divers)
-description: 
-published: true
-date: 2022-03-10T16:15:50.186Z
-tags: 
-editor: markdown
-dateCreated: 2021-05-06T15:15:06.584Z
----
 
 ## Infos CPU
 ### Affichage type processeur 

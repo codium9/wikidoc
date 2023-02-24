@@ -1,12 +1,3 @@
----
-title: AIX
-description: 
-published: true
-date: 2021-01-22T09:26:46.929Z
-tags: 
-editor: undefined
-dateCreated: 2021-01-22T09:26:42.305Z
----
 
 ## Gestion User/Group
 ### Créer un utilisateur

@@ -1,12 +1,3 @@
----
-title: Oracle
-description: 
-published: true
-date: 2021-01-22T16:18:45.911Z
-tags: 
-editor: undefined
-dateCreated: 2021-01-22T13:34:37.747Z
----
 
 ## Requête user
 ### Lister les schéma d'une base

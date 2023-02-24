@@ -1,12 +1,3 @@
----
-title: TSM
-description: 
-published: true
-date: 2022-02-17T13:58:30.455Z
-tags: tivoli ibm tsm
-editor: markdown
-dateCreated: 2022-02-17T13:58:30.455Z
----
 
 ## Recuperer un ou plusieurs fichiers selon la date
 

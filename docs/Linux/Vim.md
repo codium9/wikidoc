@@ -1,12 +1,3 @@
----
-title: Vim
-description: 
-published: true
-date: 2021-01-22T11:05:45.413Z
-tags: 
-editor: undefined
-dateCreated: 2021-01-22T11:05:41.172Z
----
 
 ## Modification VIM
 ### Gestion des erreur de pipe

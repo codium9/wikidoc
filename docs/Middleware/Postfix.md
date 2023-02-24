@@ -1,12 +1,3 @@
----
-title: Postfix
-description: 
-published: true
-date: 2022-02-17T14:00:54.812Z
-tags: 
-editor: markdown
-dateCreated: 2021-05-06T15:14:55.428Z
----
 
 ### Afficher la mailqueue
 ```

@@ -1,12 +1,3 @@
----
-title: SystemD
-description: 
-published: true
-date: 2021-01-22T10:16:03.038Z
-tags: 
-editor: undefined
-dateCreated: 2021-01-21T17:59:17.974Z
----
 
 ### Afficher les services systemd
 ```bash

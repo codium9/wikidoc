@@ -1,12 +1,3 @@
----
-title: Apache
-description: 
-published: true
-date: 2022-02-17T14:00:14.617Z
-tags: 
-editor: markdown
-dateCreated: 2021-05-06T15:14:30.887Z
----
 
 ### Installer apache (one-liner)
 ```

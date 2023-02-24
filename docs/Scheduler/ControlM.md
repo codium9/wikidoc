@@ -1,12 +1,3 @@
----
-title: Control-M
-description: 
-published: true
-date: 2022-02-17T14:46:41.338Z
-tags: controlm ordonnanceur
-editor: markdown
-dateCreated: 2022-02-17T14:46:41.338Z
----
 
 ## Recherche de jobs selon une condition
 

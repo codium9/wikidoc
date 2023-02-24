@@ -1,12 +1,3 @@
----
-title: Firewall
-description: 
-published: true
-date: 2021-01-22T10:09:22.359Z
-tags: 
-editor: undefined
-dateCreated: 2021-01-21T16:47:16.528Z
----
 
 ### Etat Firewall
 ```bash

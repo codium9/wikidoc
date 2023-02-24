@@ -1,12 +1,3 @@
----
-title: User/Group
-description: Shell stuff
-published: true
-date: 2021-01-22T10:23:17.800Z
-tags: 
-editor: undefined
-dateCreated: 2021-01-21T18:27:35.936Z
----
 
 ### Gestion User/Group
 #### Créer un utilisateur

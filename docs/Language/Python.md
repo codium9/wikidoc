@@ -1,12 +1,3 @@
----
-title: Python
-description: 
-published: true
-date: 2022-02-17T13:34:41.043Z
-tags: python language
-editor: markdown
-dateCreated: 2022-02-17T13:34:41.043Z
----
 
 ## Créer un serveur HTTP en Python
 

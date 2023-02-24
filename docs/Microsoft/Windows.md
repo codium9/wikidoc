@@ -1,12 +1,3 @@
----
-title: Windows
-description: 
-published: true
-date: 2022-02-17T14:35:55.578Z
-tags: microsoft windows
-editor: markdown
-dateCreated: 2022-02-17T14:33:12.989Z
----
 
  ## Dernier reboot 
 

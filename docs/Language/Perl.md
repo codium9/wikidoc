@@ -1,12 +1,3 @@
----
-title: Perl
-description: 
-published: true
-date: 2022-02-17T13:40:56.225Z
-tags: perl language
-editor: markdown
-dateCreated: 2022-02-17T13:19:53.136Z
----
 
 ## Perl operator  
 

@@ -1,12 +1,3 @@
----
-title: Sql Server
-description: 
-published: true
-date: 2022-02-17T10:53:56.955Z
-tags: sql microsoft
-editor: markdown
-dateCreated: 2022-02-17T10:53:56.955Z
----
 
 ## Authoriser les connexions distante pour root
 
