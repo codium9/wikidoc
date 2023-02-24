@@ -66,14 +66,14 @@ nav:
 #      - How it works: "how-it-works.md"
 #      - Troubleshooting: "troubleshooting.md"
 #      - kubectl plugin: "kubectl-plugin.md"
-      - Linux:
-#      - Installation Guide: "deploy/index.md"
+  - Linux:
+      - Crontab: "Linux/Crontab.md"
 #      - Bare-metal considerations: "deploy/baremetal.md"
 #      - Role Based Access Control (RBAC): "deploy/rbac.md"
 #      - Upgrade: "deploy/upgrade.md"
 #      - Hardening guide: "deploy/hardening-guide.md"
-      - Windows:
-#      - NGINX Configuration:
+  - Windows:
+      - Win stuff: "Windows/Windows.md"
 #          - Introduction: "user-guide/nginx-configuration/index.md"
 #          - Basic usage: "user-guide/basic-usage.md"
 #          - Annotations: "user-guide/nginx-configuration/annotations.md"
@@ -94,8 +94,8 @@ nav:
 #      - Third party addons:
 #          - ModSecurity Web Application Firewall: "user-guide/third-party-addons/modsecurity.md"
 #          - OpenTracing: "user-guide/third-party-addons/opentracing.md"
-      - Code:
-#      - Introduction: "examples/index.md"
+  - Code:
+      - Python: "Code/Python.md"
 #      - Prerequisites: "examples/PREREQUISITES.md"
 #      - Sticky Sessions: "examples/affinity/cookie/README.md"
 #      - Auth:
@@ -118,10 +118,10 @@ nav:
 #      - Static IPs: "examples/static-ip/README.md"
 #      - TLS termination: "examples/tls-termination/README.md"
 #      - Pod Security Policy (PSP): "examples/psp/README.md"
-      - Middleware:
-      - Database:
-      - Docker:
-      - Terraform:
-      - Savegarde:
+#  - Middleware:
+#  - Database:
+#  - Docker:
+#  - Terraform:
+#  - Savegarde:
 #      - Getting Started: "developer-guide/getting-started.md"
 #      - Code Overview: "developer-guide/code-overview.md"  
