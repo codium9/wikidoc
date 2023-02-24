@@ -38,9 +38,9 @@ db2adutl grant user <USER> on nodename <SRV_CIBLE> for db <DB_CIBLE>
 &nbsp;
 
 ### Rollfoward pending
-> il se peut que lors d'un refresh de base DB2, des logs DB2 existe sur l'environnemnt cible et que celles-ci soient confondus avec les logs de la base source.
+!!! note
+il se peut que lors d'un refresh de base DB2, des logs DB2 existe sur l'environnemnt cible et que celles-ci soient confondus avec les logs de la base source.
 Dans ce cas présent, le plus simple étant de supprimer totalement les logs db2 encore présent sur l'environnement cible
-{.is-warning}
 
 **Exemple de suppression des fichiers de logs**
 
