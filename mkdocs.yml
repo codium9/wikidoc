@@ -56,8 +56,8 @@ theme:
  #   - navigation.footer
 
   palette:
-    primary: "blue"
-    accent: "amber"
+    primary: "indigo"
+    accent: "light green"
 
   include_sidebar: true
 
