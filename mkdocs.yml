@@ -57,7 +57,7 @@ theme:
 
   palette:
     primary: "indigo"
-    accent: "orange"
+    accent: "deep orange"
 
   include_sidebar: true
 
