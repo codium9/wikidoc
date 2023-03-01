@@ -75,7 +75,6 @@ nav:
       - Crontab: "Linux/Crontab.md"
       - Firewall: "Linux/Firewall.md"
       - LVM: "Linux/LVM.md"
-      - Shell: "Linux/Shell.md"
       - Init: "Linux/Init.md"
       - OsCommand: "Linux/Command.md"
       - User/Group: "Linux/User-Group.md"
@@ -83,6 +82,7 @@ nav:
     - Windows:
       - Win_stuff: "Microsoft/Windows.md"
   - Code:
+    - Shell: "Linux/Shell.md"
     - Python: "Code/Python.md"
     - Perl: "Code/Perl.md"
   - Middleware:
