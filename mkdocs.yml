@@ -82,9 +82,9 @@ nav:
     - Windows:
       - Win_stuff: "Microsoft/Windows.md"
   - Code:
-    - Shell: "Code/Shell.md"
     - Python: "Code/Python.md"
     - Perl: "Code/Perl.md"
+    - Shell: "Code/Shell.md"
   - Middleware:
     - Apache: "Middleware/Apache.md"
     - Postfix: "Middleware/Postfix.md"
