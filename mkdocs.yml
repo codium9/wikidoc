@@ -53,7 +53,7 @@ theme:
     - content.action.view
     - toc.follow
     - toc.integrate
- #   - navigation.footer
+      ##   - navigation.footer
 
   palette:
     primary: "indigo"
