@@ -299,17 +299,18 @@ lines=(`cat "logfile"`)                 # Read from file
 
 ### Utilisation d'un tableau en shell
 ```bash
-arrayName=(STD18 STD22 STD25 STD26 STD39 STD39B)
-for i in "${arrayName[@]}"; do
-  echo $i
+#!/bin/bash
+
+declare -A dict
+dict=( [‘a’]=1
+       [‘b’]=2
+       [‘c’]=3 )
+
+for item in “${!dict[@]}”
+do
+    echo “$item => ${dict[$item]}”
 done
 ```
-
-!!! note
-    ${#inftstd[*]} = nombre d'occurence (ici 6)
-
-
-&nbsp;
 
 
 ## Dictionnaire
