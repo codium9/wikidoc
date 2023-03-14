@@ -85,6 +85,7 @@ nav:
     - Python: "Code/Python.md"
     - Perl: "Code/Perl.md"
     - Shell: "Code/Shell.md"
+    - Curl: "Code/Curl.md"
   - Middleware:
     - Apache: "Middleware/Apache.md"
     - Postfix: "Middleware/Postfix.md"
