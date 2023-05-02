@@ -81,6 +81,7 @@ nav:
       - Vim: "Linux/Vim.md"
     - Windows:
       - Win_stuff: "Microsoft/Windows.md"
+      - Powershell: "Microsoft/Powershell.md"
   - Code:
     - Python: "Code/Python.md"
     - Perl: "Code/Perl.md"
