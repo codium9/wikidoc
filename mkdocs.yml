@@ -81,11 +81,11 @@ nav:
       - Vim: "Linux/Vim.md"
     - Windows:
       - Win_stuff: "Microsoft/Windows.md"
-      - Powershell: "Microsoft/Powershell.md"
   - Code:
     - Python: "Code/Python.md"
     - Perl: "Code/Perl.md"
     - Shell: "Code/Shell.md"
+    - Powershell: "Code/Powershell.md"
     - Curl: "Code/Curl.md"
   - Middleware:
     - Apache: "Middleware/Apache.md"
