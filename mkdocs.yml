@@ -87,6 +87,9 @@ nav:
     - Shell: "Code/Shell.md"
     - Powershell: "Code/Powershell.md"
     - Curl: "Code/Curl.md"
+  - CICD:
+    - Git:
+      - Tags: "Git/Tags.md"
   - Middleware:
     - Apache: "Middleware/Apache.md"
     - Postfix: "Middleware/Postfix.md"
