@@ -1,7 +1,7 @@
 site_name: Wikidoc
 repo_name: "codium9/wikidoc"
 repo_url: https://github.com/codium9/wikidoc
-site_url: https://codium9.github.io/wikidoc
+site_url: https://wiki.itdata.fr #https://codium9.github.io/wikidoc
 edit_uri: edit/main/docs/
 
 # Extensions
