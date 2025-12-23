@@ -1,0 +1,3962 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://wiki.itdata.fr/Code/Shell/">
+      
+      
+        <link rel="prev" href="../Perl/">
+      
+      
+        <link rel="next" href="../Powershell/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Shell - Wikidoc</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#en-vrac" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Wikidoc" class="md-header__button md-logo" aria-label="Wikidoc" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Wikidoc
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Shell
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/codium9/wikidoc" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    codium9/wikidoc
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../.." class="md-tabs__link">
+          
+  
+  
+    
+  
+  Welcome
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Linux/Crontab/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  BareMetal
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../Python/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Code
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Git/Tags/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  CICD
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Middleware/Apache/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Middleware
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Security/OpenSSL/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Security
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Database/DB2/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Database
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Docker/Containers/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Containers
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Terraform/Terraform/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Terraform
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Unix/Aix/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Deprecated
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Wikidoc" class="md-nav__button md-logo" aria-label="Wikidoc" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Wikidoc
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/codium9/wikidoc" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    codium9/wikidoc
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../.." class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Welcome
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Welcome
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BareMetal
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    BareMetal
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linux
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Linux
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Linux/Crontab/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Crontab
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Linux/Firewall/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Firewall
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Linux/LVM/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LVM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Linux/Init/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Init
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Linux/Command/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OsCommand
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Linux/User-Group/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    User/Group
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Linux/Vim/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Vim
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Windows
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Windows
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Microsoft/Windows/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Win_stuff
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Code
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Code
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Python/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Perl/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Perl
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Shell
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Shell
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#en-vrac" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        En vrac
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="En vrac">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#strict-mode-bash" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        "Strict mode" bash
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modifier-les-couleurs-dans-un-shell-redhat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Modifier les couleurs dans un shell (RedHat)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clear-screen-like-en-shell" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Clear screen "like" en shell
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#faire-un-calcul-en-shell" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Faire un calcul en shell
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lire-une-entree-stdin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lire une entrée STDIN
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gestion-des-options-dans-un-menu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gestion des options dans un menu
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#redirections" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Redirections
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#variables-specifique" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Variables spécifique
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Variables spécifique">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#environnement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Environnement
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#status" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Status
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#arguments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Arguments
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-avec-valeur-par-defaut" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Variable avec valeur par défaut
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#substrings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Substrings
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#longueur" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Longueur
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#braket-expension" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Braket expension
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#manipulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Manipulation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#substitution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Substitution
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tableau" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tableau
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tableau">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#definition-dun-tableau" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Definition d'un tableau
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gestion-dun-tableau" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gestion d'un tableau
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#operations-sur-un-tableau" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Operations sur un tableau
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#utilisation-dun-tableau-en-shell" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Utilisation d'un tableau en shell
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dictionnaire" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dictionnaire
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Dictionnaire">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#definition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Définition
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iteration-sur-les-valeurs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Iteration sur les valeurs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iteration-sur-les-cles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Iteration sur les clés
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#boucles-loop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Boucles (loop)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Boucles (loop)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#boucle-simple" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Boucle simple
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#boucle-incrementale" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Boucle incrémentale
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#boucle-range" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Boucle "range"
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Boucle &#34;range&#34;">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#boucle-etape" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Boucle "etape"
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#boucle-avec-lecture-read" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Boucle avec lecture (read)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#boucle-while" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Boucle while
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#grep" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Grep
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Grep">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#afficher-un-ou-des-process-sans-le-process-grep-himself" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Afficher un ou des process sans le process grep himself
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#affichier-un-fichier-sans-les-commentaires" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Affichier un fichier sans les commentaires
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#grep-avec-multiple-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Grep avec multiple patterns
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#grep-dun-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Grep d'un pattern
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gestion-des-pipe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gestion des pipe
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Gestion des pipe">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#variable-pipestatus" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Variable PIPESTATUS
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#awk" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AWK
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="AWK">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#supprimer-les-caracteres-m" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Supprimer les caractères ^M
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#afficher-champ-selon-separateur" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Afficher champ selon séparateur
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#remplacer-expr-par-awk" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Remplacer EXPR par AWK
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#selectioner-la-premiere-ou-la-derniere-ligne-imprimer-un-champ" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Selectioner la première ou la dernière ligne + imprimer un champ
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sed
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sed">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#supprimer-les-caracteres-ascii-m" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Supprimer les caractères ASCII ^M
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#critere-de-recherche" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Critère de recherche
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#supprimer-les-caracteres-newline-lf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Supprimer les caractères "Newline" (LF)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#supprimer-les-10-premiers-caracteres-de-chaque-ligne" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Supprimer les 10 premiers caractères de chaque ligne
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#affichier-une-ligne-en-particulier" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Affichier une ligne en particulier
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#savoir-si-une-variable-est-numerique" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Savoir si une variable est numérique
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#basename" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Basename
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Basename">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lister-les-fichiers-sans-extensions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lister les fichiers sans extensions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#directory-of-script" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Directory of script
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#afficher-le-nom-du-script-execute" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Afficher le nom du script exécuté
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#find" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Find
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Find">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#renommer-lextension-de-plusieurs-fichiers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Renommer l'extension de plusieurs fichiers
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recherche-recursive-avec-mot-cle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recherche récursive avec "mot-clé"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#purge-de-fichiers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Purge de fichiers
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recherche-mot-cle-avec-redirection-log" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recherche "mot-clé" avec redirection log
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recherche-des-fichiers-sans-arborescence-repertoire" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recherche des fichiers sans arborescence répertoire
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#test" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Test
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Test">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#condition-dexecution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Condition d'execution
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Condition d&#39;execution">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#more-conditions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        More conditions
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#file-conditions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        File conditions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fonctions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fonctions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Fonctions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gestion-des-erreurs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gestion des erreurs
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Powershell/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Powershell
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Curl/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curl
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CICD
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    CICD
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Git
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Git
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Git/Tags/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tags
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Middleware
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Middleware
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Middleware/Apache/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Apache
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Middleware/Postfix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Postfix
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Security
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Security
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Security/OpenSSL/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OpenSSL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Database
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Database
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Database/DB2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DB2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Database/Oracle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Oracle
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Database/Sqlserver.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sqlserver
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Containers
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Containers
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Docker/Containers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Docker
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Terraform
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Terraform
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Terraform/Terraform/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Terraform
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deprecated
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Deprecated
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Unix/Aix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AIX
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Backup/TSM/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TSM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Middleware/Weblogic/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Weblogic
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Middleware/Websphere/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Websphere
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/codium9/wikidoc/edit/main/docs/Code/Shell.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+    
+      
+    
+    <a href="https://github.com/codium9/wikidoc/raw/main/docs/Code/Shell.md" title="View source of this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.2 8.2 0 0 1-1.23-2"/></svg>
+    </a>
+  
+
+
+  <h1>Shell</h1>
+
+<h2 id="en-vrac">En vrac</h2>
+<h3 id="strict-mode-bash">"Strict mode" bash</h3>
+<div class="highlight"><pre><span></span><code><span class="nb">set</span><span class="w"> </span>-euo<span class="w"> </span>pipefail
+<span class="nv">IFS</span><span class="o">=</span><span class="s1">$&#39;\n\t&#39;</span>
+</code></pre></div>
+<p>See: <a href="http://redsymbol.net/articles/unofficial-bash-strict-mode/">Unofficial bash strict mode</a></p>
+<h3 id="modifier-les-couleurs-dans-un-shell-redhat">Modifier les couleurs dans un shell (RedHat)</h3>
+<p>Editer le fichier /etc/DIR_COLORS et remplacer 
+<code>DIR 00;34       # directory</code>
+par
+<code>DIR 00;32       # directory</code></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Les répertoires vont apparaitre en vert au lieu de bleu</p>
+</div>
+<p>&nbsp;</p>
+<h3 id="clear-screen-like-en-shell">Clear screen "like" en shell</h3>
+<div class="highlight"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span>-en<span class="w"> </span><span class="s2">&quot;\ec&quot;</span>
+</code></pre></div>
+<p>&nbsp;</p>
+<h3 id="faire-un-calcul-en-shell">Faire un calcul en shell</h3>
+<div class="highlight"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span><span class="k">$((</span><span class="m">0</span><span class="o">+</span><span class="m">0</span><span class="k">))</span><span class="w"> </span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="k">$((</span><span class="nv">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">200</span><span class="k">))</span><span class="w">      </span><span class="c1"># Add 200 to $a</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="k">$((</span><span class="nv">$RANDOM</span><span class="o">%</span><span class="m">200</span><span class="k">))</span><span class="w">  </span><span class="c1"># Random number 0..199</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Permet de faire un calcul , notamment dans ce cas précis, ou un résultat égale à 0 fait planter expr</p>
+</div>
+<p>&nbsp;</p>
+<h3 id="lire-une-entree-stdin">Lire une entrée STDIN</h3>
+<p><div class="highlight"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span>-n<span class="w"> </span><span class="s2">&quot;Proceed? [y/n]: &quot;</span>
+<span class="nb">read</span><span class="w"> </span>ans
+<span class="nb">echo</span><span class="w"> </span><span class="nv">$ans</span>
+</code></pre></div>
+&nbsp;</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>lecture STDIN si option, sinon, fichier
+<div class="highlight"><pre><span></span><code>test<span class="o">()</span><span class="w"> </span><span class="o">{</span><span class="w"> </span>
+<span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;-&quot;</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span><span class="w"> </span>
+<span class="w">    </span>cat<span class="w"> </span>&lt;<span class="p">&amp;</span><span class="m">0</span><span class="w"> </span>
+<span class="k">else</span><span class="w"> </span>
+<span class="w">    </span>cat<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span>
+<span class="k">fi</span><span class="w"> </span>
+<span class="o">}</span>
+</code></pre></div></p>
+</div>
+<p>&nbsp;</p>
+<h3 id="gestion-des-options-dans-un-menu">Gestion des options dans un menu</h3>
+<div class="highlight"><pre><span></span><code><span class="k">while</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">=</span>~<span class="w"> </span>^-<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>!<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;--&quot;</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="k">case</span><span class="w"> </span><span class="nv">$1</span><span class="w"> </span><span class="k">in</span>
+<span class="w">  </span>-V<span class="w"> </span><span class="p">|</span><span class="w"> </span>--version<span class="w"> </span><span class="o">)</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$version</span>
+<span class="w">    </span><span class="nb">exit</span>
+<span class="w">    </span><span class="p">;;</span>
+<span class="w">  </span>-s<span class="w"> </span><span class="p">|</span><span class="w"> </span>--string<span class="w"> </span><span class="o">)</span>
+<span class="w">    </span>shift<span class="p">;</span><span class="w"> </span><span class="nv">string</span><span class="o">=</span><span class="nv">$1</span>
+<span class="w">    </span><span class="p">;;</span>
+<span class="w">  </span>-f<span class="w"> </span><span class="p">|</span><span class="w"> </span>--flag<span class="w"> </span><span class="o">)</span>
+<span class="w">    </span><span class="nv">flag</span><span class="o">=</span><span class="m">1</span>
+<span class="w">    </span><span class="p">;;</span>
+<span class="k">esac</span><span class="p">;</span><span class="w"> </span>shift<span class="p">;</span><span class="w"> </span><span class="k">done</span>
+<span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s1">&#39;--&#39;</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span><span class="w"> </span>shift<span class="p">;</span><span class="w"> </span><span class="k">fi</span>
+</code></pre></div>
+<p>&nbsp;</p>
+<h3 id="redirections">Redirections</h3>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>hello.py<span class="w"> </span>&gt;<span class="w"> </span>output.txt<span class="w">   </span><span class="c1"># stdout to (file)</span>
+python<span class="w"> </span>hello.py<span class="w"> </span>&gt;&gt;<span class="w"> </span>output.txt<span class="w">  </span><span class="c1"># stdout to (file), append</span>
+python<span class="w"> </span>hello.py<span class="w"> </span><span class="m">2</span>&gt;<span class="w"> </span>error.log<span class="w">   </span><span class="c1"># stderr to (file)</span>
+python<span class="w"> </span>hello.py<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="w">           </span><span class="c1"># stderr to stdout</span>
+python<span class="w"> </span>hello.py<span class="w"> </span>&gt;<span class="w"> </span>output.txt<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="w">  </span><span class="c1"># stderr to stdout (file and no screen output)</span>
+python<span class="w"> </span>hello.py<span class="w"> </span><span class="m">2</span>&gt;/dev/null<span class="w">    </span><span class="c1"># stderr to (null)</span>
+python<span class="w"> </span>hello.py<span class="w"> </span><span class="p">&amp;</span>&gt;/dev/null<span class="w">    </span><span class="c1"># stdout and stderr to (null)</span>
+</code></pre></div>
+<h2 id="variables-specifique">Variables spécifique</h2>
+<h3 id="environnement">Environnement</h3>
+<table>
+<thead>
+<tr>
+<th>Expression</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>$HOME</code></td>
+<td>chemin du répertoire personnel de l'utilisateur</td>
+</tr>
+<tr>
+<td><code>$OLDPWD</code></td>
+<td>chemin du répertoire précédent</td>
+</tr>
+<tr>
+<td><code>$PATH</code></td>
+<td>liste des chemins de recherche des commandes exécutables</td>
+</tr>
+<tr>
+<td><code>$PPID</code></td>
+<td>PID du processus père du shell</td>
+</tr>
+<tr>
+<td><code>$PS1</code></td>
+<td>invite principale du shell</td>
+</tr>
+<tr>
+<td><code>$PS2</code></td>
+<td>invite secondaire du shell</td>
+</tr>
+<tr>
+<td><code>$PS3</code></td>
+<td>invite de la structure shell "select"</td>
+</tr>
+<tr>
+<td><code>$PS4</code></td>
+<td>invite de l'option shell de débogage "xtrace"</td>
+</tr>
+<tr>
+<td><code>$PWD</code></td>
+<td>chemin du répertoire courant</td>
+</tr>
+<tr>
+<td><code>$RANDOM</code></td>
+<td>nombre entier aléatoire compris entre 0 et 32767</td>
+</tr>
+<tr>
+<td><code>$REPLY</code></td>
+<td>variable par défaut de la commande "read" et de la structure shell "select"</td>
+</tr>
+<tr>
+<td><code>$SECONDS</code></td>
+<td>nombre de secondes écoulées depuis le lancement du shell</td>
+</tr>
+</tbody>
+</table>
+<h3 id="status">Status</h3>
+<table>
+<thead>
+<tr>
+<th>Expression</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>$?</code></td>
+<td>Exit status de la dernière tache</td>
+</tr>
+<tr>
+<td><code>$!</code></td>
+<td>PID de la dernière tache en BG</td>
+</tr>
+<tr>
+<td><code>$$</code></td>
+<td>PID du shell</td>
+</tr>
+<tr>
+<td><code>$0</code></td>
+<td>Nom du script shell</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+<h3 id="arguments">Arguments</h3>
+<table>
+<thead>
+<tr>
+<th>Expression</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>$#</code></td>
+<td>Nombre d'arguments</td>
+</tr>
+<tr>
+<td><code>$*</code></td>
+<td>Tous les arguments</td>
+</tr>
+<tr>
+<td><code>$@</code></td>
+<td>Tous les arguments, en commencant par le premier</td>
+</tr>
+<tr>
+<td><code>$1</code></td>
+<td>Premier argument</td>
+</tr>
+<tr>
+<td><code>$_</code></td>
+<td>Argument de la dernière commande</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+<h3 id="variable-avec-valeur-par-defaut">Variable avec valeur par défaut</h3>
+<table>
+<thead>
+<tr>
+<th>Expression</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>${FOO:-val}</code></td>
+<td><code>$FOO</code>, or <code>val</code> if unset (or null)</td>
+</tr>
+<tr>
+<td><code>${FOO:=val}</code></td>
+<td>Set <code>$FOO</code> to <code>val</code> if unset (or null)</td>
+</tr>
+<tr>
+<td><code>${FOO:+val}</code></td>
+<td><code>val</code> if <code>$FOO</code> is set (and not null)</td>
+</tr>
+<tr>
+<td><code>${FOO:?message}</code></td>
+<td>Show error message and exit if <code>$FOO</code> is unset (or null)</td>
+</tr>
+</tbody>
+</table>
+<p>Omitting the <code>:</code> removes the (non)nullity checks, e.g. <code>${FOO-val}</code> expands to <code>val</code> if unset otherwise <code>$FOO</code>.</p>
+<p>&nbsp;</p>
+<h3 id="substrings">Substrings</h3>
+<table>
+<thead>
+<tr>
+<th>Expression</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>${FOO:0:3}</code></td>
+<td>Substring <em>(position, length)</em></td>
+</tr>
+<tr>
+<td><code>${FOO:(-3):3}</code></td>
+<td>Substring from the right</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+<h3 id="longueur">Longueur</h3>
+<table>
+<thead>
+<tr>
+<th>Expression</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>${#FOO}</code></td>
+<td>Taille de la variable <code>$FOO</code></td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+<h3 id="braket-expension">Braket expension</h3>
+<div class="highlight"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span><span class="o">{</span>A,B<span class="o">}</span>.js
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Expression</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>{A,B}</code></td>
+<td>Same as <code>A B</code></td>
+</tr>
+<tr>
+<td><code>{A,B}.js</code></td>
+<td>Same as <code>A.js B.js</code></td>
+</tr>
+<tr>
+<td><code>{1..5}</code></td>
+<td>Same as <code>1 2 3 4 5</code></td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+<h3 id="manipulation">Manipulation</h3>
+<p><strong>variable</strong></p>
+<div class="highlight"><pre><span></span><code><span class="nv">STR</span><span class="o">=</span><span class="s2">&quot;HELLO WORLD!&quot;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">STR</span><span class="p">,</span><span class="si">}</span><span class="w">   </span><span class="c1">#=&gt; &quot;hELLO WORLD!&quot; (lowercase 1st letter)</span>
+<span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">STR</span><span class="p">,,</span><span class="si">}</span><span class="w">  </span><span class="c1">#=&gt; &quot;hello world!&quot; (all lowercase)</span>
+
+<span class="nv">STR</span><span class="o">=</span><span class="s2">&quot;hello world!&quot;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">STR</span><span class="p">^</span><span class="si">}</span><span class="w">   </span><span class="c1">#=&gt; &quot;Hello world!&quot; (uppercase 1st letter)</span>
+<span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">STR</span><span class="p">^^</span><span class="si">}</span><span class="w">  </span><span class="c1">#=&gt; &quot;HELLO WORLD!&quot; (all uppercase)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="nv">name</span><span class="o">=</span><span class="s2">&quot;John&quot;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">name</span><span class="si">}</span>
+<span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">name</span><span class="p">/J/j</span><span class="si">}</span><span class="w">    </span><span class="c1">#=&gt; &quot;john&quot; (substitution)</span>
+<span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">name</span><span class="p">:</span><span class="nv">0</span><span class="p">:</span><span class="nv">2</span><span class="si">}</span><span class="w">    </span><span class="c1">#=&gt; &quot;Jo&quot; (slicing)</span>
+<span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">name</span><span class="p">::</span><span class="nv">2</span><span class="si">}</span><span class="w">     </span><span class="c1">#=&gt; &quot;Jo&quot; (slicing)</span>
+<span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">name</span><span class="p">:</span><span class="k">:-</span><span class="nv">1</span><span class="si">}</span><span class="w">    </span><span class="c1">#=&gt; &quot;Joh&quot; (slicing)</span>
+<span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">name</span><span class="p">:(-1)</span><span class="si">}</span><span class="w">   </span><span class="c1">#=&gt; &quot;n&quot; (slicing from right)</span>
+<span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">name</span><span class="p">:(-2):</span><span class="nv">1</span><span class="si">}</span><span class="w"> </span><span class="c1">#=&gt; &quot;h&quot; (slicing from right)</span>
+<span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">food</span><span class="k">:-</span><span class="nv">Cake</span><span class="si">}</span><span class="w">  </span><span class="c1">#=&gt; $food or &quot;Cake&quot;</span>
+</code></pre></div>
+<p><strong>répertoire</strong>
+<div class="highlight"><pre><span></span><code><span class="nv">STR</span><span class="o">=</span><span class="s2">&quot;/path/to/foo.cpp&quot;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">STR</span><span class="p">%.cpp</span><span class="si">}</span><span class="w">    </span><span class="c1"># /path/to/foo</span>
+<span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">STR</span><span class="p">%.cpp</span><span class="si">}</span>.o<span class="w">  </span><span class="c1"># /path/to/foo.o</span>
+<span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">STR</span><span class="p">%/*</span><span class="si">}</span><span class="w">      </span><span class="c1"># /path/to</span>
+
+<span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">STR</span><span class="p">##*.</span><span class="si">}</span><span class="w">     </span><span class="c1"># cpp (extension)</span>
+<span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">STR</span><span class="p">##*/</span><span class="si">}</span><span class="w">     </span><span class="c1"># foo.cpp (basepath)</span>
+
+<span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">STR</span><span class="p">#*/</span><span class="si">}</span><span class="w">      </span><span class="c1"># path/to/foo.cpp</span>
+<span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">STR</span><span class="p">##*/</span><span class="si">}</span><span class="w">     </span><span class="c1"># foo.cpp</span>
+
+<span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">STR</span><span class="p">/foo/bar</span><span class="si">}</span><span class="w"> </span><span class="c1"># /path/to/bar.cpp</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="nv">STR</span><span class="o">=</span><span class="s2">&quot;Hello world&quot;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">STR</span><span class="p">:</span><span class="nv">6</span><span class="p">:</span><span class="nv">5</span><span class="si">}</span><span class="w">   </span><span class="c1"># &quot;world&quot;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">STR</span><span class="p">: -5:</span><span class="nv">5</span><span class="si">}</span><span class="w">  </span><span class="c1"># &quot;world&quot;</span>
+</code></pre></div></p>
+<div class="highlight"><pre><span></span><code><span class="nv">SRC</span><span class="o">=</span><span class="s2">&quot;/path/to/foo.cpp&quot;</span>
+<span class="nv">BASE</span><span class="o">=</span><span class="si">${</span><span class="nv">SRC</span><span class="p">##*/</span><span class="si">}</span><span class="w">   </span><span class="c1">#=&gt; &quot;foo.cpp&quot; (basepath)</span>
+<span class="nv">DIR</span><span class="o">=</span><span class="si">${</span><span class="nv">SRC</span><span class="p">%</span><span class="nv">$BASE</span><span class="si">}</span><span class="w">  </span><span class="c1">#=&gt; &quot;/path/to/&quot; (dirpath)</span>
+</code></pre></div>
+<p>&nbsp;</p>
+<h3 id="substitution">Substitution</h3>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>${FOO%suffix}</code></td>
+<td>Supprimer suffix</td>
+</tr>
+<tr>
+<td><code>${FOO#prefix}</code></td>
+<td>Supprimer prefix</td>
+</tr>
+<tr>
+<td>---</td>
+<td>---</td>
+</tr>
+<tr>
+<td><code>${FOO%%suffix}</code></td>
+<td>Supprimer long suffix</td>
+</tr>
+<tr>
+<td><code>${FOO##prefix}</code></td>
+<td>Supprimer long prefix</td>
+</tr>
+<tr>
+<td>---</td>
+<td>---</td>
+</tr>
+<tr>
+<td><code>${FOO/from/to}</code></td>
+<td>Remplacer premier match</td>
+</tr>
+<tr>
+<td><code>${FOO//from/to}</code></td>
+<td>Remplacer tout</td>
+</tr>
+<tr>
+<td>---</td>
+<td>---</td>
+</tr>
+<tr>
+<td><code>${FOO/%from/to}</code></td>
+<td>Remplacer suffix</td>
+</tr>
+<tr>
+<td><code>${FOO/#from/to}</code></td>
+<td>Remplacer prefix</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+<h2 id="tableau">Tableau</h2>
+<h3 id="definition-dun-tableau">Definition d'un tableau</h3>
+<div class="highlight"><pre><span></span><code><span class="nv">Fruits</span><span class="o">=(</span><span class="s1">&#39;Apple&#39;</span><span class="w"> </span><span class="s1">&#39;Banana&#39;</span><span class="w"> </span><span class="s1">&#39;Orange&#39;</span><span class="o">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Fruits<span class="o">[</span><span class="m">0</span><span class="o">]=</span><span class="s2">&quot;Apple&quot;</span>
+Fruits<span class="o">[</span><span class="m">1</span><span class="o">]=</span><span class="s2">&quot;Banana&quot;</span>
+Fruits<span class="o">[</span><span class="m">2</span><span class="o">]=</span><span class="s2">&quot;Orange&quot;</span>
+</code></pre></div>
+<h3 id="gestion-dun-tableau">Gestion d'un tableau</h3>
+<div class="highlight"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">Fruits</span><span class="p">[0]</span><span class="si">}</span><span class="w">           </span><span class="c1"># Element #0</span>
+<span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">Fruits</span><span class="p">[-1]</span><span class="si">}</span><span class="w">          </span><span class="c1"># Last element</span>
+<span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">Fruits</span><span class="p">[@]</span><span class="si">}</span><span class="w">           </span><span class="c1"># All elements, space-separated</span>
+<span class="nb">echo</span><span class="w"> </span><span class="si">${#</span><span class="nv">Fruits</span><span class="p">[@]</span><span class="si">}</span><span class="w">          </span><span class="c1"># Number of elements</span>
+<span class="nb">echo</span><span class="w"> </span><span class="si">${#</span><span class="nv">Fruits</span><span class="si">}</span><span class="w">             </span><span class="c1"># String length of the 1st element</span>
+<span class="nb">echo</span><span class="w"> </span><span class="si">${#</span><span class="nv">Fruits</span><span class="p">[3]</span><span class="si">}</span><span class="w">          </span><span class="c1"># String length of the Nth element</span>
+<span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">Fruits</span><span class="p">[@]:</span><span class="nv">3</span><span class="p">:</span><span class="nv">2</span><span class="si">}</span><span class="w">       </span><span class="c1"># Range (from position 3, length 2)</span>
+<span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="p">!Fruits[@]</span><span class="si">}</span><span class="w">          </span><span class="c1"># Keys of all elements, space-separated</span>
+</code></pre></div>
+<h3 id="operations-sur-un-tableau">Operations sur un tableau</h3>
+<div class="highlight"><pre><span></span><code><span class="nv">Fruits</span><span class="o">=(</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">Fruits</span><span class="p">[@]</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="s2">&quot;Watermelon&quot;</span><span class="o">)</span><span class="w">    </span><span class="c1"># Push</span>
+<span class="nv">Fruits</span><span class="o">+=(</span><span class="s1">&#39;Watermelon&#39;</span><span class="o">)</span><span class="w">                  </span><span class="c1"># Also Push</span>
+<span class="nv">Fruits</span><span class="o">=(</span><span class="w"> </span><span class="si">${</span><span class="nv">Fruits</span><span class="p">[@]/Ap*/</span><span class="si">}</span><span class="w"> </span><span class="o">)</span><span class="w">            </span><span class="c1"># Remove by regex match</span>
+<span class="nb">unset</span><span class="w"> </span>Fruits<span class="o">[</span><span class="m">2</span><span class="o">]</span><span class="w">                         </span><span class="c1"># Remove one item</span>
+<span class="nv">Fruits</span><span class="o">=(</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">Fruits</span><span class="p">[@]</span><span class="si">}</span><span class="s2">&quot;</span><span class="o">)</span><span class="w">                 </span><span class="c1"># Duplicate</span>
+<span class="nv">Fruits</span><span class="o">=(</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">Fruits</span><span class="p">[@]</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">Veggies</span><span class="p">[@]</span><span class="si">}</span><span class="s2">&quot;</span><span class="o">)</span><span class="w"> </span><span class="c1"># Concatenate</span>
+<span class="nv">lines</span><span class="o">=(</span><span class="sb">`</span>cat<span class="w"> </span><span class="s2">&quot;logfile&quot;</span><span class="sb">`</span><span class="o">)</span><span class="w">                 </span><span class="c1"># Read from file</span>
+</code></pre></div>
+<h3 id="utilisation-dun-tableau-en-shell">Utilisation d'un tableau en shell</h3>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+
+<span class="nb">declare</span><span class="w"> </span>-A<span class="w"> </span>dict
+<span class="nv">dict</span><span class="o">=(</span><span class="w"> </span><span class="o">[</span>‘a’<span class="o">]=</span><span class="m">1</span>
+<span class="w">       </span><span class="o">[</span>‘b’<span class="o">]=</span><span class="m">2</span>
+<span class="w">       </span><span class="o">[</span>‘c’<span class="o">]=</span><span class="m">3</span><span class="w"> </span><span class="o">)</span>
+
+<span class="k">for</span><span class="w"> </span>item<span class="w"> </span><span class="k">in</span><span class="w"> </span>“<span class="si">${</span><span class="p">!dict[@]</span><span class="si">}</span>”
+<span class="k">do</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span>“<span class="nv">$item</span><span class="w"> </span><span class="o">=</span>&gt;<span class="w"> </span><span class="si">${</span><span class="nv">dict</span><span class="p">[</span><span class="nv">$item</span><span class="p">]</span><span class="si">}</span>”
+<span class="k">done</span>
+</code></pre></div>
+<h2 id="dictionnaire">Dictionnaire</h2>
+<h3 id="definition">Définition</h3>
+<p>On déclare <code>sound</code> en tant que dictionnaire (couple clé:valeur)</p>
+<div class="highlight"><pre><span></span><code><span class="nb">declare</span><span class="w"> </span>-A<span class="w"> </span>sounds
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>sounds<span class="o">[</span>dog<span class="o">]=</span><span class="s2">&quot;bark&quot;</span>
+sounds<span class="o">[</span>cow<span class="o">]=</span><span class="s2">&quot;moo&quot;</span>
+sounds<span class="o">[</span>bird<span class="o">]=</span><span class="s2">&quot;tweet&quot;</span>
+sounds<span class="o">[</span>wolf<span class="o">]=</span><span class="s2">&quot;howl&quot;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">sounds</span><span class="p">[dog]</span><span class="si">}</span><span class="w"> </span><span class="c1"># Dog&#39;s sound</span>
+<span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">sounds</span><span class="p">[@]</span><span class="si">}</span><span class="w">   </span><span class="c1"># All values</span>
+<span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="p">!sounds[@]</span><span class="si">}</span><span class="w">  </span><span class="c1"># All keys</span>
+<span class="nb">echo</span><span class="w"> </span><span class="si">${#</span><span class="nv">sounds</span><span class="p">[@]</span><span class="si">}</span><span class="w">  </span><span class="c1"># Number of elements</span>
+<span class="nb">unset</span><span class="w"> </span>sounds<span class="o">[</span>dog<span class="o">]</span><span class="w">   </span><span class="c1"># Delete dog</span>
+</code></pre></div>
+<h3 id="iteration-sur-les-valeurs">Iteration sur les valeurs</h3>
+<p><div class="highlight"><pre><span></span><code><span class="k">for</span><span class="w"> </span>val<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">sounds</span><span class="p">[@]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$val</span>
+<span class="k">done</span>
+</code></pre></div>
+&nbsp;</p>
+<h3 id="iteration-sur-les-cles">Iteration sur les clés</h3>
+<div class="highlight"><pre><span></span><code><span class="k">for</span><span class="w"> </span>key<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="p">!sounds[@]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$key</span>
+<span class="k">done</span>
+</code></pre></div>
+<p>&nbsp;</p>
+<h2 id="boucles-loop">Boucles (loop)</h2>
+<hr />
+<h3 id="boucle-simple">Boucle simple</h3>
+<div class="highlight"><pre><span></span><code><span class="k">for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span>/etc/rc.*<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$i</span>
+<span class="k">done</span>
+</code></pre></div>
+<h3 id="boucle-incrementale">Boucle incrémentale</h3>
+<div class="highlight"><pre><span></span><code><span class="k">for</span><span class="w"> </span><span class="o">((</span><span class="nv">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="p">;</span><span class="w"> </span>i<span class="w"> </span>&lt;<span class="w"> </span><span class="m">100</span><span class="w"> </span><span class="p">;</span><span class="w"> </span>i++<span class="o">))</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$i</span>
+<span class="k">done</span>
+</code></pre></div>
+<h3 id="boucle-range">Boucle "range"</h3>
+<div class="highlight"><pre><span></span><code><span class="k">for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="o">{</span><span class="m">1</span>..5<span class="o">}</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Welcome </span><span class="nv">$i</span><span class="s2">&quot;</span>
+<span class="k">done</span>
+</code></pre></div>
+<h4 id="boucle-etape">Boucle "etape"</h4>
+<div class="highlight"><pre><span></span><code><span class="k">for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="o">{</span><span class="m">5</span>..50..5<span class="o">}</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Welcome </span><span class="nv">$i</span><span class="s2">&quot;</span>
+<span class="k">done</span>
+</code></pre></div>
+<h3 id="boucle-avec-lecture-read">Boucle avec lecture (read)</h3>
+<div class="highlight"><pre><span></span><code>cat<span class="w"> </span>file.txt<span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="k">while</span><span class="w"> </span><span class="nb">read</span><span class="w"> </span>line<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$line</span>
+<span class="k">done</span>
+</code></pre></div>
+<h3 id="boucle-while">Boucle while</h3>
+<p><div class="highlight"><pre><span></span><code><span class="k">while</span><span class="w"> </span>true<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">  </span>···
+<span class="k">done</span>
+</code></pre></div>
+&nbsp;</p>
+<h2 id="grep">Grep</h2>
+<h3 id="afficher-un-ou-des-process-sans-le-process-grep-himself">Afficher un ou des process sans le process grep himself</h3>
+<p><div class="highlight"><pre><span></span><code>ps<span class="w"> </span>-<span class="w"> </span>elf<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>squid<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-v<span class="w"> </span>grep
+ou
+ps<span class="w"> </span>-elf<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="o">[</span>s<span class="o">]</span>quid
+</code></pre></div>
+&nbsp;</p>
+<h3 id="affichier-un-fichier-sans-les-commentaires">Affichier un fichier sans les commentaires</h3>
+<p><div class="highlight"><pre><span></span><code>grep<span class="w"> </span>-E<span class="w"> </span>-v<span class="w"> </span><span class="s1">&#39;^(#|$)&#39;</span><span class="w"> </span>&lt;fichier&gt;
+ou
+egrep<span class="w"> </span>-v<span class="w"> </span><span class="s1">&#39;^(#|$)&#39;</span><span class="w"> </span>&lt;fichier&gt;
+</code></pre></div>
+&nbsp;</p>
+<h3 id="grep-avec-multiple-patterns">Grep avec multiple patterns</h3>
+<p><div class="highlight"><pre><span></span><code>egrep<span class="w"> </span>-i<span class="w"> </span><span class="s2">&quot;apache|lsyncd&quot;</span><span class="w"> </span>&lt;file&gt;
+ou
+grep<span class="w"> </span>-i<span class="w"> </span>-e<span class="w"> </span>apache<span class="w"> </span>-e<span class="w"> </span>lsyncd<span class="w"> </span>&lt;file&gt;
+</code></pre></div>
+&nbsp;</p>
+<h3 id="grep-dun-pattern">Grep d'un pattern</h3>
+<div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span>grep<span class="w"> </span>-q<span class="w"> </span><span class="s1">&#39;foo&#39;</span><span class="w"> </span>~/.bash_history<span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;You appear to have typed &#39;foo&#39; in the past&quot;</span>
+<span class="k">fi</span>
+</code></pre></div>
+<h2 id="gestion-des-pipe">Gestion des pipe</h2>
+<h3 id="variable-pipestatus">Variable PIPESTATUS</h3>
+<p><div class="highlight"><pre><span></span><code>ls<span class="w"> </span>toto<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>tee<span class="w"> </span>-a<span class="w"> </span>toto.log<span class="p">;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">PIPESTATUS</span><span class="p">[0]</span><span class="si">}</span><span class="w"> </span><span class="c1">#RC Avant pipe</span>
+<span class="nb">echo</span><span class="w"> </span><span class="nv">$?</span><span class="w"> </span><span class="c1">#RC après pipe</span>
+</code></pre></div>
+&nbsp;</p>
+<h2 id="awk">AWK</h2>
+<h3 id="supprimer-les-caracteres-m">Supprimer les caractères ^M</h3>
+<p><div class="highlight"><pre><span></span><code>awk &#39;sub(/^M/, &quot;&quot;);1&#39; &lt;ficsource&gt; &lt;ficmaj&gt;
+</code></pre></div>
+&nbsp;</p>
+<h3 id="afficher-champ-selon-separateur">Afficher champ selon séparateur</h3>
+<div class="highlight"><pre><span></span><code>awk -F&quot;\t&quot;  &#39;{ print $56 }&#39;
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Afficher le premier champ de chaque ligne avec tabulation en séparateur de champ</p>
+</div>
+<p>&nbsp;</p>
+<h3 id="remplacer-expr-par-awk">Remplacer EXPR par AWK</h3>
+<p><div class="highlight"><pre><span></span><code>awk &#39;BEGIN{print 1024 / 1000}&#39;
+</code></pre></div>
+&nbsp;</p>
+<h3 id="selectioner-la-premiere-ou-la-derniere-ligne-imprimer-un-champ">Selectioner la première ou la dernière ligne + imprimer un champ</h3>
+<p><div class="highlight"><pre><span></span><code>awk &#39;BEGIN{print $2}&#39;
+awk &#39;END{print $2}&#39;
+</code></pre></div>
+&nbsp;</p>
+<h2 id="sed">Sed</h2>
+<h3 id="supprimer-les-caracteres-ascii-m">Supprimer les caractères ASCII ^M</h3>
+<p><div class="highlight"><pre><span></span><code>sed<span class="w"> </span><span class="s1">&#39;s/^M//g&#39;</span><span class="w"> </span>&lt;ficsource&gt;<span class="w"> </span>&lt;ficmaj&gt;
+ou
+sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">&#39;s/^M//g&#39;</span><span class="w"> </span>&lt;ficsource&gt;
+</code></pre></div>
+&nbsp;</p>
+<h3 id="critere-de-recherche">Critère de recherche</h3>
+<p><div class="highlight"><pre><span></span><code>sed<span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot; //{N;s/Hxxxxx/Pxxxxx/g;} &quot;</span><span class="se">\</span>
+</code></pre></div>
+&nbsp;</p>
+<h3 id="supprimer-les-caracteres-newline-lf">Supprimer les caractères "Newline" (LF)</h3>
+<p><div class="highlight"><pre><span></span><code>sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">&#39;{:q;N;s/\n//g;t q}&#39;</span><span class="w"> </span>days.txt
+</code></pre></div>
+&nbsp;</p>
+<h3 id="supprimer-les-10-premiers-caracteres-de-chaque-ligne">Supprimer les 10 premiers caractères de chaque ligne</h3>
+<p><div class="highlight"><pre><span></span><code>sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">&#39;s/^.\{10\}//g&#39;</span><span class="w"> </span>fichier.txt
+</code></pre></div>
+&nbsp;</p>
+<h3 id="affichier-une-ligne-en-particulier">Affichier une ligne en particulier</h3>
+<div class="highlight"><pre><span></span><code>&lt;code&gt;sed<span class="w"> </span>-n<span class="w"> </span>1p<span class="w"> </span>check_toto.txt
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Ici la première ligne</p>
+</div>
+<p>&nbsp;</p>
+<h3 id="savoir-si-une-variable-est-numerique">Savoir si une variable est numérique</h3>
+<p><div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-n<span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="nv">$var</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span><span class="s1">&#39;s/[0-9]//g&#39;</span><span class="k">)</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;is not numeric&#39;</span>
+<span class="k">else</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;is numeric&#39;</span>
+<span class="k">fi</span>
+</code></pre></div>
+&nbsp;</p>
+<h2 id="basename">Basename</h2>
+<h3 id="lister-les-fichiers-sans-extensions">Lister les fichiers sans extensions</h3>
+<p><div class="highlight"><pre><span></span><code><span class="k">for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$@</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span>
+<span class="k">do</span>
+<span class="nv">BN</span><span class="o">=</span><span class="k">$(</span>basename<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">i</span><span class="p">%.*</span><span class="si">}</span><span class="s2">&quot;</span><span class="k">)</span>
+<span class="w"> </span>...
+<span class="k">done</span>
+</code></pre></div>
+&nbsp;</p>
+<h3 id="directory-of-script">Directory of script</h3>
+<div class="highlight"><pre><span></span><code><span class="nv">DIR</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span>readlink<span class="w"> </span>-f<span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>dirname<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$0</span><span class="s2">&quot;</span><span class="k">)</span><span class="s2">/../data/transfers&quot;</span><span class="k">)</span><span class="s2">&quot;</span>
+</code></pre></div>
+<blockquote>
+<p class="is-info"><em>readlink</em> permet le suivi des liens</p>
+</blockquote>
+<p>&nbsp;</p>
+<h3 id="afficher-le-nom-du-script-execute">Afficher le nom du script exécuté</h3>
+<p><code>Le script $(basename ${0}) est correctement exécuté</code>
+&nbsp;</p>
+<h2 id="find">Find</h2>
+<h3 id="renommer-lextension-de-plusieurs-fichiers">Renommer l'extension de plusieurs fichiers</h3>
+<p><div class="highlight"><pre><span></span><code>find . -name &#39;*.mp4&#39; | rename mp4 txt *
+</code></pre></div>
+&nbsp;</p>
+<h3 id="recherche-recursive-avec-mot-cle">Recherche récursive avec "mot-clé"</h3>
+<p><div class="highlight"><pre><span></span><code>find / -xdev -type f -exec grep -i toto {} /dev/null \;
+</code></pre></div>
+&nbsp;</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>recherche récursive de tous les fichiers qui contiennent le mot « toto » (ou TOTO… ou ToTo…)</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Attention : « \; » obligatoire à la fin de la commande</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>N.B : L’option xdev permet de ne pas franchir les limites du systeme de fichiers</p>
+</div>
+<p>&nbsp;</p>
+<h3 id="purge-de-fichiers">Purge de fichiers</h3>
+<div class="highlight"><pre><span></span><code>find . -type f -mtime +7 -name « *.trc » -exec rm -f {} \;
+find . -type f -mtime +2 -size xx -exec rm {}; avec xx = 10M ou 10K par ex 
+find . -type f -mtime +2 -name /*/backup/*/ -exec rm {};  (enlever les / )
+find . -type f -mtime +1 -exec rm
+</code></pre></div>
+<h3 id="recherche-mot-cle-avec-redirection-log">Recherche "mot-clé" avec redirection log</h3>
+<div class="highlight"><pre><span></span><code>find . -type f -print | xargs grep -i « my_string_to_search »&gt; /tmp/search.log 2&gt;/dev/null;
+</code></pre></div>
+<h3 id="recherche-des-fichiers-sans-arborescence-repertoire">Recherche des fichiers sans arborescence répertoire</h3>
+<div class="highlight"><pre><span></span><code>find . -name &#39;*.txt&#39; -exec basename {} \;
+</code></pre></div>
+<h2 id="test">Test</h2>
+<h3 id="condition-dexecution">Condition d'execution</h3>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>commit<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>git<span class="w"> </span>push
+git<span class="w"> </span>commit<span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Commit failed&quot;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span>-z<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$string</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;String is empty&quot;</span>
+<span class="k">elif</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span>-n<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$string</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;String is not empty&quot;</span>
+<span class="k">fi</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Condition</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>[[ -z STRING ]]</code></td>
+<td>Empty string</td>
+</tr>
+<tr>
+<td><code>[[ -n STRING ]]</code></td>
+<td>Not empty string</td>
+</tr>
+<tr>
+<td><code>[[ STRING == STRING ]]</code></td>
+<td>Equal</td>
+</tr>
+<tr>
+<td><code>[[ STRING != STRING ]]</code></td>
+<td>Not Equal</td>
+</tr>
+<tr>
+<td>---</td>
+<td>---</td>
+</tr>
+<tr>
+<td><code>[[ NUM -eq NUM ]]</code></td>
+<td>Equal</td>
+</tr>
+<tr>
+<td><code>[[ NUM -ne NUM ]]</code></td>
+<td>Not equal</td>
+</tr>
+<tr>
+<td><code>[[ NUM -lt NUM ]]</code></td>
+<td>Less than</td>
+</tr>
+<tr>
+<td><code>[[ NUM -le NUM ]]</code></td>
+<td>Less than or equal</td>
+</tr>
+<tr>
+<td><code>[[ NUM -gt NUM ]]</code></td>
+<td>Greater than</td>
+</tr>
+<tr>
+<td><code>[[ NUM -ge NUM ]]</code></td>
+<td>Greater than or equal</td>
+</tr>
+<tr>
+<td>---</td>
+<td>---</td>
+</tr>
+<tr>
+<td><code>[[ STRING =~ STRING ]]</code></td>
+<td>Regexp</td>
+</tr>
+<tr>
+<td>---</td>
+<td>---</td>
+</tr>
+<tr>
+<td><code>(( NUM &lt; NUM ))</code></td>
+<td>Numeric conditions</td>
+</tr>
+</tbody>
+</table>
+<h4 id="more-conditions">More conditions</h4>
+<table>
+<thead>
+<tr>
+<th>Condition</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>[[ -o noclobber ]]</code></td>
+<td>If OPTIONNAME is enabled</td>
+</tr>
+<tr>
+<td>---</td>
+<td>---</td>
+</tr>
+<tr>
+<td><code>[[ ! EXPR ]]</code></td>
+<td>Not</td>
+</tr>
+<tr>
+<td><code>[[ X &amp;&amp; Y ]]</code></td>
+<td>And</td>
+</tr>
+<tr>
+<td><code>[[ X || Y ]]</code></td>
+<td>Or</td>
+</tr>
+</tbody>
+</table>
+<h3 id="file-conditions">File conditions</h3>
+<table>
+<thead>
+<tr>
+<th>Condition</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>[[ -e FILE ]]</code></td>
+<td>Exists</td>
+</tr>
+<tr>
+<td><code>[[ -r FILE ]]</code></td>
+<td>Readable</td>
+</tr>
+<tr>
+<td><code>[[ -h FILE ]]</code></td>
+<td>Symlink</td>
+</tr>
+<tr>
+<td><code>[[ -d FILE ]]</code></td>
+<td>Directory</td>
+</tr>
+<tr>
+<td><code>[[ -w FILE ]]</code></td>
+<td>Writable</td>
+</tr>
+<tr>
+<td><code>[[ -s FILE ]]</code></td>
+<td>Size is &gt; 0 bytes</td>
+</tr>
+<tr>
+<td><code>[[ -f FILE ]]</code></td>
+<td>File</td>
+</tr>
+<tr>
+<td><code>[[ -x FILE ]]</code></td>
+<td>Executable</td>
+</tr>
+<tr>
+<td>---</td>
+<td>---</td>
+</tr>
+<tr>
+<td><code>[[ FILE1 -nt FILE2 ]]</code></td>
+<td>1 is more recent than 2</td>
+</tr>
+<tr>
+<td><code>[[ FILE1 -ot FILE2 ]]</code></td>
+<td>2 is more recent than 1</td>
+</tr>
+<tr>
+<td><code>[[ FILE1 -ef FILE2 ]]</code></td>
+<td>Same files</td>
+</tr>
+</tbody>
+</table>
+<h3 id="example">Example</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># String</span>
+<span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span>-z<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$string</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;String is empty&quot;</span>
+<span class="k">elif</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span>-n<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$string</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;String is not empty&quot;</span>
+<span class="k">else</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;This never happens&quot;</span>
+<span class="k">fi</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># Combinations</span>
+<span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span>X<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>Y<span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">  </span>...
+<span class="k">fi</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># Equal</span>
+<span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$A</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$B</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]]</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># Regex</span>
+<span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="s2">&quot;A&quot;</span><span class="w"> </span><span class="o">=</span>~<span class="w"> </span>.<span class="w"> </span><span class="o">]]</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="o">((</span><span class="w"> </span><span class="nv">$a</span><span class="w"> </span>&lt;<span class="w"> </span><span class="nv">$b</span><span class="w"> </span><span class="o">))</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">   </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$a</span><span class="s2"> is smaller than </span><span class="nv">$b</span><span class="s2">&quot;</span>
+<span class="k">fi</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;file.txt&quot;</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;file exists&quot;</span>
+<span class="k">fi</span>
+</code></pre></div>
+<p>&nbsp;</p>
+<h2 id="fonctions">Fonctions</h2>
+<h3 id="gestion-des-erreurs">Gestion des erreurs</h3>
+<div class="highlight"><pre><span></span><code>log_and_die<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+<span class="w">  </span>&gt;<span class="p">&amp;</span><span class="m">2</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;[FATAL] </span><span class="nv">$*</span><span class="s2">&quot;</span>
+<span class="w">  </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
+<span class="o">}</span>
+</code></pre></div>
+
+
+
+
+
+
+
+  
+    
+  
+  
+    
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="December 23, 2025 08:02:18 UTC">December 23, 2025</span>
+  </span>
+
+    
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Created">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="December 23, 2025 08:02:18 UTC">December 23, 2025</span>
+  </span>
+
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.indexes", "navigation.instant", "navigation.sections", "navigation.expand", "header.autohide", "content.code.copy", "content.code.annotate", "content.action.edit", "content.action.view", "toc.follow", "toc.integrate"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
