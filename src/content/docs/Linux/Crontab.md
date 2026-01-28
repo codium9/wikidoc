@@ -2,10 +2,9 @@
 title: Crontab
 ---
 
-
 ### Lire une crontab
+{% badge text="Note" variant="note" /%}
 > Dans l'ordre des étoiles (de gauche à droite)
-{.is-info}
 
 - minutes (0 à 59)
 - heures (0 à 23)
@@ -20,7 +19,7 @@ Avec pour chaque unités de temps, le notations possible
 - */3 : toutes les 3 unités de temps (0,3,6,…)
 - 5,8 : les unités de temps 5 et 8
 
-<u>Exemple :</u>
+Exemple :
 
 **$ Toutes les 5 minutes**
 ```

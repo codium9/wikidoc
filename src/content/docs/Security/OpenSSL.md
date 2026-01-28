@@ -5,7 +5,7 @@ title: OpenSSL
 
 Lien utile:
 [https://geekflare.com/fr/openssl-commands-certificates/](https://geekflare.com/fr/openssl-commands-certificates/)
-&nbsp;
+
 
 #### Liste des fichiers pris pour exemple
 ```bash
@@ -15,7 +15,7 @@ Lien utile:
 -rw-r--r-- 1 500000339 1049089 1274 mars  12 16:50 cert_out.pem
 -rw-r--r-- 1 500000339 1049089    0 mars  12 17:29 csr.pem
 ```
-&nbsp;
+
 
 #### Contenu de la configuration CSR
 ```bash
@@ -37,31 +37,31 @@ emailAddress="me@domain.com""
 [ req_ext ]
 subjectAltName = DNS: www.exemple.com, DNS: mail.exemple.com, IP: 192.168.1.1
 ```
-&nbsp;
+
 
 ### Générer une clé privé
 ```bash
 openssl.exe genrsa -out myprivatekey.rsa
 ```
-&nbsp;
+
 
 ### Générer une clé publique depuis une clé privé
 ```bash
 openssl.exe rsa -in myprivatekey.rsa -pubout -out myprivatekey.rsa.pub
 ```
-&nbsp;
+
 
 ### Demande de certificat - Générer son CSR
 ```bash
 openssl req –key myprivatekey.rsa –new -config csr.ini –out csr.pem
 ```
-&nbsp;
+
 
 ### Générer un certificat d'autorité (AC) auto-signé
 ```bash
 openssl x509 -req -signkey myprivatekey.rsa -in csr.pem -days 1000 -out cert_out.pem
 ```
-&nbsp;
+
 
 ### Simuler un échange client/serveur pour debug SSL
 ```bash
@@ -72,7 +72,7 @@ openssl.exe s_server -accept 127.0.0.1:4433 -cert cert_out.pem -key myprivatekey
 Client :
 openssl.exe s_client -host 127.0.0.1 -port 4433
 ```
-&nbsp;
+
 
 
 

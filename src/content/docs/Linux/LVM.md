@@ -42,7 +42,7 @@ Numéro  Début   Fin     Taille  Type     Système de fichiers  Fanions
  4      51,2GB  128GB   76,8GB  primary                       lvm (gestionnaire de volumes logiques)
 ```
 
-&nbsp;
+
 ### Créer un volume logique
 ```bash
 lvcreate -L 1G -n <Label Volume> <VG>
@@ -55,11 +55,11 @@ mount -a <FS>
 df -h <FS> ==> pour vérifier
 ```
 
-!!! note
-    Si la commande `umount` ne marche pas, faire un `lsof`du FS pour voir si un process tente d'y accéder, sinon utiliser commande `umount -l`
+{% aside %}
+Si la commande `umount` ne marche pas, faire un `lsof`du FS pour voir si un process tente d'y accéder, sinon utiliser la commande `umount -l`
+{% /aside %}
 
 
-&nbsp;
 ### Manipuler un volume logique
 ```bash
 df -h <FS>
@@ -70,13 +70,13 @@ resize2fs <Volume_du_FS>
 mount <FS>
 df -h <FS> ==> Pour vérifier
 ```
+{% aside type="tip" %}
 variante XFS
-!!! note
     Remplacer 
         `resize2fs` <Volume_du_FS>
     Par
         `xfs_growfs` <Volume_du_FS>
-
+{% /aside %}
 
 
 

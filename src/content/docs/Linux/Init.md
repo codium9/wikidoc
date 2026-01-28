@@ -2,12 +2,11 @@
 title: Init
 ---
 
-
 ### Afficher les services systemd
 ```bash
 systemctl list-dependencies
 ```
-&nbsp;
+
 ### Créer un service (RedHat/Centos)
 ```bash
 vim /etc/systemd/system/gammu.service
@@ -38,7 +37,6 @@ Activation du service
  ```bash
  systemctl enable gammu.service
  ```
- &nbsp;
 
 
 

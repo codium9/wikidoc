@@ -42,8 +42,9 @@ preppwd = pwd.replace("\\", "")
 print "Recovered password is: " + clearOrEncryptService.decrypt(preppwd)
 ```
 
-!!! abstract
-    Vous devez apercevoir le fichier suivant dans le répertoire : ''**SerializedSystemIni.dat**''
+{% aside %}
+Vous devez apercevoir le fichier suivant dans le répertoire : ''**SerializedSystemIni.dat**''
+{% /aside %}
 
 Exécuter la commande suivante : 
 
@@ -53,8 +54,8 @@ ${WL_HOME}/common/bin/wlst.sh fichier.py
 
 Entrer le mot de passe crypté récupéré initialement lorsqu'il vous est demandé.
 
-!!! success
-    FIN
+{% badge text="Succès" variant="success" /%}
+FIN
 
 
 

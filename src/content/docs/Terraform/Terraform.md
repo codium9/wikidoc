@@ -12,18 +12,19 @@ title: Terraform
     [...]
     }
 
-!!! info  
-    Lire : Si la variable "lb_type" est valorisée à "network-lb", alors le module ou la ressource est déployé  
-    Lien : [https://www.bitslovers.com/terraform-count/](https://www.bitslovers.com/terraform-count/)  
-
+{% aside type="tip" %}
+Si la variable "lb_type" est valorisée à "network-lb", alors le module ou la ressource est déployé  
+Lien : [https://www.bitslovers.com/terraform-count/](https://www.bitslovers.com/terraform-count/)  
+{% /aside %}
 
 ### Mode "string"
 
     bucket_name = var.test == true ? "dev" : "prod"  
 
-!!! info  
-    Lire : Si la variable de test contient la valeur "true", alors bucket_name = dev , sinon prod  
-    Lien : [https://spacelift.io/blog/terraform-functions-expressions-loops](https://spacelift.io/blog/terraform-functions-expressions-loops)  
+{% aside type="tip" %}
+Lire : Si la variable de test contient la valeur "true", alors bucket_name = dev , sinon prod  
+Lien : [https://spacelift.io/blog/terraform-functions-expressions-loops](https://spacelift.io/blog/terraform-functions-expressions-loops)  
+{% /aside %}
 
 ## Utiliser une liste d'items dans un fichier texte
 
@@ -46,6 +47,7 @@ resource "aws_s3_bucket_object" "chroot_folder_keep_file_input" {
 }
 ```
 
-!!! info  
+{% aside type="Note" %}
     l'usage de la fonction `split` terraform permet le découpage selon un pattern, ici le retour chariot  
     la fonction `compact` permet de gérer les lignes vide et de les supprimer de la liste si besoin  
+{% /aside %}

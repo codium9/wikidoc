@@ -8,18 +8,18 @@ title: Command
 ```bash
 cat /proc/cpuinfo | grep "model name"
 ```
-&nbsp;
+
 ### Nombre de coeur physique
 ```bash
 grep "physical id" /proc/cpuinfo |sort -u |wc -l
 ```
-&nbsp;
+
 ### Nombre de coeur logique
 ```bash
 grep -c "processor" /proc/cpuinfo
 ```
 
-&nbsp;
+
 ## Infos démarrage
 ### Dernier reboot
 ```bash
@@ -29,13 +29,13 @@ ou
 ```bash
 who -b
 ```
-&nbsp;
+
 ### Dernier shutdown
 ```bash
 last -x|grep shutdown | head -1
 ```
 
-&nbsp;
+
 ## Compression/Décompression
 ### Décompresser avec rebase
 ```bash
@@ -47,7 +47,7 @@ tar xvf <file> --strip-components 5
 tar xzf - -C ${HOME}/Tools k9s.exe < <(curl -Ls --cacert ${CERTS_FULL_CA_BUNDLE} ${K9S_URL})
 ```
 
-&nbsp;
+
 ## Tester une connection TCP
 ```bash
 SERVER=google.com PORT=80 
@@ -59,14 +59,13 @@ printf "failed \n"
 fi
 ```
 
-!!! info
-    variante one-liner
-
+{% aside %}
+variante one-liner
 
 ```bash
 bash -c 'exec 3<> /dev/tcp/'localhost'/'22';echo $?' 2>/dev/null
 ```
-&nbsp;
+{% /aside %}
 
 ## Tunnel SSH
 Exemple d'un tunnel http pour mise a jour yum
@@ -83,10 +82,10 @@ puis taper la commande suivante
 ```bash
 ssh -D 1080 root@machine 2
 ```
-> puis taper la commande désiré sur la machine 1 depuis un autre terminal (très important)
-{.is-info}
 
-&nbsp;
+{% badge text="Attention" variant="caution" /%}
+puis taper la commande désiré sur la machine 1 depuis un autre terminal (très important)
+
 
 ## YUM
 ### Option "downloadonly"
@@ -94,19 +93,20 @@ ssh -D 1080 root@machine 2
 yum install --downloadonly --downloaddir=<path> <package>
 ```
 
-!!! info
-    Prérequis : Installer le package yum-downloadonly
+{% aside %}
+Prérequis : Installer le package yum-downloadonly
+{% /aside %}
 
-&nbsp;
 
 ## File System (visualisation)
 ### Création fichier avec masque défini
 ```
 umask 022
 ```
-!!! info
-    (avec 022 = chmod 755)
 
+{% aside %}
+(avec 022 = chmod 755)
+{% /aside %}
 
 ### Affichage espace libre ou occupé
 #### Affichage espace occupé en Mo

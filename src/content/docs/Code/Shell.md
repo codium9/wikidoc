@@ -1,6 +1,7 @@
 ---
 title: Shell
 ---
+import { Aside, Badge } from '@astrojs/starlight/components';
 
 ### "Strict mode" bash
 
@@ -17,17 +18,14 @@ Editer le fichier /etc/DIR_COLORS et remplacer
 par
 `DIR 00;32       # directory`
 
-!!! note
+{% aside %}
     Les répertoires vont apparaitre en vert au lieu de bleu
-
-&nbsp;
+{% /aside %}
 
 ### Clear screen "like" en shell
 ```bash
 echo -en "\ec"
 ```
-
-&nbsp;
 
 ### Faire un calcul en shell
 ```bash
@@ -42,10 +40,10 @@ $((a + 200))      # Add 200 to $a
 $(($RANDOM%200))  # Random number 0..199
 ```
 
-!!! note
+{% aside %}
     Permet de faire un calcul , notamment dans ce cas précis, ou un résultat égale à 0 fait planter expr
+{% /aside %}
 
-&nbsp;
 
 ### Lire une entrée STDIN
 
@@ -54,10 +52,9 @@ echo -n "Proceed? [y/n]: "
 read ans
 echo $ans
 ```
-&nbsp;
 
-!!! note
-    lecture STDIN si option, sinon, fichier
+{% aside type="tip" %}
+lecture STDIN si option, sinon, fichier
     ```bash
     test() { 
     if [ "$1" == "-" ]; then 
@@ -67,8 +64,7 @@ echo $ans
     fi 
     }
     ```
-
-&nbsp;
+{% /aside %}
 
 ### Gestion des options dans un menu
 
@@ -87,8 +83,6 @@ while [[ "$1" =~ ^- && ! "$1" == "--" ]]; do case $1 in
 esac; shift; done
 if [[ "$1" == '--' ]]; then shift; fi
 ```
-
-&nbsp;
 
 ### Redirections
 
@@ -141,7 +135,6 @@ python hello.py &>/dev/null    # stdout and stderr to (null)
 | `$1`       | Premier argument                         |
 | `$_`       | Argument de la dernière commande  |
 
-&nbsp;
 
 ### Variable avec valeur par défaut
 
@@ -154,8 +147,6 @@ python hello.py &>/dev/null    # stdout and stderr to (null)
 
 Omitting the `:` removes the (non)nullity checks, e.g. `${FOO-val}` expands to `val` if unset otherwise `$FOO`.
 
-&nbsp;
-
 ### Substrings
 
 | Expression      | Description                    |
@@ -163,15 +154,12 @@ Omitting the `:` removes the (non)nullity checks, e.g. `${FOO-val}` expands to `
 | `${FOO:0:3}`    | Substring _(position, length)_ |
 | `${FOO:(-3):3}` | Substring from the right       |
 
-&nbsp;
-
 ### Longueur
 
 | Expression | Description      |
 | ---------- | ---------------- |
 | `${#FOO}`  | Taille de la variable `$FOO` |
 
-&nbsp;
 
 ### Braket expension
 ```bash
@@ -184,7 +172,6 @@ echo {A,B}.js
 | `{A,B}.js` | Same as `A.js B.js` |
 | `{1..5}`   | Same as `1 2 3 4 5` |
 
-&nbsp;
 
 ### Manipulation
 
@@ -239,8 +226,6 @@ BASE=${SRC##*/}   #=> "foo.cpp" (basepath)
 DIR=${SRC%$BASE}  #=> "/path/to/" (dirpath)
 ```
 
-&nbsp;
-
 ### Substitution
 
 | Code              | Description         |
@@ -256,8 +241,6 @@ DIR=${SRC%$BASE}  #=> "/path/to/" (dirpath)
 | ---               | ---                 |
 | `${FOO/%from/to}` | Remplacer suffix      |
 | `${FOO/#from/to}` | Remplacer prefix      |
-
-&nbsp;
 
 
 
@@ -356,8 +339,6 @@ for key in "${!sounds[@]}"; do
 done
 ```
 
-&nbsp;
-
 ## Boucles (loop)
 ----
 ### Boucle simple
@@ -407,7 +388,6 @@ while true; do
   ···
 done
 ```
-&nbsp;
 
 ## Grep
 ### Afficher un ou des process sans le process grep himself
@@ -416,7 +396,6 @@ ps - elf | grep squid | grep -v grep
 ou
 ps -elf | grep [s]quid
 ```
-&nbsp;
 
 ### Affichier un fichier sans les commentaires
 ```bash
@@ -424,7 +403,6 @@ grep -E -v '^(#|$)' <fichier>
 ou
 egrep -v '^(#|$)' <fichier>
 ```
-&nbsp;
 
 ### Grep avec multiple patterns
 ```bash
@@ -432,7 +410,6 @@ egrep -i "apache|lsyncd" <file>
 ou
 grep -i -e apache -e lsyncd <file>
 ```
-&nbsp;
 
 ### Grep d'un pattern
 ```bash
@@ -448,7 +425,6 @@ ls toto 2>&1 | tee -a toto.log;
 echo ${PIPESTATUS[0]} #RC Avant pipe
 echo $? #RC après pipe
 ```
-&nbsp;
 
 
 ## AWK
@@ -456,30 +432,28 @@ echo $? #RC après pipe
 ```
 awk 'sub(/^M/, "");1' <ficsource> <ficmaj>
 ```
-&nbsp;
 
 ### Afficher champ selon séparateur
 ```
 awk -F"\t"  '{ print $56 }'
 ```
 
-!!! note
+{% aside %}
     Afficher le premier champ de chaque ligne avec tabulation en séparateur de champ
+{% /aside %}
 
-&nbsp;
+
 ### Remplacer EXPR par AWK
 ```
 awk 'BEGIN{print 1024 / 1000}'
 ```
-&nbsp;
+
 
 ### Selectioner la première ou la dernière ligne + imprimer un champ
 ```
 awk 'BEGIN{print $2}'
 awk 'END{print $2}'
 ```
-&nbsp;
-
 
 
 ## Sed
@@ -489,34 +463,33 @@ sed 's/^M//g' <ficsource> <ficmaj>
 ou
 sed -i 's/^M//g' <ficsource>
 ```
-&nbsp;
 
 ### Critère de recherche
 ```bash
 sed -e " //{N;s/Hxxxxx/Pxxxxx/g;} "\
 ```
-&nbsp;
+
 
 ### Supprimer les caractères "Newline" (LF)
 ```bash
 sed -i '{:q;N;s/\n//g;t q}' days.txt
 ```
-&nbsp;
+
 
 ### Supprimer les 10 premiers caractères de chaque ligne
 ```bash
 sed -i 's/^.\{10\}//g' fichier.txt
 ```
-&nbsp;
+
 
 ### Affichier une ligne en particulier
 ```bash
 <code>sed -n 1p check_toto.txt
 ```
-!!! note
+{% aside %}
     Ici la première ligne
+{% /aside %}
 
-&nbsp;
 
 ### Savoir si une variable est numérique
 ```bash
@@ -526,7 +499,7 @@ else
     echo 'is numeric'
 fi
 ```
-&nbsp;
+
 
 ## Basename
 ### Lister les fichiers sans extensions
@@ -537,7 +510,7 @@ BN=$(basename "${i%.*}")
  ...
 done
 ```
-&nbsp;
+
 
 ### Directory of script
 
@@ -548,35 +521,36 @@ DIR="$(readlink -f "$(dirname "$0")/../data/transfers")"
 {.is-info}
 
 
-&nbsp;
+
 
 ### Afficher le nom du script exécuté
 `Le script $(basename ${0}) est correctement exécuté`
-&nbsp;
+
 
 ## Find
 ### Renommer l'extension de plusieurs fichiers
 ```
 find . -name '*.mp4' | rename mp4 txt *
 ```
-&nbsp;
+
 
 ### Recherche récursive avec "mot-clé"
 ```
 find / -xdev -type f -exec grep -i toto {} /dev/null \;
 ```
-&nbsp;
 
-!!! note
+
+{% aside %}
     recherche récursive de tous les fichiers qui contiennent le mot « toto » (ou TOTO… ou ToTo…)
+{% /aside %}
 
-!!! warning
+{% aside type="caution" %}
     Attention : « \; » obligatoire à la fin de la commande
+{% /aside %}
 
-!!! info
-    N.B : L’option xdev permet de ne pas franchir les limites du systeme de fichiers
-
-&nbsp;
+{% aside type="tip" %}
+    L’option xdev permet de ne pas franchir les limites du systeme de fichiers
+{% /aside %}
 
 ### Purge de fichiers
 ```
@@ -699,9 +673,6 @@ if [[ -e "file.txt" ]]; then
   echo "file exists"
 fi
 ```
-
-
-&nbsp;
 
 ## Fonctions
 ### Gestion des erreurs

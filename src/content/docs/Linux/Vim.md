@@ -13,8 +13,8 @@ set -o pipefail
 ```bash
 set -e
 ```
-> A combiner avec le "pipefail" :)
-{.is-info}
+{% badge text="Note" variant="note" /%}
+A combiner avec le "pipefail" :)
 
 
 ### Mode "debug"
@@ -30,8 +30,6 @@ set -o vi
 ### Pour en savoir plus sur "set"
 [Option sur set](https://www.gnu.org/software/bash/manual/html_node/The-Set-Builtin.html)
 
-&nbsp;
-
 
 ### 
 
@@ -42,8 +40,8 @@ Editer le fichier /etc/DIR_COLORS et remplacer
 par
 `DIR 00;32       # directory`
 
-!!! info
-    Les répertoires vont apparaitre en vert au lieu de bleu
+{% aside %}
+Les répertoires vont apparaitre en vert au lieu de bleu
+{% /aside %}
 
-&nbsp;
 

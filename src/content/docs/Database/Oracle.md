@@ -8,32 +8,27 @@ title: Oracle
 ```sql
 select distinct owner from dba_objects where owner like '%<string_to_search>%';
 ```
-&nbsp;
 
 ### Lister les usernames d'une base
 ```sql
 select username from all_users where username like '%<string_to_search>%';
 ```
-&nbsp;
 
 ### Dropper un schéma 
 ```sql
 Drop user "&user" cascade;
 ```
-&nbsp;
 
 ### Lister les schémas d'une base
 ```sql
 select distinct owner from dba_objects where owner like '%<string_to_search>%';
 ```
 
-&nbsp;
 
 ### Killer une session
 ```sql
 ALTER SYSTEM KILL SESSION 'sid,serial#' IMMEDIATE;
 ```
-&nbsp;
 
 ### Lister les comptes vérouilllés
 ```sql
@@ -53,19 +48,16 @@ select username, account_status, profile, created, lock_date,EXPIRY_DATE, round(
 from   dba_users
 order by nb_jour_avant_expiration;
 ```
-&nbsp;
 
 ### Changer le MDP d'un utilisateur
 ```sql
 alter user <user> identified by <new_password>;
 ```
-&nbsp;
 
 ### Déverouiller un compte utilisateur
 ```sql
 alter user <user> account unlock;
 ```
-&nbsp;
 
 ### Gestion des profiles oracle
 ```sql
@@ -75,13 +67,11 @@ COL "RESOURCE_TYPE" FORMAT A15
 COL "LIMIT" FORMAT A15
 select * from dba_profiles
 ```
-&nbsp;
 
 ### Connaitre mon utilisateur et schéma actuel
 ```sql
 select sys_context('USERENV','SESSION_USER') current_user, sys_context('USERENV','SESSION_SCHEMA') current_schema from dual;
 ```
-&nbsp;
 
 ### Lister les sessions active
 ```sql
@@ -99,7 +89,6 @@ AND osuser is not null
 AND STATUS != 'INACTIVE'
 ORDER BY machine,osuser,username,schemaname,status,module;
 ```
-&nbsp;
 
 ### Affichier les verrous
 ```sql
@@ -154,7 +143,6 @@ SET echo off
     AND
     o.object_id(+) = l.id1; 
 ```
-&nbsp;
 
 
 ### Lister les rôles d'un utilisateur
@@ -175,7 +163,6 @@ UNION
                       FROM DBA_ROLE_PRIVS
                       WHERE grantee = '&1');
 ```
-&nbsp;
 
 ### Lister les privilèges d'un rôle
 ```sql
@@ -196,28 +183,24 @@ WHERE grantee in (SELECT granted_role
                   WHERE grantee = '&1'))
                   ORDER BY 1 DESC;
 ```
-&nbsp;
 
 ## Trigger
 ### Générer ordre de suppression trigger
 ```sql
 Select 'drop trigger ' || trigger_name || ';' stmt from user_triggers;
 ```
-&nbsp;
 
 ## Tablespace
 ### Lister les tablespaces par défaut d'un user (sysdba)
 ```sql
 select username,default_tablespace from dba_users where default_tablespace='TOOLS';
 ```
-&nbsp;
 
 
 ### Lister les tablespaces par défaut d'un user
 ```sql
 select default_tablespace from user_users;
 ```
-&nbsp;
 
 ### Lister les tablespaces + taille (Alloué - occupé - libre)
 ```sql
@@ -269,7 +252,6 @@ and t.tablespace_name = b.tablespace_name (+)
 and t.tablespace_name = c.tablespace_name (+)
 order by t.tablespace_name;
 ```
-&nbsp;
 
 ### Lister les tablespaces + fichier et status
 ```sql
@@ -283,33 +265,28 @@ FROM
 DBA_DATA_FILES
 ORDER BY FILE_ID; 
 ```
-&nbsp;
 
 ### Supprimer un tablespace
 ```sql
 ALTER DATABASE DATAFILE '<filename>' OFFLINE DROP;
 DROP TABLESPACE <TableSpace>;
 ```
-&nbsp;
 
 ### Vérifier le contenu du tablespace SYSAUX
 ```sql
 select occupant_desc, space_usage_kbytes/1024 as usage_GB from v$sysaux_occupants where space_usage_kbytes > 0 order by space_usage_kbytes desc;
 ```
-&nbsp;
 
 ### Savoir si un tablespace est en "Autoextend"
 ```sql
 select tablespace_name, file_name ,AUTOEXTENSIBLE,MAXBYTES,INCREMENT_BY from dba_data_files order by 1,2;
 ```
-&nbsp;
 
 ### Voir qui utilise le tablespace TEMP
 ```sql
 select * from v$sort_usage;
 ```
 
-&nbsp;
 
 ## Tables
 ### Lister les tables d'un schéma
@@ -321,23 +298,21 @@ SELECT DISTINCT OWNER,TABLE_NAME FROM all_tab_columns WHERE OWNER = ‘E_CTM’;
 ```sql
 SELECT DISTINCT OWNER,TABLE_NAME FROM dba_tab_columns WHERE OWNER = ‘E_CTM’;
 ```
-&nbsp;
 
 ### Lister les tables d'un utilisateur
 ```sql
 SELECT table_name FROM user_tables;
 SELECT table_name FROM all_tables;
 ```
-> all_tables : incluant les tables système (nécéssite les droits DBA)
-{.is-info}
 
-&nbsp;
+{% badge text="A savoir" variant="note" /%}
+all_tables : incluant les tables système (nécéssite les droits DBA)
+
 
 ### Compter le nombre de tables d'un schéma
 ```sql
 Select count(*), owner FROM ALL_TABLES group by owner;
 ```
-&nbsp;
 
 
 ### Vider une table
@@ -350,33 +325,30 @@ Delete from [table] where ID = ‘kkechose’ ;
 Truncate table [schema].[table];
 ```
 
+{% aside type="danger" %}
 Si le message suivant apparait :
 > ORA-02266: les clés primaires/uniques de la table sont référencées par des clés
 étrangères
-{.is-danger}
 
 ajouter :
 ```sql
 DROP PRIMARY KEY CASCADE;
 ```
-&nbsp;
-
+{% /aside %}
 
 ### Supprimer une table
 ```sql
 Drop table [table] cascade constraints purge;
 ```
 
-> purge = pas possible de faire un rollback sur la table = suppression définitive
-{.is-info}
+{% badge text="Attention" variant="caution" /%}
+purge = pas possible de faire un rollback sur la table = suppression définitive
 
-&nbsp;
 
 ### Générer ordre SQL "Grant Table"
 ```sql
 select 'GRANT SELECT ON '||owner||'.'||table_name||' to role' from all_tables where owner='user';
 ```
-&nbsp;
 
 
 ### Lister les colonnes d'une table
@@ -405,7 +377,6 @@ RUN
     release channel t1;
 }
 ```
-&nbsp;
 
 
 ### Supprimer des archlogs depuis RMAN
@@ -417,10 +388,10 @@ delete noprompt archivelog until time ‘SYSDATE-10’; # depuis une date préci
 delete noprompt obsolete; 
 delete archivelog all backed up 1 times to disk completed before 'sysdate - 4/24';
 ```
-> Pour cette dernière commande `delete` , supprimer les archlogs générés depuis les 4 dernières heure et sauvegardé au moins une fois sur disque
-{.is-info}
 
-&nbsp;
+{% badge text="Attention" variant="caution" /%}
+Pour cette dernière commande `delete` , supprimer les archlogs générés depuis les 4 dernières heure et sauvegardé au moins une fois sur disque
+
 
 
 ### Connaitre la quantité d'archlogs généré par jour
@@ -444,7 +415,6 @@ delete archivelog all backed up 1 times to disk completed before 'sysdate - 4/24
    WHERE SUM_ARCH.DAY = SUM_ARCH_DEL.DAY(+)
 ORDER BY TO_DATE (DAY, 'DD/MM/YYYY');
 ```
-&nbsp;
 
 ### Connaitre le nombre d'archlogs généré par heure chaque jour
 ```sql
@@ -503,7 +473,6 @@ WHERE ARCHIVED='YES'
 GROUP BY TO_CHAR (COMPLETION_TIME, 'DD/MM/YYYY')
 ORDER BY TO_DATE (DAY, 'DD/MM/YYYY');
 ```
-&nbsp;
 
 ## Datapump
 ### Réaliser un export DATAPUMP
@@ -511,27 +480,21 @@ ORDER BY TO_DATE (DAY, 'DD/MM/YYYY');
 expdp \"/ as sysdba\" SCHEMAS=metier DIRECTORY=DATA_PUMP_DIR DUMPFILE=metier.dmp LOGFILE=metier.log
 ```
 
-&nbsp;
-
 
 ### Réaliser un import DATAPUMP
 ```sql
 impdp \"/ as sysdba\" SCHEMAS=metier DIRECTORY=DATA_PUMP_DIR DUMPFILE=metier.dmp LOGFILE=metier.log
 ```
 
-&nbsp;
-
 
 ### Import avec remap schéma
 ```sql
 impdp \"/ as sysdba\" SCHEMAS=MGNADMF DIRECTORY=DATAPUMP DUMPFILE=MGNNATfull20160624.dmp LOGFILE=impdp_IQ_MGNNAT_MGNRW_280616.log REMAP_SCHEMA=MGNADMF:MGNRW
 ```
-> Options Possible :
+
+{% badge text="Options Possible" variant="tip" /%}
 `TABLE_EXISTS_ACTION = SKIP | APPEND | TRUNCATE | REPLACE`
-{.is-info}
 
-
-&nbsp;
 
 
 ### Purger les données d'un schéma
@@ -539,7 +502,6 @@ impdp \"/ as sysdba\" SCHEMAS=MGNADMF DIRECTORY=DATAPUMP DUMPFILE=MGNNATfull2016
 select 'DROP '||OBJECT_TYPE||' '||OWNER||'.'||OBJECT_NAME||';' from dba_objects where owner='GAGCVEILLE' and OBJECT_TYPE<>'INDEX';
 ```
 
-&nbsp;
 
 
 ### Purger la corbeille
@@ -547,7 +509,6 @@ select 'DROP '||OBJECT_TYPE||' '||OWNER||'.'||OBJECT_NAME||';' from dba_objects 
 purge dba_recyclebin;
 ```
 
-&nbsp;
 
 
 ### Gestion du directory DATAPUMP
@@ -559,7 +520,6 @@ GRANT read, write ON DIRECTORY to ;
 drop directory '.....' ;
 ```
 
-&nbsp;
 
 
 ### Monitorer les jobs DATAPUMP
@@ -587,8 +547,6 @@ where job_name not like 'BIN$%'
 order by 1,2;
 ```
 
-&nbsp;
-
 
 ### Killer les jobs DATAPUMP
 ```sql
@@ -613,8 +571,6 @@ end;
 /
 ```
 
-&nbsp;
-
 
 ### Dropper les jobs DATAPUMP inutile
 ```sql
@@ -636,7 +592,6 @@ mount.cifs //stock-ora/oradump$/RepDump /mnt/share --verbose -ouser=<user>,pass=
 select sid, serial#, username, program, module, event, seconds_in_wait from v$session where username = 'SYS';
 ```
 
-&nbsp;
 
 ## Dataguard
 ### Vérifier la bonne réplication des archlogs
@@ -656,13 +611,11 @@ FROM
 WHERE ARCH.THREAD# = APPL.THREAD#
 ORDER BY 1;
 ```
-&nbsp;
 
 ### Vérifier l'état des process d'archivage sur la stanby (MRP0) ou sur le primaire (LGWR)
 ```sql
 select process,status,sequence# from v$managed_standby where process='LGWR'or process='MRP0';
 ```
-&nbsp;
 
 ### Information membre dataguard
 ```sql
@@ -671,7 +624,6 @@ SELECT DATABASE_ROLE, DB_UNIQUE_NAME INSTANCE, OPEN_MODE,
 PROTECTION_MODE, PROTECTION_LEVEL, SWITCHOVER_STATUS
 FROM V$DATABASE;
 ```
-&nbsp;
 
 ### Message du status Dataguard
 ```sql
@@ -679,7 +631,6 @@ set linesize 150
 COL "MESSAGE" FORMAT 50
 SELECT ERROR_CODE, MESSAGE  FROM V$DATAGUARD_STATUS;
 ```
-&nbsp;
 
 ### Vérifier qu'il n'y a aucun GAP
 ```sql
@@ -695,7 +646,6 @@ alter database recover managed standby database cancel;
 RELANCE
 alter database recover managed standby database using current logfile disconnect from session;
 ```
-&nbsp;
 
 ### Faire un "switchover" sans broker (primaire puis standby)
 ```sql
@@ -712,8 +662,7 @@ alter database recover managed standby database cancel;
 alter database commit to switchover to primary with session shutdown;
 alter database open;
 alter system set LOG_ARCHIVE_DEST_STATE_2=ENABLE scope=both;
-```
-&nbsp;
+```;
 
 ### Création d'une STANDBY par réplication
 Premièrement, créer l'arborescence nécessaire sur la standby (oradata, oraredolog, oraarch, oractl, admin)
@@ -735,8 +684,8 @@ DUPLICATE TARGET DATABASE
       SET DB_UNIQUE_NAME 'WHITE';
 ```
 
-> Ne pas oublier de créer les redologs sur la standby
-{.is-warning}
+{% badge text="Attention" variant="caution" /%}
+Ne pas oublier de créer les redologs sur la standby
 
 &nbsp;
 
@@ -757,11 +706,9 @@ Avec DMGR
 SHOW FAST_START FAILOVER;
 ```
 
-&nbsp;
-
 ### Temps de reconnexion FSFO
-> Définit le temps au bout duquel l'observer considère la base primaire KO avant de basculer sur la standby
-{.is-info}
+{% badge text="Usage" variant="note" /%}
+ Définit le temps au bout duquel l'observer considère la base primaire KO avant de basculer sur la standby
 
 ==> DMGR
 ```sql
@@ -774,7 +721,6 @@ COL "LAST_FAILOVER_REASON" FORMAT A25
 SELECT LAST_FAILOVER_TIME, LAST_FAILOVER_REASON FROM V$FS_FAILOVER_STATS;
 ```
 
-&nbsp;
 
 ## Datafile
 ### Resize datafile
@@ -782,22 +728,18 @@ SELECT LAST_FAILOVER_TIME, LAST_FAILOVER_REASON FROM V$FS_FAILOVER_STATS;
 alter database datafile '/appli/oracle/SF0NAT/oradata01/SF0NAT_sysaux_01.dbf' resize 2048M;
 ```
 
-&nbsp;
-
 
 ### Ajout datafile
 ```sql
 alter tablespace XXXX add datafile '/appli/oracle/SF0NAT/oradata01/SF0NAT_sysaux_01.dbf' size 2048M;
 ```
 
-&nbsp;
 
 ## Redolog
 ### Supprimer les redologs
 ```sql
 alter database drop LOGFILE GROUP XX;
 ```
-&nbsp;
 
 ### Informations détaillées sur ls redologs (ONLINE only)
 ```sql
@@ -815,13 +757,11 @@ from V$LOGFILE f, V$LOG l
 where l.GROUP# = f.GROUP# 
 order by GROUP#,MEMBER;
 ```
-&nbsp;
 
 ### Infos redologs complet
 ```sql
 select * from v$logfile;
 ```
-&nbsp;
 
 ### Status redologs
 ```sql
@@ -831,32 +771,30 @@ UNION
 SELECT GROUP#, BYTES, STATUS, 'STANDBY' AS TYPE FROM V$STANDBY_LOG
 ORDER BY 1;
 ```
-&nbsp;
 
 ## Spfile et Controlfile
 ### Editer un fichier controlfile pour analyse
 ```sql
 ALTER DATABASE BACKUP CONTROLFILE TO TRACE AS '/u01/control.bkp'
 ```
-&nbsp;
 
 ### Générer un fichier init ou spfile
 ```sql
 create pfile from spfile='/home/oracle/admin/OPHNAT/dbs/spfile.ora'
 create spfile from pfile='/home/oracle/admin/OPHNAT/dbs/pfile.ora'
 ```
-> en cas de perte du paramètre SPFILE, on peux générer un PFILE depuis la mémoire
-`create pfile from memory`
-{.is-info}
 
-&nbsp;
+{% badge text="Note" variant="note" /%}
+en cas de perte du paramètre SPFILE, on peux générer un PFILE depuis la mémoire
+`create pfile from memory`
+
+
 
 ### Savoir si la base a démarré avec le pfile ou le spfile
 ```sql
 SELECT DECODE(value, NULL, 'PFILE', 'SPFILE') "Init File Type" 
        FROM sys.v_$parameter WHERE name = 'spfile';
 ```
-&nbsp;
 
 ## Inclassable
 ### Générer un rapport AWR
@@ -868,7 +806,6 @@ html ou text
 2eme param : Snapshot début
 3eme param : Snapshot fin
 ```
-&nbsp;
 
 ### Supprimer les anciens rapport AWR
 ```sql
@@ -884,14 +821,13 @@ SQL> show parameter
 SQL> ALTER SYSTEM SET [Param] = [valeur] | [COMMENT='texte'] [DEFERED] [SCOPE=MEMORY|SPFILE|BOTH];
 ```
 
-> DEFERED : Si présente, indique que la modification ne concerne que les futures sessions (peut être obligatoire)
-	SCOPE : Définit la cible de la modification
-	MEMORY:la mémoire seulement 
-	SPFILE:le fichier de paramètres serveur seulement 
-	BOTH:les deux 
-{.is-info}
-
-&nbsp;
+{% aside type="tip" %}
+DEFERED : Si présente, indique que la modification ne concerne que les futures sessions (peut être obligatoire)
+SCOPE : Définit la cible de la modification
+MEMORY:la mémoire seulement 
+SPFILE:le fichier de paramètres serveur seulement 
+BOTH:les deux 
+{% /aside %}
 
 ### Afficher le dernier reboot de la base
 ```sql
@@ -900,7 +836,6 @@ set linesize 300
 select to_char(startup_time, 'HH24:MI DD-MON-YY') "Startup time"
 from v$instance
 ```
-&nbsp;
 
 ### Connaitre les paramètres de langue
 ```sql
@@ -912,14 +847,13 @@ select * from nls_database_parameters where parameter IN (‘NLS_LANGUAGE’,'NL
 ```sql
 SET sqlprompt "&_USER@&_CONNECT_IDENTIFIER &_PRIVILEGE> "
 ```
-&nbsp;
 
 
 ### Formater affichage SQLPLUS
 ```sql
 COLUMN <nom_colonne> FORMAT A30;
 ```
-&nbsp;
+
 
 ### Lister les objets invalide
 ```sql
@@ -948,7 +882,6 @@ WHERE status <> 'VALID'
 ORDER BY owner, object_name
 /
 ```
-&nbsp;
 
 
 ### Status de la registry Oracle (catproc,catlog)
@@ -961,7 +894,6 @@ col version format a10
 col status format a15
 select comp_id,comp_name,version,status from dba_registry order by 1;
 ```
-&nbsp;
 
 
 ### Mode d'ouverture de la base (ALLOWED ou RESTRICT)
@@ -981,8 +913,6 @@ Vérifier le retour à la normal
 ```sql
 SELECT logins from v$instance;
 ```
-
-&nbsp;
 
 
 ### Connaitre les options oracle activés
@@ -1014,7 +944,6 @@ from dba_feature_usage_statistics
 where name in ('Data Mining','Oracle Database Vault','Label Security') or name like ('OLAP%');
 ```
 
-&nbsp;
 
 
 ### Afficher les services applicatifs oracle
@@ -1034,11 +963,8 @@ COL "NETWORK_NAME" FORMAT A15
 select * from v$services; 
 ```
 
-&nbsp;
-
 
 ### Personnaliser son SQLPLUS
 ```sql
 SET sqlprompt "&_USER@&_CONNECT_IDENTIFIER &_PRIVILEGE> "
 ```
-&nbsp;
