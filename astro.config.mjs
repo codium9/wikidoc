@@ -7,7 +7,22 @@ import remarkEmoji from 'remark-emoji';
 export default defineConfig({
   site: 'https://wiki.itdata.fr',
   markdown: {
-    remarkPlugins: [remarkEmoji]
+    remarkPlugins: [remarkEmoji],
+    shikiConfig: {
+      wrap: true
+    }
+  },
+  vite: {
+    plugins: [
+      {
+        name: 'inject-components',
+        transform(code, id) {
+          if (id.endsWith('.md') || id.endsWith('.mdx')) {
+            return `import { Aside, Badge } from '@astrojs/starlight/components';\n${code}`;
+          }
+        }
+      }
+    ]
   },
   integrations: [
     starlight({
