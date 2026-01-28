@@ -25,6 +25,7 @@ export default defineConfig({
     ]
   },
   integrations: [
+    markdoc(),
     starlight({
 			title: 'Wikidoc',
 			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/codium9/wikidoc' }],
