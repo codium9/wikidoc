@@ -1,3 +1,6 @@
+---
+title: Welcome
+---
 
 # :fr: Welcome :loudspeaker:
 
