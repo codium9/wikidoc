@@ -26,12 +26,12 @@
 //});
 
 // @ts-check
+import { defineConfig } from 'astro/config';
 import catppuccin from "@catppuccin/starlight";
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://codium9.github.io',
-	base: '/wikidoc',
+  site: 'https://wiki.itdata.fr',
   integrations: [
     starlight({
 			title: 'Wikidoc',
