@@ -28,13 +28,10 @@
 // @ts-check
 import catppuccin from "@catppuccin/starlight";
 
+// https://astro.build/config
 export default defineConfig({
   site: 'https://codium9.github.io',
 	base: '/wikidoc',
-})
-
-// https://astro.build/config
-export default defineConfig({
   integrations: [
     starlight({
 			title: 'Wikidoc',
