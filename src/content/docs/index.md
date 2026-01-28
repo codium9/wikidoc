@@ -1,5 +1,5 @@
 ---
-title: Welcome :loudspeaker:
+title: "Welcome :loudspeaker:"
 ---
 
 Bonjour a toi visiteur 👋  
