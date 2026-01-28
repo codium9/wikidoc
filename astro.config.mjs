@@ -12,6 +12,7 @@ export default defineConfig({
   integrations: [
     starlight({
 			title: 'Wikidoc',
+      logo: {src: '../public/favicon.svg'},
 			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/codium9/wikidoc' }],
       sidebar: [
         { label: 'Backup', autogenerate: { directory: 'Backup' } },
