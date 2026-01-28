@@ -1,3 +1,7 @@
+---
+title: Apache
+---
+
 
 ### Installer apache (one-liner)
 ```

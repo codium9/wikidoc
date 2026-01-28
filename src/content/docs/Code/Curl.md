@@ -1,4 +1,6 @@
-## Curl
+---
+title: Curl
+---
 
 ### Passage du "yes" lors de l'exécution d'un shell
     sh -c "$(curl -fsSL https://starship.rs/install.sh)" -y -f

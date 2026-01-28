@@ -1,3 +1,7 @@
+---
+title: Vim
+---
+
 
 ## Modification VIM
 ### Gestion des erreur de pipe

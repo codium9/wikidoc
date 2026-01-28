@@ -1,3 +1,7 @@
+---
+title: DB2
+---
+
 
 ## DB2 en vrac
 ### Logs DB2

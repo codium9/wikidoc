@@ -1,3 +1,7 @@
+---
+title: Command
+---
+
 
 ## Infos CPU
 ### Affichage type processeur 

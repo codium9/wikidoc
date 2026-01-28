@@ -1,3 +1,7 @@
+---
+title: Tags
+---
+
 ### Gérer les Tags d'un dépôt git
 #### Supprimer tous les Tags "remote"
 

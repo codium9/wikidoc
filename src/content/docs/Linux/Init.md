@@ -1,3 +1,7 @@
+---
+title: Init
+---
+
 
 ### Afficher les services systemd
 ```bash
