@@ -5,26 +5,29 @@ title: Aix
 ## Gestion User/Group
 ### Créer un utilisateur
 `mkuser id=uid pgrp=<groupe_principal> home=/home/nom_utilisateur -m <comment> shell=/usr/bin/ksh nom_utilisateur`
-&nbsp;
+
 
 ### Créer un groupe
 `mkgroup id=gid nom_group`
-&nbsp;
+
 
 ## Installation package (smitty)
 ### Installation
 `installp -aF -d /blabla all `
-&nbsp;
+
 
 ### Désinstallation
 `installp -ug tivoli.tsm.client*`
-&nbsp;
+
 
 ### Lister les package
 `lslpp -L`
-!!! info
-    Par date:
-    lslpp -qch | awk -F: '{printf "%-12s %-40s %-12s %-10s %-10s\n",$7,$2,$3,$5,$6}' | sort | uniq | sed 's/70/-70/' | sort -t '/' -k 3,3n -k 1,1n -k 2,2n | sed 's/-70/70/'
+{% aside %}
+Par date:
+```bash
+lslpp -qch | awk -F: '{printf "%-12s %-40s %-12s %-10s %-10s\n",$7,$2,$3,$5,$6}' | sort | uniq | sed 's/70/-70/' | sort -t '/' -k 3,3n -k 1,1n -k 2,2n | sed 's/-70/70/'
+```
+{% /aside %}
 
 ## Gestion des FileSystem
 ### Agrandir ou diminuer un FS
@@ -60,41 +63,37 @@ lv_cmodcache        jfs2       160     160     1    open/syncd    /appli/CMOD-ca
 lv_aen              jfs2       80      80      1    open/syncd    /appli/AEN
 lv_logs             jfs2       72      72      1    open/syncd    /logs
 ```
-&nbsp;
+
 
 ### Créer un FS (avec son LV)
 `crfs -v jfs2 -m /mountpoint -A yes -g datavg -a size=128M -p rw -a logname=INLINE`
-&nbsp;
+
 
 ### Supprimer un FS (et le LV associé)
 `rmfs -r <FS>`
-&nbsp;
+
 
 ### Supprimer un LV
 `rmlv -f <LV>`
-&nbsp;
+
 
 ### Renommer un LV
 `chlv -n nouveau_nom ancien_nom`
-&nbsp;
+
 
 ## Divers
 ### "watch like" pour AIX
 `while true; do date; COMMAND ; sleep 1; clear; done`
-&nbsp;
+
 
 ### Déterminer le type d'architecture (32 ou 64bits)
 `getconf KERNEL_BITMODE`
-&nbsp;
+
 
 ### Afficher les erreurs système UNIX
 `errpt [Option] [ -c : rapport court ] [ -A : rapport simple ] [ -a : rapport détaillé ]`
-&nbsp;
+
 
 ### Afficher les ports en écoute
 `netstat -an -f inet | grep LISTEN`
-&nbsp;
-
-
-&nbsp;
 
