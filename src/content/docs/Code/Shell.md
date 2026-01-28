@@ -1,5 +1,7 @@
+---
+title: Shell
+---
 
-## En vrac
 ### "Strict mode" bash
 
 ```bash

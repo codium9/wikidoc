@@ -2,7 +2,6 @@
 title: Aix
 ---
 
-
 ## Gestion User/Group
 ### Créer un utilisateur
 `mkuser id=uid pgrp=<groupe_principal> home=/home/nom_utilisateur -m <comment> shell=/usr/bin/ksh nom_utilisateur`
