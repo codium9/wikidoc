@@ -2,6 +2,8 @@ import starlight from '@astrojs/starlight'
 import { defineConfig } from 'astro/config';
 import starlightCatppuccin from "@catppuccin/starlight";
 import remarkEmoji from 'remark-emoji';
+import markdoc from '@astrojs/markdoc';
+
 
 // https://astro.build/config
 export default defineConfig({
