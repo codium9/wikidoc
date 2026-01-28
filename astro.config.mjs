@@ -1,10 +1,14 @@
 import starlight from '@astrojs/starlight'
 import { defineConfig } from 'astro/config';
 import starlightCatppuccin from "@catppuccin/starlight";
+import remarkEmoji from 'remark-emoji';
 
 // https://astro.build/config
 export default defineConfig({
   site: 'https://wiki.itdata.fr',
+  markdown: {
+    remarkPlugins: [remarkEmoji]
+  },
   integrations: [
     starlight({
 			title: 'Wikidoc',
