@@ -18,13 +18,12 @@ export default defineConfig({
     plugins: [
       {
         name: 'inject-components',
+        enforce: 'pre',
         transform(code, id) {
-          if (id.endsWith('.mdx')) {
-            if (!code.includes('import { Aside, Badge }')) {
-              const match = code.match(/(---[\s\S]*?---)/);              
-              if (match) {
-                return code.replace(match[0], match[0] + "\nimport { Aside, Badge } from '@astrojs/starlight/components';");
-              }
+          if (id.endsWith('.mdx') && !code.includes('import { Aside, Badge }')) {
+            const match = code.match(/(---[\s\S]*?---\n)/);
+            if (match) {
+              return code.replace(match[0], match[0] + "import { Aside, Badge } from '@astrojs/starlight/components';\n");
             }
           }
         }
