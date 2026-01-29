@@ -14,26 +14,14 @@ export default defineConfig({
       wrap: true
     }
   },
-  vite: {
-    plugins: [
-      {
-        name: 'inject-components',
-        enforce: 'pre',
-        transform(code, id) {
-          if (id.endsWith('.mdx') && !code.includes('import { Aside, Badge }')) {
-            const match = code.match(/(---[\s\S]*?---\n)/);
-            if (match) {
-              return code.replace(match[0], match[0] + "import { Aside, Badge } from '@astrojs/starlight/components';\n");
-            }
-          }
-        }
-      }
-    ]
-  },
   integrations: [
     starlight({
 			title: 'Wikidoc',
 			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/codium9/wikidoc' }],
+      components: {
+        Aside: './src/components/mdx.js',
+        Badge: './src/components/mdx.js'
+      },
       sidebar: [
         { label: 'Backup', autogenerate: { directory: 'Backup' } },
         { label: 'Code', autogenerate: { directory: 'Code' } },
