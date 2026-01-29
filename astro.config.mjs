@@ -32,7 +32,6 @@ export default defineConfig({
     ]
   },
   integrations: [
-    mdx(),
     starlight({
 			title: 'Wikidoc',
 			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/codium9/wikidoc' }],
@@ -55,6 +54,7 @@ export default defineConfig({
           light: { flavor: "latte", accent: "mauve" }
         })
       ]
-    })
+    }),
+    mdx()
   ]
 })
