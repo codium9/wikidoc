@@ -6,11 +6,13 @@ title: Terraform
 
 ### Mode "boolean"
 
-    resource "aws_lb" "network-lb" {
-    count = var.lb_type == "network-lb" ? 1 : 0
-    name = "bitslovers-nlb"
-    [...]
-    }
+```hcl
+resource "aws_lb" "network-lb" {
+count = var.lb_type == "network-lb" ? 1 : 0
+name = "bitslovers-nlb"
+[...]
+}
+```
 
 <Aside type="tip">
 Si la variable "lb_type" est valorisée à "network-lb", alors le module ou la ressource est déployé  
@@ -19,7 +21,9 @@ Lien : [https://www.bitslovers.com/terraform-count/](https://www.bitslovers.com/
 
 ### Mode "string"
 
-    bucket_name = var.test == true ? "dev" : "prod"  
+```hcl
+bucket_name = var.test == true ? "dev" : "prod"
+```
 
 <Aside type="tip">
 Lire : Si la variable de test contient la valeur "true", alors bucket_name = dev , sinon prod  
