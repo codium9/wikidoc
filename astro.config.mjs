@@ -21,6 +21,12 @@ export default defineConfig({
         enforce: 'pre',
         transform(code, id) {
           if (id.endsWith('.mdx')) {
+            const lines = code.split('\n');
+            const frontmatterEnd = lines.findIndex((line, i) => i > 0 && line === '---');
+            if (frontmatterEnd !== -1) {
+              lines.splice(frontmatterEnd + 1, 0, "import { Aside, Badge } from '@astrojs/starlight/components';");
+              return lines.join('\n');
+            }
             return `import { Aside, Badge } from '@astrojs/starlight/components';\n${code}`;
           }
         }
