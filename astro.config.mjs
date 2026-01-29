@@ -2,7 +2,7 @@ import starlight from '@astrojs/starlight'
 import { defineConfig } from 'astro/config';
 import starlightCatppuccin from "@catppuccin/starlight";
 import remarkEmoji from 'remark-emoji';
-import markdoc from '@astrojs/markdoc';
+import mdx from '@astrojs/mdx';
 
 
 // https://astro.build/config
@@ -18,23 +18,21 @@ export default defineConfig({
     plugins: [
       {
         name: 'inject-components',
-        enforce: 'pre',
         transform(code, id) {
           if (id.endsWith('.mdx')) {
-            const lines = code.split('\n');
-            const frontmatterEnd = lines.findIndex((line, i) => i > 0 && line === '---');
-            if (frontmatterEnd !== -1) {
-              lines.splice(frontmatterEnd + 1, 0, "import { Aside, Badge } from '@astrojs/starlight/components';");
-              return lines.join('\n');
+            if (!code.includes('import { Aside, Badge }')) {
+              const match = code.match(/(---[\s\S]*?---)/);              
+              if (match) {
+                return code.replace(match[0], match[0] + "\nimport { Aside, Badge } from '@astrojs/starlight/components';");
+              }
             }
-            return `import { Aside, Badge } from '@astrojs/starlight/components';\n${code}`;
           }
         }
       }
     ]
   },
   integrations: [
-    markdoc(),
+    mdx(),
     starlight({
 			title: 'Wikidoc',
 			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/codium9/wikidoc' }],
