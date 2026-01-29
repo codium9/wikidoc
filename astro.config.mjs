@@ -2,7 +2,6 @@ import starlight from '@astrojs/starlight'
 import { defineConfig } from 'astro/config';
 import starlightCatppuccin from "@catppuccin/starlight";
 import remarkEmoji from 'remark-emoji';
-import mdx from '@astrojs/mdx';
 
 
 // https://astro.build/config
@@ -18,10 +17,6 @@ export default defineConfig({
     starlight({
 			title: 'Wikidoc',
 			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/codium9/wikidoc' }],
-      components: {
-        Aside: './src/components/mdx.js',
-        Badge: './src/components/mdx.js'
-      },
       sidebar: [
         { label: 'Backup', autogenerate: { directory: 'Backup' } },
         { label: 'Code', autogenerate: { directory: 'Code' } },
@@ -41,7 +36,6 @@ export default defineConfig({
           light: { flavor: "latte", accent: "mauve" }
         })
       ]
-    }),
-    mdx()
+    })
   ]
 })
