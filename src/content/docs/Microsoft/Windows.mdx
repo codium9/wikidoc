@@ -12,7 +12,7 @@ Net Statistics Server
   ## Lister un processus (Powershell version)
 
 ```bat
-netstat -ano | Out-String -Stream | Select-String -Pattern <PATTERN>
+netstat -ano | Out-String -Stream | Select-String -Pattern 'PATTERN'
 ```
 
   ## Lister un processus par numéro de port
@@ -27,7 +27,7 @@ netstat -ano | Out-String -Stream | Select-String -Pattern <PATTERN>
 @echo off
 setlocal enabledelayedexpansion
 
-for /f "delims=="<nowiki> f in ('dir /b ^| findstr mp3') do ( set old=</nowiki>f & call :trait)
+for /f "delims=="xxx" f in ('dir /b ^| findstr mp3') do ( set old=xxx & call :trait)
 
 goto next
 

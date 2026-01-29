@@ -6,13 +6,13 @@ title: User-Group
 ### Gestion User/Group
 #### Créer un utilisateur
 ```bash
-useradd -g <gid> <user>
+useradd -g 'gid' 'user'
 ```
 
 
 #### Créer un groupe
 ```bash
-groupadd -g <gid> <user>
+groupadd -g 'gid' 'user'
 ```
 
 
@@ -20,19 +20,19 @@ groupadd -g <gid> <user>
 
 #### Modifier l'UID d'un user
 ```bash
-usermod -u <uid> <user>
+usermod -u 'uid' 'user'
 ```
 
 
 #### Ajout d'un groupe primaire à un utilisateur
 ```bash
-usermod -g <group> <user>
+usermod -g 'group' 'user'
 ```
 
 
 #### Ajout de multiple utilisateur à un groupe existant
 ```bash
-usermod -a -G <group1>,<group2>,<group3> <user>
+usermod -a -G 'group1','group2','group3' 'user'
 ```
 
 

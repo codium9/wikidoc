@@ -39,7 +39,7 @@ last -x|grep shutdown | head -1
 ## Compression/Décompression
 ### Décompresser avec rebase
 ```bash
-tar xvf <file> --strip-components 5
+tar xvf 'file' --strip-components 5
 ```
 
 ### Tarball one-liner
@@ -90,7 +90,7 @@ puis taper la commande désiré sur la machine 1 depuis un autre terminal (très
 ## YUM
 ### Option "downloadonly"
 ```bash
-yum install --downloadonly --downloaddir=<path> <package>
+yum install --downloadonly --downloaddir='path' 'package'
 ```
 
 <Aside>

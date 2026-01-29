@@ -38,7 +38,7 @@ Uninstalled com.ibm.websphere.IHS.v85_8.5.5000.20130514_1044 from the /was/IBM/H
 $app_server_root/bin/manageprofiles.sh
 
 -listProfiles
--delete -profileName <ProfName>
+-delete -profileName 'ProfName'
 -validateAndUpdateRegistry  (after a delete for example)
 ```
 
@@ -46,7 +46,7 @@ $app_server_root/bin/manageprofiles.sh
 
 - Se connecter en jython
 ```bash
-wsadmin.sh -lang jython -f <file>
+wsadmin.sh -lang jython -f 'file'
 ```
 
 - List Application Server
@@ -65,7 +65,7 @@ AdminConfig.create('Server', mynode, ['name', 'AsJGWF_WKF02'])
 AdminTask.createApplicationServer ( mynode , ['-name', 'test1', '-templateName', 'default']) 
 
 JACL version
-$AdminTask createApplicationServer mynode {-name <servername> -templateName default}
+$AdminTask createApplicationServer mynode {-name 'servername' -templateName default}
 ```
 
 - Save config

@@ -6,12 +6,12 @@ title: Oracle
 ## Requête user
 ### Lister les schéma d'une base
 ```sql
-select distinct owner from dba_objects where owner like '%<string_to_search>%';
+select distinct owner from dba_objects where owner like '%string_to_search%';
 ```
 
 ### Lister les usernames d'une base
 ```sql
-select username from all_users where username like '%<string_to_search>%';
+select username from all_users where username like '%string_to_search%';
 ```
 
 ### Dropper un schéma 
@@ -21,7 +21,7 @@ Drop user "&user" cascade;
 
 ### Lister les schémas d'une base
 ```sql
-select distinct owner from dba_objects where owner like '%<string_to_search>%';
+select distinct owner from dba_objects where owner like '%string_to_search%';
 ```
 
 
@@ -51,12 +51,12 @@ order by nb_jour_avant_expiration;
 
 ### Changer le MDP d'un utilisateur
 ```sql
-alter user <user> identified by <new_password>;
+alter user 'user' identified by 'new_password';
 ```
 
 ### Déverouiller un compte utilisateur
 ```sql
-alter user <user> account unlock;
+alter user 'user' account unlock;
 ```
 
 ### Gestion des profiles oracle
@@ -268,8 +268,8 @@ ORDER BY FILE_ID;
 
 ### Supprimer un tablespace
 ```sql
-ALTER DATABASE DATAFILE '<filename>' OFFLINE DROP;
-DROP TABLESPACE <TableSpace>;
+ALTER DATABASE DATAFILE 'filename' OFFLINE DROP;
+DROP TABLESPACE 'TableSpace';
 ```
 
 ### Vérifier le contenu du tablespace SYSAUX
@@ -582,7 +582,7 @@ DROP TABLE SYS.SYS_EXPORT_SCHEMA_01;
 
 ### Monter un partage CIFS pour export DATAPUMP
 ```sql
-mount.cifs //stock-ora/oradump$/RepDump /mnt/share --verbose -ouser=<user>,pass=<pass>,auto,uid=oracle,gid=dba 0 0
+mount.cifs //stock-ora/oradump$/RepDump /mnt/share --verbose -ouser=\<user\>,pass=\<pass\>,auto,uid=oracle,gid=dba 0 0
 
           DISTANT                      LOCAL
 ```
@@ -851,7 +851,7 @@ SET sqlprompt "&_USER@&_CONNECT_IDENTIFIER &_PRIVILEGE> "
 
 ### Formater affichage SQLPLUS
 ```sql
-COLUMN <nom_colonne> FORMAT A30;
+COLUMN 'nom_colonne' FORMAT A30;
 ```
 
 

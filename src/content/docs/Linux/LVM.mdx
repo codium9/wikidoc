@@ -45,14 +45,14 @@ Numéro  Début   Fin     Taille  Type     Système de fichiers  Fanions
 
 ### Créer un volume logique
 ```bash
-lvcreate -L 1G -n <Label Volume> <VG>
-lvdisplay <Volume_du_FS>
-mkfs.ext4 <Volume_du_FS>
-mkdir <FS>
+lvcreate -L 1G -n <Label Volume> 'VG'
+lvdisplay 'Volume_du_FS'
+mkfs.ext4 'Volume_du_FS'
+mkdir 'FS'
 <Modifier /ets/fstab>
 == /dev/root_vg/lv_usr_tivoli_tsm /usr/tivoli/tsm ext4 defaults 1 3 ==
-mount -a <FS>
-df -h <FS> ==> pour vérifier
+mount -a 'FS'
+df -h 'FS' ==> pour vérifier
 ```
 
 <Aside>
@@ -62,20 +62,20 @@ Si la commande `umount` ne marche pas, faire un `lsof`du FS pour voir si un proc
 
 ### Manipuler un volume logique
 ```bash
-df -h <FS>
-lvextend -L 12G <Volume_du_FS>
-umount <FS>
-e2fsck -f <Volume_du_FS>
-resize2fs <Volume_du_FS>
-mount <FS>
-df -h <FS> ==> Pour vérifier
+df -h 'FS'
+lvextend -L 12G 'Volume_du_FS'
+umount 'FS'
+e2fsck -f 'Volume_du_FS'
+resize2fs 'Volume_du_FS'
+mount 'FS'
+df -h 'FS' ==> Pour vérifier
 ```
 <Aside type="tip">
 variante XFS
     Remplacer 
-        `resize2fs` <Volume_du_FS>
+        `resize2fs` 'Volume_du_FS'
     Par
-        `xfs_growfs` <Volume_du_FS>
+        `xfs_growfs` 'Volume_du_FS'
 </Aside>
 
 

@@ -20,7 +20,7 @@ docker-compose ps -q alerta-web
 
 #### Se connecter à un container 
 ```bash
-docker exec -i -t <INSTANCE_ID> bash
+docker exec -i -t 'INSTANCE_ID' bash
 ```
 ou
 ```bash
@@ -36,7 +36,7 @@ docker inspect --format='{{.LogPath}}' $INSTANCE_ID
 
 #### Afficher les logs d'un container
 ```bash
-docker logs <INSTANCE_ID>
+docker logs 'INSTANCE_ID'
 ```
 
 

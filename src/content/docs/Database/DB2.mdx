@@ -11,7 +11,7 @@ import { Aside, Badge } from '@astrojs/starlight/components';
 
 ### Derniere sauvegarde FULL
 ```sql
-db2adutl query database <DB> full 
+db2adutl query database 'DB' full 
 ```
 
 Depuis un serveur distant
@@ -20,7 +20,7 @@ Depuis un serveur distant
 
 ### Recupérer l'historique pour l'ensemble d'une DB
 ```sql
-db2 list history backup all for db <DB>
+db2 list history backup all for db 'DB'
 ```
 
 ### Récupérer l'historique depuis un point dans le temps
@@ -30,7 +30,7 @@ db2 list history BACKUP since 20120101 for db mydb
 
 ### Appliquer un grant user sur une DB qui ne lui appartient pas
 ```sql
-db2adutl grant user <USER> on nodename <SRV_CIBLE> for db <DB_CIBLE>
+db2adutl grant user 'USER' on nodename 'SRV_CIBLE' for db 'DB_CIBLE'
 ```
 
 ### Rollfoward pending
@@ -42,13 +42,13 @@ Dans ce cas présent, le plus simple étant de supprimer totalement les logs db2
 **Exemple de suppression des fichiers de logs**
 
 ```sql
-db2adutl query logs chain 2 database <DB>
-db2adutl delete logs chain 2 database <DB> without prompting
+db2adutl query logs chain 2 database 'DB'
+db2adutl delete logs chain 2 database 'DB' without prompting
 ```
 
 **Exemple de suppression d'une liste de fichiers de logs**
 ```sql
-db2adutl delete logs between S0000282 and S0000292 database <DB>
+db2adutl delete logs between S0000282 and S0000292 database 'DB'
 ```
 
 
