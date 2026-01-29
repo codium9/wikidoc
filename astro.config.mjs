@@ -18,8 +18,9 @@ export default defineConfig({
     plugins: [
       {
         name: 'inject-components',
+        enforce: 'pre',
         transform(code, id) {
-          if (id.endsWith('.md') || id.endsWith('.mdx')) {
+          if (id.endsWith('.mdx')) {
             return `import { Aside, Badge } from '@astrojs/starlight/components';\n${code}`;
           }
         }
