@@ -55,9 +55,9 @@ mount -a <FS>
 df -h <FS> ==> pour vérifier
 ```
 
-{% aside %}
+<Aside>
 Si la commande `umount` ne marche pas, faire un `lsof`du FS pour voir si un process tente d'y accéder, sinon utiliser la commande `umount -l`
-{% /aside %}
+</Aside>
 
 
 ### Manipuler un volume logique
@@ -70,13 +70,13 @@ resize2fs <Volume_du_FS>
 mount <FS>
 df -h <FS> ==> Pour vérifier
 ```
-{% aside type="tip" %}
+<Aside type="tip">
 variante XFS
     Remplacer 
         `resize2fs` <Volume_du_FS>
     Par
         `xfs_growfs` <Volume_du_FS>
-{% /aside %}
+</Aside>
 
 
 

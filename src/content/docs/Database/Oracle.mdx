@@ -305,7 +305,7 @@ SELECT table_name FROM user_tables;
 SELECT table_name FROM all_tables;
 ```
 
-{% badge text="A savoir" variant="note" /%}
+<Badge text="A savoir" variant="note" />
 all_tables : incluant les tables système (nécéssite les droits DBA)
 
 
@@ -325,7 +325,7 @@ Delete from [table] where ID = ‘kkechose’ ;
 Truncate table [schema].[table];
 ```
 
-{% aside type="danger" %}
+<Aside type="danger">
 Si le message suivant apparait :
 > ORA-02266: les clés primaires/uniques de la table sont référencées par des clés
 étrangères
@@ -334,14 +334,14 @@ ajouter :
 ```sql
 DROP PRIMARY KEY CASCADE;
 ```
-{% /aside %}
+</Aside>
 
 ### Supprimer une table
 ```sql
 Drop table [table] cascade constraints purge;
 ```
 
-{% badge text="Attention" variant="caution" /%}
+<Badge text="Attention" variant="caution" />
 purge = pas possible de faire un rollback sur la table = suppression définitive
 
 
@@ -389,7 +389,7 @@ delete noprompt obsolete;
 delete archivelog all backed up 1 times to disk completed before 'sysdate - 4/24';
 ```
 
-{% badge text="Attention" variant="caution" /%}
+<Badge text="Attention" variant="caution" />
 Pour cette dernière commande `delete` , supprimer les archlogs générés depuis les 4 dernières heure et sauvegardé au moins une fois sur disque
 
 
@@ -492,7 +492,7 @@ impdp \"/ as sysdba\" SCHEMAS=metier DIRECTORY=DATA_PUMP_DIR DUMPFILE=metier.dmp
 impdp \"/ as sysdba\" SCHEMAS=MGNADMF DIRECTORY=DATAPUMP DUMPFILE=MGNNATfull20160624.dmp LOGFILE=impdp_IQ_MGNNAT_MGNRW_280616.log REMAP_SCHEMA=MGNADMF:MGNRW
 ```
 
-{% badge text="Options Possible" variant="tip" /%}
+<Badge text="Options Possible" variant="tip" />
 `TABLE_EXISTS_ACTION = SKIP | APPEND | TRUNCATE | REPLACE`
 
 
@@ -684,7 +684,7 @@ DUPLICATE TARGET DATABASE
       SET DB_UNIQUE_NAME 'WHITE';
 ```
 
-{% badge text="Attention" variant="caution" /%}
+<Badge text="Attention" variant="caution" />
 Ne pas oublier de créer les redologs sur la standby
 
 &nbsp;
@@ -707,7 +707,7 @@ SHOW FAST_START FAILOVER;
 ```
 
 ### Temps de reconnexion FSFO
-{% badge text="Usage" variant="note" /%}
+<Badge text="Usage" variant="note" />
  Définit le temps au bout duquel l'observer considère la base primaire KO avant de basculer sur la standby
 
 ==> DMGR
@@ -784,7 +784,7 @@ create pfile from spfile='/home/oracle/admin/OPHNAT/dbs/spfile.ora'
 create spfile from pfile='/home/oracle/admin/OPHNAT/dbs/pfile.ora'
 ```
 
-{% badge text="Note" variant="note" /%}
+<Badge text="Note" variant="note" />
 en cas de perte du paramètre SPFILE, on peux générer un PFILE depuis la mémoire
 `create pfile from memory`
 
@@ -821,13 +821,13 @@ SQL> show parameter
 SQL> ALTER SYSTEM SET [Param] = [valeur] | [COMMENT='texte'] [DEFERED] [SCOPE=MEMORY|SPFILE|BOTH];
 ```
 
-{% aside type="tip" %}
+<Aside type="tip">
 DEFERED : Si présente, indique que la modification ne concerne que les futures sessions (peut être obligatoire)
 SCOPE : Définit la cible de la modification
 MEMORY:la mémoire seulement 
 SPFILE:le fichier de paramètres serveur seulement 
 BOTH:les deux 
-{% /aside %}
+</Aside>
 
 ### Afficher le dernier reboot de la base
 ```sql

@@ -1,7 +1,6 @@
 ---
 title: Shell
 ---
-import { Aside, Badge } from '@astrojs/starlight/components';
 
 ### "Strict mode" bash
 
@@ -18,9 +17,9 @@ Editer le fichier /etc/DIR_COLORS et remplacer
 par
 `DIR 00;32       # directory`
 
-{% aside %}
+<Aside>
     Les répertoires vont apparaitre en vert au lieu de bleu
-{% /aside %}
+</Aside>
 
 ### Clear screen "like" en shell
 ```bash
@@ -40,9 +39,9 @@ $((a + 200))      # Add 200 to $a
 $(($RANDOM%200))  # Random number 0..199
 ```
 
-{% aside %}
+<Aside>
     Permet de faire un calcul , notamment dans ce cas précis, ou un résultat égale à 0 fait planter expr
-{% /aside %}
+</Aside>
 
 
 ### Lire une entrée STDIN
@@ -53,7 +52,7 @@ read ans
 echo $ans
 ```
 
-{% aside type="tip" %}
+<Aside type="tip">
 lecture STDIN si option, sinon, fichier
     ```bash
     test() { 
@@ -64,7 +63,7 @@ lecture STDIN si option, sinon, fichier
     fi 
     }
     ```
-{% /aside %}
+</Aside>
 
 ### Gestion des options dans un menu
 
@@ -438,9 +437,9 @@ awk 'sub(/^M/, "");1' <ficsource> <ficmaj>
 awk -F"\t"  '{ print $56 }'
 ```
 
-{% aside %}
+<Aside>
     Afficher le premier champ de chaque ligne avec tabulation en séparateur de champ
-{% /aside %}
+</Aside>
 
 
 ### Remplacer EXPR par AWK
@@ -486,9 +485,9 @@ sed -i 's/^.\{10\}//g' fichier.txt
 ```bash
 <code>sed -n 1p check_toto.txt
 ```
-{% aside %}
+<Aside>
     Ici la première ligne
-{% /aside %}
+</Aside>
 
 
 ### Savoir si une variable est numérique
@@ -540,17 +539,17 @@ find / -xdev -type f -exec grep -i toto {} /dev/null \;
 ```
 
 
-{% aside %}
+<Aside>
     recherche récursive de tous les fichiers qui contiennent le mot « toto » (ou TOTO… ou ToTo…)
-{% /aside %}
+</Aside>
 
-{% aside type="caution" %}
+<Aside type="caution">
     Attention : « \; » obligatoire à la fin de la commande
-{% /aside %}
+</Aside>
 
-{% aside type="tip" %}
+<Aside type="tip">
     L’option xdev permet de ne pas franchir les limites du systeme de fichiers
-{% /aside %}
+</Aside>
 
 ### Purge de fichiers
 ```
