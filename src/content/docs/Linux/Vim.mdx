@@ -4,13 +4,13 @@ title: Vim
 import { Aside, Badge } from '@astrojs/starlight/components';
 
 
-## Modification VIM
-### Gestion des erreur de pipe
+### Modification VIM
+#### Gestion des erreur de pipe
 ```bash
 set -o pipefail
 ```
 
-### Exit immédiat du script sur erreur
+#### Exit immédiat du script sur erreur
 ```bash
 set -e
 ```
@@ -18,24 +18,22 @@ set -e
 A combiner avec le "pipefail" :)
 
 
-### Mode "debug"
+#### Mode "debug"
 ```bash
 set -vx
 ```
 
-### Changer l'éditeur par défaut du shell
+#### Changer l'éditeur par défaut du shell
 ```bash
 set -o vi
 ```
 
-### Pour en savoir plus sur "set"
+#### Pour en savoir plus sur "set"
 [Option sur set](https://www.gnu.org/software/bash/manual/html_node/The-Set-Builtin.html)
+ 
 
-
-### 
-
-## Colorisation VIM
-### Modifier les couleurs dans un shell (RedHat)
+#### Colorisation VIM
+##### Modifier les couleurs dans un shell (RedHat)
 Editer le fichier /etc/DIR_COLORS et remplacer 
 `DIR 00;34       # directory`
 par

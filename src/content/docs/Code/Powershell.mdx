@@ -3,14 +3,18 @@ title: Powershell
 ---
 import { Aside, Badge } from '@astrojs/starlight/components';
 
-## Variable d'environnement
+### Variable d'environnement
 
-### Remplacer et/ou supprimer une variable d'environnement
+#### Remplacer et/ou supprimer une variable d'environnement
+```powershell
     $actualpath = $Env:Path
     $newpath = $path.replace("C:\WINDOWS\System32\OpenSSH\;","")
     $env:Path = $newpath
+```
 
-### Ajouter une variable d'environnement
+#### Ajouter une variable d'environnement
+```powershell
     $actualpath = $Env:Path
     $addPath = 'C:\Program Files\Oracle\VirtualBox'
     $env:Path += ";$addpath"
+```

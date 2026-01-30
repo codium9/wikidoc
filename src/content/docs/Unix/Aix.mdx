@@ -3,25 +3,25 @@ title: Aix
 ---
 import { Aside, Badge } from '@astrojs/starlight/components';
 
-## Gestion User/Group
-### Créer un utilisateur
+### Gestion User/Group
+#### Créer un utilisateur
 `mkuser id=uid pgrp='groupe_principal' home=/home/nom_utilisateur -m 'comment' shell=/usr/bin/ksh nom_utilisateur`
 
 
-### Créer un groupe
+#### Créer un groupe
 `mkgroup id=gid nom_group`
 
 
-## Installation package (smitty)
-### Installation
+### Installation package (smitty)
+#### Installation
 `installp -aF -d /blabla all `
 
 
-### Désinstallation
+#### Désinstallation
 `installp -ug tivoli.tsm.client*`
 
 
-### Lister les package
+#### Lister les package
 `lslpp -L`
 
 <Aside type="tip">
@@ -31,11 +31,11 @@ lslpp -qch | awk -F: '{printf "%-12s %-40s %-12s %-10s %-10s\n",$7,$2,$3,$5,$6}'
 ```
 </Aside>
 
-## Gestion des FileSystem
-### Agrandir ou diminuer un FS
+### Gestion des FileSystem
+#### Agrandir ou diminuer un FS
 `chfs -a size=[+|-]1G /some/FS`
 
-### lister les VG et FS associés
+#### lister les VG et FS associés
 `lsvg applivg`
 ```
 VOLUME GROUP:       applivg                  VG IDENTIFIER:  00cef4a700004c0000000163d5ddb30f
@@ -67,35 +67,35 @@ lv_logs             jfs2       72      72      1    open/syncd    /logs
 ```
 
 
-### Créer un FS (avec son LV)
+#### Créer un FS (avec son LV)
 `crfs -v jfs2 -m /mountpoint -A yes -g datavg -a size=128M -p rw -a logname=INLINE`
 
 
-### Supprimer un FS (et le LV associé)
+#### Supprimer un FS (et le LV associé)
 `rmfs -r 'FS'`
 
 
-### Supprimer un LV
+#### Supprimer un LV
 `rmlv -f 'LV'`
 
 
-### Renommer un LV
+#### Renommer un LV
 `chlv -n nouveau_nom ancien_nom`
 
 
-## Divers
-### "watch like" pour AIX
+### Divers
+#### "watch like" pour AIX
 `while true; do date; COMMAND ; sleep 1; clear; done`
 
 
-### Déterminer le type d'architecture (32 ou 64bits)
+#### Déterminer le type d'architecture (32 ou 64bits)
 `getconf KERNEL_BITMODE`
 
 
-### Afficher les erreurs système UNIX
+#### Afficher les erreurs système UNIX
 `errpt [Option] [ -c : rapport court ] [ -A : rapport simple ] [ -a : rapport détaillé ]`
 
 
-### Afficher les ports en écoute
+#### Afficher les ports en écoute
 `netstat -an -f inet | grep LISTEN`
 

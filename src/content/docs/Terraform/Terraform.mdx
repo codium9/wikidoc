@@ -3,9 +3,9 @@ title: Terraform
 ---
 import { Aside, Badge } from '@astrojs/starlight/components';
 
-## Conditions
+### Conditions
 
-### Mode "boolean"
+#### Mode "boolean"
 
 ```hcl
 resource "aws_lb" "network-lb" {
@@ -20,7 +20,7 @@ Si la variable "lb_type" est valorisée à "network-lb", alors le module ou la r
 Lien : [https://www.bitslovers.com/terraform-count/](https://www.bitslovers.com/terraform-count/)  
 </Aside>
 
-### Mode "string"
+#### Mode "string"
 
 ```hcl
 bucket_name = var.test == true ? "dev" : "prod"
@@ -31,7 +31,7 @@ Lire : Si la variable de test contient la valeur "true", alors bucket_name = dev
 Lien : [https://spacelift.io/blog/terraform-functions-expressions-loops](https://spacelift.io/blog/terraform-functions-expressions-loops)  
 </Aside>
 
-## Utiliser une liste d'items dans un fichier texte
+### Utiliser une liste d'items dans un fichier texte
 
 Avec une liste d'item de type :
 

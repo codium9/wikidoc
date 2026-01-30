@@ -4,7 +4,7 @@ title: Weblogic
 import { Aside, Badge } from '@astrojs/starlight/components';
 
 
-## Récupération du mot de passe de la console Admin
+### Récupération du mot de passe de la console Admin
 
 Lire le contenu du fichier suivant et récupérer le mot de passe crypté : 
 
@@ -60,7 +60,7 @@ FIN
 
 
 
-## Vérifier l'existence des process weblogic
+### Vérifier l'existence des process weblogic
 
 ```bash
 ps -C java --no-headers --sort=pid -o pid,args | sed -ne 's/^[[:blank:]]*\([[:digit:]]\+\).*-Dweblogic.Name=\([^[:blank:]]\+\).*$/\1\t\2/p'

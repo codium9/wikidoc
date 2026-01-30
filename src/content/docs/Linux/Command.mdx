@@ -4,25 +4,25 @@ title: Command
 import { Aside, Badge } from '@astrojs/starlight/components';
 
 
-## Infos CPU
-### Affichage type processeur 
+### Infos CPU
+#### Affichage type processeur 
 ```bash
 cat /proc/cpuinfo | grep "model name"
 ```
 
-### Nombre de coeur physique
+#### Nombre de coeur physique
 ```bash
 grep "physical id" /proc/cpuinfo |sort -u |wc -l
 ```
 
-### Nombre de coeur logique
+#### Nombre de coeur logique
 ```bash
 grep -c "processor" /proc/cpuinfo
 ```
 
 
-## Infos démarrage
-### Dernier reboot
+### Infos démarrage
+#### Dernier reboot
 ```bash
 last reboot | head -1
 ```
@@ -31,25 +31,25 @@ ou
 who -b
 ```
 
-### Dernier shutdown
+#### Dernier shutdown
 ```bash
 last -x|grep shutdown | head -1
 ```
 
 
-## Compression/Décompression
-### Décompresser avec rebase
+### Compression/Décompression
+#### Décompresser avec rebase
 ```bash
 tar xvf 'file' --strip-components 5
 ```
 
-### Tarball one-liner
+#### Tarball one-liner
 ```bash
 tar xzf - -C ${HOME}/Tools k9s.exe < <(curl -Ls --cacert ${CERTS_FULL_CA_BUNDLE} ${K9S_URL})
 ```
 
 
-## Tester une connection TCP
+### Tester une connection TCP
 ```bash
 SERVER=google.com PORT=80 
 if (: </dev/tcp/$SERVER/$PORT) 2>/dev/null
@@ -68,7 +68,7 @@ bash -c 'exec 3<> /dev/tcp/'localhost'/'22';echo $?' 2>/dev/null
 ```
 </Aside>
 
-## Tunnel SSH
+### Tunnel SSH
 Exemple d'un tunnel http pour mise a jour yum
 
 Machine 1 : Source
@@ -88,8 +88,8 @@ ssh -D 1080 root@machine 2
 puis taper la commande désiré sur la machine 1 depuis un autre terminal (très important)
 
 
-## YUM
-### Option "downloadonly"
+### YUM
+#### Option "downloadonly"
 ```bash
 yum install --downloadonly --downloaddir='path' 'package'
 ```
@@ -99,8 +99,8 @@ Prérequis : Installer le package yum-downloadonly
 </Aside>
 
 
-## File System (visualisation)
-### Création fichier avec masque défini
+### File System (visualisation)
+#### Création fichier avec masque défini
 ```
 umask 022
 ```
