@@ -40,27 +40,6 @@ title: Lexique services
 	- PrivateLink / VPC Endpoints : Accès sécurisé aux services AWS sans exposition à l'internet public.
 	- Wavelength / Local Zones : Extension de l'infrastructure AWS pour la 5G et les zones métropolitaines à faible latence.
 
-				**Comparatif : Solutions Réseaux**
-	
-	| Besoin                                  | Solution               | Pourquoi ?                                                        |
-	| --------------------------------------- | ---------------------- | ----------------------------------------------------------------- |
-	| Accès privé à un service spécifique     | AWS PrivateLink        | Sécurisé, pas de routage complexe, pas d'Internet. (vpc endpoint) |
-	| Connexion complète entre deux VPC       | VPC Peering            | Idéal si les deux VPC appartiennent à la même boîte.              |
-	| Réseau complexe (plusieurs VPC/On-prem) | Transit Gateway        | Agit comme un hub centralisé.                                     |
-	| Accès Public                            | Internet Gateway / NAT | À bannir pour les bases de données.                               |
-
-				**Comparatif : CloudFront vs Global Accelerator**
-
-	| Caractéristique      | Amazon CloudFront                  | AWS Global Accelerator             |
-	| :------------------- | :--------------------------------- | :--------------------------------- |
-	| Objectif principal   | Mise en cache de contenu (CDN)     | Optimisation réseau (Routage)      |
-	| Couche OSI           | Couche 7 (HTTP / HTTPS)            | Couches 3 & 4 (TCP / UDP)          |
-	| Type d'IP            | IP dynamiques (via DNS)            | 2 IP Statiques Anycast             |
-	| Protocoles supportés | HTTP, HTTPS, WebSockets            | TCP, UDP, HTTP, HTTPS              |
-	| Cas d'usage typique  | Vidéo, Images, Sites Web statiques | Gaming, VoIP, IoT, Apps non-HTTP   |
-	| Failover (Panne)     | Dépend du TTL DNS (plus lent)      | Instantané (l'IP ne change jamais) |
-	| Sécurité             | Intégration native avec WAF        | Protection Shield (DDoS)           |
-
 🗄️ **Bases de données (Databases)**
 	- RDS : Bases relationnelles managées (Multi-AZ pour la résilience, Read Replicas pour le scaling).
 	- Aurora : Base relationnelle haute performance compatible MySQL/Postgres avec auto-scaling.

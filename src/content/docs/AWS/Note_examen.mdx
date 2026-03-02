@@ -1,0 +1,66 @@
+#### 🌐 **Réseau (Networking)**
+
+**Comparatif : Solutions Réseaux**
+
+| Besoin                                  | Solution               | Pourquoi ?                                                        |
+| --------------------------------------- | ---------------------- | ----------------------------------------------------------------- |
+| Accès privé à un service spécifique     | AWS PrivateLink        | Sécurisé, pas de routage complexe, pas d'Internet. (vpc endpoint) |
+| Connexion complète entre deux VPC       | VPC Peering            | Idéal si les deux VPC appartiennent à la même boîte.              |
+| Réseau complexe (plusieurs VPC/On-prem) | Transit Gateway        | Agit comme un hub centralisé.                                     |
+| Accès Public                            | Internet Gateway / NAT | À bannir pour les bases de données.                               |
+
+**Comparatif : CloudFront vs Global Accelerator**
+
+| Amazon CloudFront                  | Caractéristique      | AWS Global Accelerator             |
+| :--------------------------------- | :------------------- | :--------------------------------- |
+| Mise en cache de contenu (CDN)     | Objectif principal   | Optimisation réseau (Routage)      |
+| Couche 7 (HTTP / HTTPS)            | Couche OSI           | Couches 3 & 4 (TCP / UDP)          |
+| IP dynamiques (via DNS)            | Type d'IP            | 2 IP Statiques Anycast             |
+| HTTP, HTTPS, WebSockets            | Protocoles supportés | TCP, UDP, HTTP, HTTPS              |
+| Vidéo, Images, Sites Web statiques | Cas d'usage typique  | Gaming, VoIP, IoT, Apps non-HTTP   |
+| Dépend du TTL DNS (plus lent)      | Failover (Panne)     | Instantané (l'IP ne change jamais) |
+| Intégration native avec WAF        | Sécurité             | Protection Shield (DDoS)           |
+
+#### 📦 **Stockage (Storage)**
+
+**Contraintes de transition S3 Lifecycle**
+
+| Classe de destination   | Délai de transition min. | Règle d'or pour l'examen                                      |
+| :---------------------- | :----------------------- | :------------------------------------------------------------ |
+| S3 Standard-IA          | 30 jours                 | L'objet doit rester 30 jours en Standard avant la transition. |
+| S3 One Zone-IA          | 30 jours                 | Idéal pour les données "re-creatable" après 30 jours.         |
+| S3 Intelligent-Tiering  | 0 jour                   | Transition immédiate possible sans délai minimum.             |
+| S3 Glacier Flexible     | 0 jour                   | Possible immédiatement si l'origine est S3 Standard.          |
+| S3 Glacier Deep Archive | 0 jour                   | Possible immédiatement si l'origine est S3 Standard.          |
+
+**Contraintes de transition S3 Lifecycle** (ebs & Instance store)
+
+| Type de Volume | Bootable ? | Technologie | Usage principal                         |
+| :------------- | :--------- | :---------- | :-------------------------------------- |
+| gp2 / gp3      | OUI        | SSD         | OS, Applications, Bureautique.          |
+| io1 / io2      | OUI        | SSD         | Bases de données (Hautes performances). |
+| Instance Store | OUI        | NVMe/SSD    | Cache, Temp (Perdu si arrêt/panne).     |
+| st1            | NON        | HDD         | Big Data, Débit intensif (Throughput).  |
+| sc1            | NON        | HDD         | Archives, Données froides (Cold).       |
+
+Points clés à retenir :
+1. HDD = Jamais de Boot. AWS interdit l'installation d'un OS sur du st1 ou sc1.
+2. Instance Store est Bootable, mais attention : il est évanescent. Si l'instance s'arrête, l'OS et les données disparaissent.
+3. Le piège classique : Dans l'examen, on te proposera souvent le st1 pour réduire les coûts d'un volume de démarrage. C'est une réponse fausse.
+
+
+**Classe stockage S3**
+
+| Classe S3            | Latence d'accès | Fréquence d'accès idéale   | Coût stockage |
+| :------------------- | :-------------- | :------------------------- | :------------ |
+| Standard             | Millisecondes   | Très fréquente (Quotidien) | Élevé         |
+| Standard-IA          | Millisecondes   | Rare (ex: 2x par an)       | Faible        |
+| One Zone-IA          | Millisecondes   | Rare + Données recréables  | Très faible   |
+| Glacier Instant      | Millisecondes   | Rare (Trimestriel)         | Très faible   |
+| Glacier Deep Archive | Heures          | Très rare (Archive légale) | Minimum       |
+
+Points clés à retenir :
+1. Si l'énoncé dit millisecond latency : Élimine Glacier Flexible et Deep Archive.
+2. Si l'accès est rare (quelques fois par an) : Élimine S3 Standard.
+3. Le compromis parfait entre accès instantané et prix bas pour du stockage massif est le Standard-IA (ou Glacier Instant Retrieval si disponible).
+4. S3 Intelligent-Tiering n'est la bonne réponse que si les patterns d'accès sont inconnus ou changeants. Ici, on sait que c'est 2x par an.
