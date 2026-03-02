@@ -2,7 +2,7 @@
 title: Lexique services
 ---
 
-🏗️ Calcul (Compute)
+🏗️ **Calcul (Compute)**
 	- EC2 (Elastic Compute Cloud) : Serveurs virtuels à la demande avec gestion totale de l'OS.
 	- Lambda : Exécution de code serverless déclenchée par des événements (max 15 min).
 	- Fargate : Moteur de calcul serverless pour exécuter des conteneurs sans gérer de serveurs.
@@ -13,11 +13,11 @@ title: Lexique services
 	- App Runner : Service simplifié pour déployer des applications web conteneurisées à partir du code.
 	- Lightsail : Serveurs privés virtuels (VPS) simplifiés pour les besoins à faible complexité.
 	- Outposts : Extension des services AWS dans votre propre centre de données local.
-	
-📦 Stockage (Storage)
+
+📦 **Stockage (Storage)**
 	- S3 (Simple Storage Service) : Stockage d'objets scalable pour data lakes, backups et fichiers statiques.
 	- S3 Glacier (Instant/Flexible/Deep) : Archivage de données à bas coût avec différents délais de récupération.
-	- S3 Transfer Acceleration : Utilise le réseau mondial de points de présence d'AWS (Edge Locations) pour accélérer l'upload et le download de fichiers vers vos buckets S3 sur de longues distances. 
+	- S3 Transfer Acceleration : Utilise le réseau mondial de points de présence d'AWS (Edge Locations) pour accélérer l'upload et le download de fichiers vers vos buckets S3 sur de longues distances.
 	- EBS (Elastic Block Store) : Volumes de stockage par blocs persistants pour les instances EC2.
 	- EFS (Elastic File System) : Système de fichiers Linux partagé accessible par des centaines d'instances.
 	- FSx for Windows : Système de fichiers SMB natif pour les applications Windows.
@@ -26,8 +26,8 @@ title: Lexique services
 	- Storage Gateway : Connecte les applications locales au stockage cloud (File, Volume, Tape). ==> stockage hybrid on-cloud
 	- Backup : Gestion centralisée et automatisation des sauvegardes à travers les services AWS.
 	- Snowball Edge / Snowcone : Transfert physique de données massives ou calcul en local sans internet.
-	
-🌐 Réseau (Networking)
+
+🌐 **Réseau (Networking)**
 	- VPC (Virtual Private Cloud) : Réseau virtuel isolé pour définir vos propres sous-réseaux et routages.
 	- Route 53 : Service DNS géré avec politiques de routage avancées (latence, failover, géo).
 	- CloudFront : CDN mondial pour mettre en cache le contenu et réduire la latence utilisateur.
@@ -47,8 +47,19 @@ title: Lexique services
 	| Réseau complexe (plusieurs VPC/On-prem) | Transit Gateway        | Agit comme un hub centralisé.                                     |
 	| Accès Public                            | Internet Gateway / NAT | À bannir pour les bases de données.                               |
 
-	
-🗄️ Bases de données (Databases)
+				**Comparatif : CloudFront vs Global Accelerator**
+
+	| Caractéristique      | Amazon CloudFront                  | AWS Global Accelerator             |
+	| :------------------- | :--------------------------------- | :--------------------------------- |
+	| Objectif principal   | Mise en cache de contenu (CDN)     | Optimisation réseau (Routage)      |
+	| Couche OSI           | Couche 7 (HTTP / HTTPS)            | Couches 3 & 4 (TCP / UDP)          |
+	| Type d'IP            | IP dynamiques (via DNS)            | 2 IP Statiques Anycast             |
+	| Protocoles supportés | HTTP, HTTPS, WebSockets            | TCP, UDP, HTTP, HTTPS              |
+	| Cas d'usage typique  | Vidéo, Images, Sites Web statiques | Gaming, VoIP, IoT, Apps non-HTTP   |
+	| Failover (Panne)     | Dépend du TTL DNS (plus lent)      | Instantané (l'IP ne change jamais) |
+	| Sécurité             | Intégration native avec WAF        | Protection Shield (DDoS)           |
+
+🗄️ **Bases de données (Databases)**
 	- RDS : Bases relationnelles managées (Multi-AZ pour la résilience, Read Replicas pour le scaling).
 	- Aurora : Base relationnelle haute performance compatible MySQL/Postgres avec auto-scaling.
 	- DynamoDB : Base NoSQL clé-valeur offrant une latence inférieure à 10ms à n'importe quelle échelle.
@@ -59,7 +70,7 @@ title: Lexique services
 	- DocumentDB : Base de données de documents managée compatible MongoDB.
 	- MemoryDB for Redis : Base de données en mémoire ultra-rapide et durable.
 
-🤖 IA, Machine Learning et Données
+🤖 **IA, Machine Learning et Données**
 	- SageMaker : Plateforme complète pour entraîner et déployer des modèles de Machine Learning.
 	- Bedrock : Accès aux modèles de fondation (LLM) pour l'IA générative via API.
 	- Rekognition : Analyse d'images et de vidéos (objets, texte, visages).
@@ -70,8 +81,8 @@ title: Lexique services
 	- Lex : Service pour créer des interfaces conversationnelles (Chatbots).
 	- Textract : Extraction automatique de texte et de données à partir de documents scannés. (image ou pdf)
 	- Kendra : Moteur de recherche intelligente pour entreprises basé sur le ML.
-	
-📊 Analytique et Big Data
+
+📊 **Analytique et Big Data**
 	- Athena : Analyse directe des données dans S3 en utilisant le langage SQL (serverless).
 	- Glue : Service d'intégration de données (ETL) et catalogue pour data lakes.
 	- Glue DataBrew : Outil visuel de préparation de données qui permet de nettoyer et de normaliser des données sans écrire de code
@@ -82,8 +93,8 @@ title: Lexique services
 	- QuickSight : Service de Business Intelligence pour visualiser les données via des tableaux de bord.
 	- OpenSearch : Recherche et analyse de logs opérationnels en temps réel.
 	- Lake Formation : Simplifie la création, la sécurisation et la gestion d'un Data Lake.
-	
-🔒 Sécurité et Gouvernance
+
+🔒 **Sécurité et Gouvernance**
 	- AWS Organizations : Gestion centralisée de plusieurs comptes AWS avec facturation consolidée et hiérarchie par Unités Organisationnelles (OU).
 	- SCP (Service Control Policy) : Politiques de gouvernance d'Organisations définissant les limites de permissions maximales (Guardrails) pour les comptes.
 	- RAM (Resource Access Manager) : Partage sécurisé de ressources (VPC Subnets, Transit Gateways) entre plusieurs comptes au sein d'une organisation.
@@ -101,8 +112,8 @@ title: Lexique services
 	- Security Lake : Centralise et normalise (format OCSF) automatiquement vos logs de sécurité multi-comptes et multi-régions dans un data lake S3 pour faciliter l'analyse et l'archivage.
 	- Artifact : Portail en libre-service pour accéder aux rapports de conformité d'AWS (ISO, PCI, SOC).
 	- Certificate Manager (ACM) : Provisionnement et gestion des certificats SSL/TLS pour les services AWS (ALB, CloudFront).
-	
-📨 Intégration et Migration
+
+📨 **Intégration et Migration**
 	- SQS (Simple Queue Service) : File d'attente de messages pour découpler les microservices.
 	- SNS (Simple Notification Service) : Notifications push et messages Pub/Sub vers plusieurs abonnés.
 	- EventBridge : Service d'intégration serverless qui permet :
@@ -114,8 +125,8 @@ title: Lexique services
 	- DMS (Database Migration Service) : Migration de bases de données avec un temps d'arrêt minimal.
 	- MGN (Application Migration Service) : Migration de serveurs physiques ou virtuels vers EC2.
 	- DataSync : Accélération des transferts de données entre stockage local et AWS.
-	
-🛠️ Gestion et Monitoring
+
+🛠️ **Gestion et Monitoring**
 	- CloudWatch : Surveillance des métriques, des logs et création d'alarmes de performance.
 	- CloudTrail : Journalisation de toutes les actions effectuées via les API AWS (audit).
 	- Config : Historique des modifications de ressources et vérification de la conformité.
@@ -123,8 +134,8 @@ title: Lexique services
 	- Systems Manager (SSM) : Gestion centralisée des configurations, correctifs et accès aux serveurs.
 	- Trusted Advisor : Recommandations automatiques pour réduire les coûts et améliorer la sécurité.
 
-🖥️ End User Computing et Gestion
+🖥️ **End User Computing et Gestion**
 	- Control Tower : Mise en place d'une "Landing Zone" multi-comptes sécurisée et conforme par défaut.
 	- WorkSpaces : Bureaux virtuels (DaaS) persistants pour le travail à distance.
 	- AppStream 2.0 : Streaming d'applications spécifiques vers n'importe quel navigateur sans installation.
-	
+
