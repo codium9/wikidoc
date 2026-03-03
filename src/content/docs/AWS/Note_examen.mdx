@@ -2,7 +2,7 @@
 title: Note examen AWS SAA
 ---
 
-#### 🌐 **Réseau (Networking)**
+### 🛜 **Réseau (Networking)**
 
 **Comparatif : Solutions Réseaux**
 
@@ -25,7 +25,7 @@ title: Note examen AWS SAA
 | Dépend du TTL DNS (plus lent)      | Failover (Panne)     | Instantané (l'IP ne change jamais) |
 | Intégration native avec WAF        | Sécurité             | Protection Shield (DDoS)           |
 
-#### 📦 **Stockage (Storage)**
+### 🗃️ **Stockage (Storage)**
 
 **Contraintes de transition S3 Lifecycle**
 
@@ -52,6 +52,21 @@ Points clés à retenir :
 2. Instance Store est Bootable, mais attention : il est évanescent. Si l'instance s'arrête, l'OS et les données disparaissent.
 3. Le piège classique : Dans l'examen, on te proposera souvent le st1 pour réduire les coûts d'un volume de démarrage. C'est une réponse fausse.
 
+**EC2 Automatic recovery**
+
+| Fonctionnalité           | Compatible EBS | Compatible Instance Store  |
+| :----------------------- | :------------- | :------------------------- |
+| Redémarrage (Reboot)     | OUI            | OUI                        |
+| Récupération (Recovery)  | OUI            | NON                        |
+| Persistance des données  | OUI (Réseau)   | NON (Éphémère)             |
+| Adresse IP / ID Instance | Conservés      | Perdus (si Recovery tenté) |
+
+Points clés à retenir :
+1. CloudWatch Recovery : Ne fonctionne que pour les instances dont le stockage est uniquement basé sur EBS.
+2. Échec matériel : Si l'hôte physique meurt, les données de l'Instance Store meurent avec lui.
+3. Scénario d'examen : Si on demande une récupération automatique avec un budget minimal (pas d'Auto Scaling Group), la bonne réponse est l'alarme CloudWatch avec action "Recover".
+4. Limitation technique : Le Recovery n'est pas supporté si un seul volume Instance Store est attaché à l'instance.
+
 
 **Classe stockage S3**
 
@@ -68,3 +83,21 @@ Points clés à retenir :
 2. Si l'accès est rare (quelques fois par an) : Élimine S3 Standard.
 3. Le compromis parfait entre accès instantané et prix bas pour du stockage massif est le Standard-IA (ou Glacier Instant Retrieval si disponible).
 4. S3 Intelligent-Tiering n'est la bonne réponse que si les patterns d'accès sont inconnus ou changeants. Ici, on sait que c'est 2x par an.
+
+### 🖥️ **Instance EC2**
+
+**EC2 Spot Fleet**
+
+| Concept               | Fonctionnement et comportement                                                                                                                       |
+| :-------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Définition Spot Fleet | Une collection (pool) d'instances Spot (et optionnellement On-Demand) qui tente de maintenir une capacité cible au meilleur prix.                    |
+| Annulation de requête | Annuler une requête Spot active n'arrête pas les instances déjà lancées. Vous devez les terminer séparément.                                         |
+| Requête Persistante   | Si une instance Spot est interrompue par AWS, la requête est rouverte automatiquement pour relancer une instance dès que possible.                   |
+| Spot Fleet Scaling    | Contrairement à une requête isolée, une Spot Fleet peut lancer des instances de remplacement si certaines sont terminées pour maintenir la capacité. |
+| Arrêt vs Interruption | Une requête persistante ne se rouvre QUE si AWS interrompt l'instance. Si vous l'arrêtez manuellement, la requête ne se relance pas.                 |
+
+Points clés à retenir :
+1. Stratégie d'allocation : Une Spot Fleet peut piocher dans plusieurs "pools" (combinaisons type d'instance/AZ) pour maximiser la disponibilité.
+2. Gestion des interruptions : AWS envoie un avis d'interruption 2 minutes avant de reprendre l'instance.
+3. Annulation propre : Pour tout supprimer d'un coup, il faut annuler la requête ET cocher l'option pour terminer les instances associées.
+4. Cas d'usage : Batch jobs, calcul scientifique, conteneurs, ou toute charge de travail tolérante aux pannes.
