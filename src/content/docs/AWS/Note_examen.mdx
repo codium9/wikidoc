@@ -100,3 +100,19 @@ Points clés à retenir :
 2. Gestion des interruptions : AWS envoie un avis d'interruption 2 minutes avant de reprendre l'instance.
 3. Annulation propre : Pour tout supprimer d'un coup, il faut annuler la requête ET cocher l'option pour terminer les instances associées.
 4. Cas d'usage : Batch jobs, calcul scientifique, conteneurs, ou toute charge de travail tolérante aux pannes.
+
+### **Sécurité AWS**
+
+### Chiffrement S3 (SSE-S3 VS SSE-KMS)
+
+| Type de chiffrement | Gestion des clés        | Isolation par objet        | Usage principal                      |
+| :------------------ | :---------------------- | :------------------------- | :----------------------------------- |
+| SSE-S3              | Entièrement par AWS     | OUI (Clé unique par objet) | Simplicité, coût nul, zéro overhead. |
+| SSE-KMS             | Par l'utilisateur (KMS) | OUI (Via KMS)              | Audit (CloudTrail), rotation gérée.  |
+| SSE-C               | Par le client           | OUI (Fournie par vous)     | Conformité stricte (hors AWS).       |
+
+Points clés à retenir :
+1. Isolation par fichier : SSE-S3 utilise nativement une clé de données unique pour chaque objet stocké.
+2. Minimal overhead : Si l'examen demande la sécurité maximale avec le moins d'effort, SSE-S3 est souvent la réponse car l'isolation par clé est automatique.
+3. Chiffrement par défaut : Il est désormais possible d'activer SSE-S3 au niveau du bucket pour que tout objet soit automatiquement chiffré.
+4. KMS Context : L'encryption context est utilisé pour la sécurité (intégrité) et l'audit, pas pour créer manuellement des milliers de clés différentes par fichier.
