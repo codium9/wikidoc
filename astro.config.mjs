@@ -15,7 +15,7 @@ export default defineConfig({
   },
   integrations: [
     starlight({
-			title: 'Wikidoc',
+			title: 'Gitbook',
 			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/codium9/wikidoc' }],
       sidebar: [
         { label: 'AWS', autogenerate: { directory: 'AWS' } },
