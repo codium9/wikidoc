@@ -2,9 +2,9 @@
 title: Note examen AWS SAA
 ---
 
-### 🛜 **Réseau (Networking)**
+### 🌐 **Réseau (Networking)**
 
-**Comparatif : Solutions Réseaux**
+##### **Comparatif : Solutions Réseaux**
 
 | Besoin                                  | Solution               | Pourquoi ?                                                        |
 | --------------------------------------- | ---------------------- | ----------------------------------------------------------------- |
@@ -13,7 +13,7 @@ title: Note examen AWS SAA
 | Réseau complexe (plusieurs VPC/On-prem) | Transit Gateway        | Agit comme un hub centralisé.                                     |
 | Accès Public                            | Internet Gateway / NAT | À bannir pour les bases de données.                               |
 
-**Comparatif : CloudFront vs Global Accelerator**
+##### **Comparatif : CloudFront vs Global Accelerator**
 
 | Amazon CloudFront                  | Caractéristique      | AWS Global Accelerator             |
 | :--------------------------------- | :------------------- | :--------------------------------- |
@@ -27,7 +27,7 @@ title: Note examen AWS SAA
 
 ### 🗃️ **Stockage (Storage)**
 
-**Contraintes de transition S3 Lifecycle**
+##### **Contraintes de transition S3 Lifecycle**
 
 | Classe de destination   | Délai de transition min. | Règle d'or pour l'examen                                      |
 | :---------------------- | :----------------------- | :------------------------------------------------------------ |
@@ -37,7 +37,7 @@ title: Note examen AWS SAA
 | S3 Glacier Flexible     | 0 jour                   | Possible immédiatement si l'origine est S3 Standard.          |
 | S3 Glacier Deep Archive | 0 jour                   | Possible immédiatement si l'origine est S3 Standard.          |
 
-**Contraintes de transition S3 Lifecycle** (ebs & Instance store)
+##### **Contraintes de transition S3 Lifecycle** (ebs & Instance store)
 
 | Type de Volume | Bootable ? | Technologie | Usage principal                         |
 | :------------- | :--------- | :---------- | :-------------------------------------- |
@@ -52,7 +52,7 @@ Points clés à retenir :
 2. Instance Store est Bootable, mais attention : il est évanescent. Si l'instance s'arrête, l'OS et les données disparaissent.
 3. Le piège classique : Dans l'examen, on te proposera souvent le st1 pour réduire les coûts d'un volume de démarrage. C'est une réponse fausse.
 
-**EC2 Automatic recovery**
+##### **EC2 Automatic recovery**
 
 | Fonctionnalité           | Compatible EBS | Compatible Instance Store  |
 | :----------------------- | :------------- | :------------------------- |
@@ -67,8 +67,7 @@ Points clés à retenir :
 3. Scénario d'examen : Si on demande une récupération automatique avec un budget minimal (pas d'Auto Scaling Group), la bonne réponse est l'alarme CloudWatch avec action "Recover".
 4. Limitation technique : Le Recovery n'est pas supporté si un seul volume Instance Store est attaché à l'instance.
 
-
-**Classe stockage S3**
+##### **Classe stockage S3**
 
 | Classe S3            | Latence d'accès | Fréquence d'accès idéale   | Coût stockage |
 | :------------------- | :-------------- | :------------------------- | :------------ |
@@ -84,9 +83,9 @@ Points clés à retenir :
 3. Le compromis parfait entre accès instantané et prix bas pour du stockage massif est le Standard-IA (ou Glacier Instant Retrieval si disponible).
 4. S3 Intelligent-Tiering n'est la bonne réponse que si les patterns d'accès sont inconnus ou changeants. Ici, on sait que c'est 2x par an.
 
-### 🖥️ **Instance EC2**
+### 🏗️ **Instance EC2**
 
-**EC2 Spot Fleet**
+##### **EC2 Spot Fleet**
 
 | Concept               | Fonctionnement et comportement                                                                                                                       |
 | :-------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------- |
