@@ -6,12 +6,38 @@ title: Note examen AWS SAA
 
 ##### **Comparatif : Solutions Réseaux**
 
-| Besoin                                  | Solution               | Pourquoi ?                                                        |
-| --------------------------------------- | ---------------------- | ----------------------------------------------------------------- |
-| Accès privé à un service spécifique     | AWS PrivateLink        | Sécurisé, pas de routage complexe, pas d'Internet. (vpc endpoint) |
-| Connexion complète entre deux VPC       | VPC Peering            | Idéal si les deux VPC appartiennent à la même boîte.              |
-| Réseau complexe (plusieurs VPC/On-prem) | Transit Gateway        | Agit comme un hub centralisé.                                     |
-| Accès Public                            | Internet Gateway / NAT | À bannir pour les bases de données.                               |
+| Solution         | Type de connexion    | Usage principal                         | Caractéristique clé                               |
+| :--------------- | :------------------- | :-------------------------------------- | :------------------------------------------------ |
+| VPC Peering      | Inter-VPC (Privé)    | Connecter deux VPC 1-à-1.               | Pas de routage transitif. Gratuit (hors data).    |
+| VPC Sharing      | Intra-VPC (Partagé)  | Plusieurs comptes dans un même VPC.     | Centralisation via RAM et AWS Organizations.      |
+| Transit Gateway  | Hub-and-Spoke        | Connecter des milliers de VPC et sites. | Supporte le routage transitif (A -> B -> C).      |
+| PrivateLink      | Interface Endpoint   | Accès privé à un service spécifique.    | Pas de peering nécessaire. Sécurité maximale.     |
+| Site-to-Site VPN | Hybride (Internet)   | Connecter On-prem vers AWS via IPsec.   | Rapide à setup, mais dépend de l'Internet public. |
+| Direct Connect   | Hybride (Dédié)      | Connexion physique dédiée (Fibre).      | Haute performance, latence stable, coût élevé.    |
+| Client VPN       | Utilisateur vers VPC | Accès distant pour les employés.        | Basé sur OpenVPN, accès sécurisé aux ressources.  |
+
+Points clés à retenir :
+1. Routage Transitif : Seule la Transit Gateway permet de faire passer du trafic à travers un hub vers d'autres destinations de manière transparente.
+2. Gateway Endpoints vs Interface Endpoints : Utilisez des Gateway Endpoints uniquement pour S3 et DynamoDB (gratuit). Pour tout le reste, utilisez Interface Endpoints (PrivateLink).
+3. Sécurité Hybride : Préférez Direct Connect pour la stabilité et VPN pour le backup ou les besoins rapides.
+4. Éviter l'exposition : Utilisez toujours des VPC Endpoints pour que votre trafic vers les services AWS ne quitte jamais le réseau privé global d'Amazon.
+
+##### **Comparatif : VPC Peering vs VPC Sharing**
+
+| Caractéristique | VPC Peering                         | VPC Sharing                                |
+| :-------------- | :---------------------------------- | :----------------------------------------- |
+| Concept         | Connecte 2 VPC indépendants.        | Partage des subnets d'un même VPC.         |
+| Comptes         | Même ou différents comptes.         | Uniquement au sein d'une AWS Organization. |
+| Connectivité    | Requiert des tables de routage.     | Native (car même VPC).                     |
+| Responsabilité  | Chaque compte gère son VPC.         | Centralisée (Owner vs Participants).       |
+| Usage idéal     | Connexion ponctuelle entre réseaux. | Infrastructure partagée et interconnectée. |
+
+Points clés à retenir :
+1. VPC Sharing : On partage des "subnets", pas le VPC entier. C'est la clé de la réponse correcte.
+2. RAM (Resource Access Manager) : C'est le service qui permet techniquement ce partage.
+3. Avantage interconnectivité : Pas de passerelle (gateway) ni de peering à configurer pour que les instances se voient.
+4. Sécurité : Les participants ne peuvent pas voir ou modifier les ressources des autres comptes, même s'ils sont dans le même subnet.
+
 
 ##### **Comparatif : CloudFront vs Global Accelerator**
 
