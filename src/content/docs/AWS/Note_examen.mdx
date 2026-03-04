@@ -109,7 +109,7 @@ Points clés à retenir :
 3. Le compromis parfait entre accès instantané et prix bas pour du stockage massif est le Standard-IA (ou Glacier Instant Retrieval si disponible).
 4. S3 Intelligent-Tiering n'est la bonne réponse que si les patterns d'accès sont inconnus ou changeants. Ici, on sait que c'est 2x par an.
 
-### 🏗️ **Instance EC2**
+### 🧮 **Instance EC2**
 
 ##### **EC2 Spot Fleet**
 
@@ -142,3 +142,20 @@ Points clés à retenir :
 2. Minimal overhead : Si l'examen demande la sécurité maximale avec le moins d'effort, SSE-S3 est souvent la réponse car l'isolation par clé est automatique.
 3. Chiffrement par défaut : Il est désormais possible d'activer SSE-S3 au niveau du bucket pour que tout objet soit automatiquement chiffré.
 4. KMS Context : L'encryption context est utilisé pour la sécurité (intégrité) et l'audit, pas pour créer manuellement des milliers de clés différentes par fichier.
+
+### 🏗️ **Gestion d'infrastructure**
+
+#### Cloudformation - Terminologie
+
+| Terme           | Portée (Scope)                | Usage principal                                              |
+| :-------------- | :---------------------------- | :----------------------------------------------------------- |
+| Template        | Fichier (YAML/JSON)           | Le code qui décrit votre infrastructure.                     |
+| Stack           | 1 Compte / 1 Région           | Un ensemble de ressources créées ensemble.                   |
+| StackSet        | Multi-comptes / Multi-régions | Déployer le même template partout d'un coup.                 |
+| Drift Detection | N/A                           | Détecter si quelqu'un a modifié les ressources manuellement. |
+
+Points clés à retenir :
+1. StackSet = Administration centralisée. Vous gérez tout depuis un compte administrateur.
+2. Intégration AWS Organizations : StackSets peut déployer automatiquement des ressources dans chaque nouveau compte créé dans l'organisation.
+3. Mise à jour : Si vous modifiez le template du StackSet, CloudFormation met à jour les stacks correspondantes dans tous les comptes et régions cibles.
+4. Tolérance aux pannes : Vous pouvez définir combien de comptes peuvent échouer avant que le déploiement global ne s'arrête.
