@@ -17,7 +17,7 @@ export default defineConfig({
     starlight({
 			title: 'Gitbook',
 			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/codium9/wikidoc' }],
-      tableOfContents: { minHeadingLevel: 3, maxHeadingLevel: 4 },
+      tableOfContents: { minHeadingLevel: 3, maxHeadingLevel: 5 },
       sidebar: [
         { label: 'AWS', autogenerate: { directory: 'AWS' } },
         { label: 'Backup', autogenerate: { directory: 'Backup' } },
