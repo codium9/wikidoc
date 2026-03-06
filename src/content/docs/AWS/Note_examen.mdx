@@ -38,7 +38,6 @@ Points clés à retenir :
 3. Avantage interconnectivité : Pas de passerelle (gateway) ni de peering à configurer pour que les instances se voient.
 4. Sécurité : Les participants ne peuvent pas voir ou modifier les ressources des autres comptes, même s'ils sont dans le même subnet.
 
-
 ##### **Comparatif : CloudFront vs Global Accelerator**
 
 | Amazon CloudFront                  | Caractéristique      | AWS Global Accelerator             |
@@ -50,6 +49,8 @@ Points clés à retenir :
 | Vidéo, Images, Sites Web statiques | Cas d'usage typique  | Gaming, VoIP, IoT, Apps non-HTTP   |
 | Dépend du TTL DNS (plus lent)      | Failover (Panne)     | Instantané (l'IP ne change jamais) |
 | Intégration native avec WAF        | Sécurité             | Protection Shield (DDoS)           |
+
+
 
 ### 🗃️ **Stockage (Storage)**
 
@@ -124,6 +125,8 @@ Points clés à retenir :
 3. Le compromis parfait entre accès instantané et prix bas pour du stockage massif est le Standard-IA (ou Glacier Instant Retrieval si disponible).
 4. S3 Intelligent-Tiering n'est la bonne réponse que si les patterns d'accès sont inconnus ou changeants. Ici, on sait que c'est 2x par an.
 
+
+
 ### 🧮 **Instance EC2**
 
 ##### **EC2 Spot Fleet**
@@ -152,9 +155,11 @@ Points clés à retenir :
 | Patch Group             | Utilisation de Tags pour associer des instances à une stratégie.       | Ciblage précis des environnements (Prod vs Dev).       |
 | Maintenance Windows     | Plages horaires définies pour l'exécution des tâches de patching.      | Prévention des interruptions de service en production. |
 
+
+
 ### 🔒 **Sécurité AWS**
 
-#### Chiffrement S3 (SSE-S3 VS SSE-KMS)
+##### Chiffrement S3 (SSE-S3 VS SSE-KMS)
 
 | Type de chiffrement | Gestion des clés        | Isolation par objet        | Usage principal                      |
 | :------------------ | :---------------------- | :------------------------- | :----------------------------------- |
@@ -168,7 +173,7 @@ Points clés à retenir :
 3. Chiffrement par défaut : Il est désormais possible d'activer SSE-S3 au niveau du bucket pour que tout objet soit automatiquement chiffré.
 4. KMS Context : L'encryption context est utilisé pour la sécurité (intégrité) et l'audit, pas pour créer manuellement des milliers de clés différentes par fichier.
 
-#### WAF (service applicable)
+##### WAF (Web ACL)
 
 | Ressource compatible      | Niveau d application    | Cas d usage typique                                       |
 | :------------------------ | :---------------------- | :-------------------------------------------------------- |
@@ -180,9 +185,11 @@ Points clés à retenir :
 | AWS App Runner            | Regional                | Securisation des services d application conteneurises.    |
 | AWS Verified Access       | Regional                | Securisation des acces distants aux applications privees. |
 
+
+
 ### 🏗️ **Gestion d'infrastructure**
 
-#### Cloudformation - Terminologie
+#####s Cloudformation - Terminologie
 
 | Terme           | Portée (Scope)                | Usage principal                                              |
 | :-------------- | :---------------------------- | :----------------------------------------------------------- |
@@ -197,9 +204,11 @@ Points clés à retenir :
 3. Mise à jour : Si vous modifiez le template du StackSet, CloudFormation met à jour les stacks correspondantes dans tous les comptes et régions cibles.
 4. Tolérance aux pannes : Vous pouvez définir combien de comptes peuvent échouer avant que le déploiement global ne s'arrête.
 
+
+
 ### 🛢️ **Base de données**
 
-#### Haute dispo vs Performance
+##### Haute dispo vs Performance
 
 | Fonctionnalite       | Mode de replication | Objectif principal                                |
 | :------------------- | :------------------ | :------------------------------------------------ |
@@ -207,3 +216,17 @@ Points clés à retenir :
 | Read Replica         | Asynchrone          | Performance en lecture et scalabilite.            |
 | EC2 avec MySQL       | Manuelle            | Controle total mais effort administratif maximum. |
 | Cross-Region Replica | Asynchrone          | Desastre Recovery a l echelle mondiale.           |
+
+
+### 🔀 **Middleware**
+
+##### SQS 
+
+###### Scaling metric
+
+| Type de Scaling   | Fonctionnement                                                   | Cas d usage                                      |
+| :---------------- | :--------------------------------------------------------------- | :----------------------------------------------- |
+| Simple Scaling    | Ajoute/supprime un nombre fixe d instances selon un seuil.       | Cas tres basiques, peu flexible.                 |
+| Step Scaling      | Ajoute des instances par paliers (ex: +2 si CPU 60%, +5 si 80%). | Charge qui augmente par bonds brutaux.           |
+| Target Tracking   | Maintient une metrique a une valeur cible (ex: CPU a 50%).       | Charge variable, methode recommandee par AWS.    |
+| Scheduled Scaling | Planifie le scaling a une heure precise.                         | Evenements connus a l avance (ex: Black Friday). |
