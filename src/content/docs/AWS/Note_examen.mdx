@@ -78,6 +78,21 @@ Points clés à retenir :
 2. Instance Store est Bootable, mais attention : il est évanescent. Si l'instance s'arrête, l'OS et les données disparaissent.
 3. Le piège classique : Dans l'examen, on te proposera souvent le st1 pour réduire les coûts d'un volume de démarrage. C'est une réponse fausse.
 
+##### **Montage réseaux**
+
+| Service         | Protocole | OS Cible           | Points forts pour l'examen                          |
+| :-------------- | :-------- | :----------------- | :-------------------------------------------------- |
+| Amazon EFS      | NFS v4    | Linux uniquement   | Serverless, scaling automatique, POSIX.             |
+| FSx for Windows | SMB       | Windows (et Linux) | Active Directory, NTFS ACLs, SMB.                   |
+| FSx for Lustre  | POSIX     | Linux (High Perf)  | Très haut débit (HPC, Machine Learning).            |
+| S3 Mountpoint   | API S3    | Tous               | Pas un "vrai" système de fichiers (pas de verrous). |
+
+Points clés à retenir :
+1. Mot-clé SMB ou Windows ACLs : La réponse est obligatoirement FSx for Windows.
+2. Accès mixte Windows/Linux : Si la priorité est la compatibilité Windows (AD/NTFS), FSx for Windows gagne même pour Linux.
+3. Performance brute (Big Data) : Si on parle de calcul haute performance, c'est FSx for Lustre.
+4. Simplicité Linux : Pour du partage pur Linux sans AD, c'est EFS.
+
 ##### **EC2 Automatic recovery**
 
 | Fonctionnalité           | Compatible EBS | Compatible Instance Store  |
@@ -127,6 +142,16 @@ Points clés à retenir :
 3. Annulation propre : Pour tout supprimer d'un coup, il faut annuler la requête ET cocher l'option pour terminer les instances associées.
 4. Cas d'usage : Batch jobs, calcul scientifique, conteneurs, ou toute charge de travail tolérante aux pannes.
 
+##### **EC2 patch management**
+
+| Concept                 | Définition                                                             | Rôle stratégique                                       |
+| :---------------------- | :--------------------------------------------------------------------- | :----------------------------------------------------- |
+| SSM Patch Manager       | Outil d'automatisation pour l'analyse et l'installation de correctifs. | Maintien de la sécurité et de la conformité du parc.   |
+| Default Host Management | Gestion automatique des EC2 par SSM sans modifier les rôles IAM.       | Réduction maximale de l'effort administratif.          |
+| Patch Baseline          | Référentiel de règles définissant quels patchs sont approuvés.         | Standardisation du niveau de sécurité appliqué.        |
+| Patch Group             | Utilisation de Tags pour associer des instances à une stratégie.       | Ciblage précis des environnements (Prod vs Dev).       |
+| Maintenance Windows     | Plages horaires définies pour l'exécution des tâches de patching.      | Prévention des interruptions de service en production. |
+
 ### 🔒 **Sécurité AWS**
 
 #### Chiffrement S3 (SSE-S3 VS SSE-KMS)
@@ -142,6 +167,18 @@ Points clés à retenir :
 2. Minimal overhead : Si l'examen demande la sécurité maximale avec le moins d'effort, SSE-S3 est souvent la réponse car l'isolation par clé est automatique.
 3. Chiffrement par défaut : Il est désormais possible d'activer SSE-S3 au niveau du bucket pour que tout objet soit automatiquement chiffré.
 4. KMS Context : L'encryption context est utilisé pour la sécurité (intégrité) et l'audit, pas pour créer manuellement des milliers de clés différentes par fichier.
+
+#### WAF (service applicable)
+
+| Ressource compatible      | Niveau d application    | Cas d usage typique                                       |
+| :------------------------ | :---------------------- | :-------------------------------------------------------- |
+| Amazon CloudFront         | Global (Edge Locations) | Protection au plus proche de l utilisateur final.         |
+| Application Load Balancer | Regional                | Securisation des applications tournant sur EC2 ou ECS.    |
+| Amazon API Gateway        | Regional                | Protection des API REST contre les abus et injections.    |
+| AWS AppSync               | Regional                | Securisation des interfaces de donnees GraphQL.           |
+| Amazon Cognito            | Regional                | Protection des pools d utilisateurs (User Pools).         |
+| AWS App Runner            | Regional                | Securisation des services d application conteneurises.    |
+| AWS Verified Access       | Regional                | Securisation des acces distants aux applications privees. |
 
 ### 🏗️ **Gestion d'infrastructure**
 
@@ -159,3 +196,14 @@ Points clés à retenir :
 2. Intégration AWS Organizations : StackSets peut déployer automatiquement des ressources dans chaque nouveau compte créé dans l'organisation.
 3. Mise à jour : Si vous modifiez le template du StackSet, CloudFormation met à jour les stacks correspondantes dans tous les comptes et régions cibles.
 4. Tolérance aux pannes : Vous pouvez définir combien de comptes peuvent échouer avant que le déploiement global ne s'arrête.
+
+### 🛢️ **Base de données**
+
+#### Haute dispo vs Performance
+
+| Fonctionnalite       | Mode de replication | Objectif principal                                |
+| :------------------- | :------------------ | :------------------------------------------------ |
+| RDS Multi-AZ         | Synchrone           | Haute disponibilite et zero perte de donnees.     |
+| Read Replica         | Asynchrone          | Performance en lecture et scalabilite.            |
+| EC2 avec MySQL       | Manuelle            | Controle total mais effort administratif maximum. |
+| Cross-Region Replica | Asynchrone          | Desastre Recovery a l echelle mondiale.           |
