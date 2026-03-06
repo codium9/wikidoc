@@ -228,3 +228,14 @@ Points clés à retenir :
 | Step Scaling      | Ajoute des instances par paliers (ex: +2 si CPU 60%, +5 si 80%). | Charge qui augmente par bonds brutaux.           |
 | Target Tracking   | Maintient une metrique a une valeur cible (ex: CPU a 50%).       | Charge variable, methode recommandee par AWS.    |
 | Scheduled Scaling | Planifie le scaling a une heure precise.                         | Evenements connus a l avance (ex: Black Friday). |
+
+##### FIFO vs Standart
+
+| Caracteristique    | File Standard            | File FIFO                         |
+| :----------------- | :----------------------- | :-------------------------------- |
+| Ordre des messages | Meilleur effort          | Ordre strict (First-In-First-Out) |
+| Delivrance         | Au moins une fois        | Exactement une fois               |
+| Doublons possibles | Oui (rarement)           | Non (suppression automatique)     |
+| Debit (TPS)        | Illimite                 | Limite (300 a 3000 par defaut)    |
+| Cas d usage        | Decouplage general, logs | Transactions bancaires, commandes |
+| Nom de la file     | Libellé libre            | Doit se terminer par .fifo        |
