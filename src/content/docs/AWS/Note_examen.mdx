@@ -79,20 +79,22 @@ Points clés à retenir :
 2. Instance Store est Bootable, mais attention : il est évanescent. Si l'instance s'arrête, l'OS et les données disparaissent.
 3. Le piège classique : Dans l'examen, on te proposera souvent le st1 pour réduire les coûts d'un volume de démarrage. C'est une réponse fausse.
 
-##### **Montage réseaux**
+##### **Services de stockage**
 
-| Service         | Protocole | OS Cible           | Points forts pour l'examen                          |
-| :-------------- | :-------- | :----------------- | :-------------------------------------------------- |
-| Amazon EFS      | NFS v4    | Linux uniquement   | Serverless, scaling automatique, POSIX.             |
-| FSx for Windows | SMB       | Windows (et Linux) | Active Directory, NTFS ACLs, SMB.                   |
-| FSx for Lustre  | POSIX     | Linux (High Perf)  | Très haut débit (HPC, Machine Learning).            |
-| S3 Mountpoint   | API S3    | Tous               | Pas un "vrai" système de fichiers (pas de verrous). |
+| Service de stockage | Protocoles supportes | Clients cibles      | Cas d usage                                                                                          |
+| :------------------ | :------------------- | :------------------ | :--------------------------------------------------------------------------------------------------- |
+| Amazon EFS          | NFS uniquement       | Linux, Mac          | Partage de fichiers standard Linux.                                                                  |
+| FSx for Windows     | SMB uniquement       | Windows             | Partage de fichiers Windows (Active Directory).                                                      |
+| FSx for Lustre      | Lustre (haute perf)  | Linux (HPC)         | Calcul haute performance, Machine Learning.                                                          |
+| FSx for ONTAP       | NFS, SMB, iSCSI      | Windows, Linux, Mac | Environnements mixtes et migration On-premise. (Capacité de tiering automatique pour stockage froid) |
+| FSx for OpenZFS     | NFS uniquement       | Linux, Mac          | Migration de serveurs ZFS locaux.                                                                    |
 
 Points clés à retenir :
 1. Mot-clé SMB ou Windows ACLs : La réponse est obligatoirement FSx for Windows.
 2. Accès mixte Windows/Linux : Si la priorité est la compatibilité Windows (AD/NTFS), FSx for Windows gagne même pour Linux.
 3. Performance brute (Big Data) : Si on parle de calcul haute performance, c'est FSx for Lustre.
 4. Simplicité Linux : Pour du partage pur Linux sans AD, c'est EFS.
+5. Si NFS + SMB : Le seul choix possible dans ce cas est FSx for ONTAP 
 
 ##### **EC2 Automatic recovery**
 
