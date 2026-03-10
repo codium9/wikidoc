@@ -54,19 +54,6 @@ Points clés à retenir :
 
 ##### **Type de stockage (EBS & Instance Store)**
 
-| Type de Volume | Bootable ? | Technologie | Usage principal                         |
-| :------------- | :--------- | :---------- | :-------------------------------------- |
-| gp2 / gp3      | OUI        | SSD         | OS, Applications, Bureautique.          |
-| io1 / io2      | OUI        | SSD         | Bases de données (Hautes performances). |
-| Instance Store | OUI        | NVMe/SSD    | Cache, Temp (Perdu si arrêt/panne).     |
-| st1            | NON        | HDD         | Big Data, Débit intensif (Throughput).  |
-| sc1            | NON        | HDD         | Archives, Données froides (Cold).       |
-
-Points clés à retenir :
-1. HDD = Jamais de Boot. AWS interdit l'installation d'un OS sur du st1 ou sc1.
-2. Instance Store est Bootable, mais attention : il est évanescent. Si l'instance s'arrête, l'OS et les données disparaissent.
-3. Le piège classique : Dans l'examen, on te proposera souvent le st1 pour réduire les coûts d'un volume de démarrage. C'est une réponse fausse.
-
 | Volume         | Type     | Bootable | Persistance | Usage Ideal                 | Performance                     |
 | :------------- | :------- | :------- | :---------- | :-------------------------- | :------------------------------ |
 | gp3            | SSD      | OUI      | Persistant  | Usage standard, boot.       | Equilibre (16k IOPS).           |
@@ -74,6 +61,11 @@ Points clés à retenir :
 | st1            | HDD      | NON      | Persistant  | Big Data, Log processing.   | Debit eleve (500 MiB/s).        |
 | sc1            | HDD      | NON      | Persistant  | Archives froides.           | Cout le plus bas.               |
 | Instance Store | Ephemere | NON      | Temporaire  | Cache, Tampon, Temp files.  | Latence la plus faible (Local). |
+
+Points clés à retenir :
+1. HDD = Jamais de Boot. AWS interdit l'installation d'un OS sur du st1 ou sc1.
+2. Instance Store est Bootable, mais attention : il est évanescent. Si l'instance s'arrête, l'OS et les données disparaissent.
+3. Le piège classique : Dans l'examen, on te proposera souvent le st1 pour réduire les coûts d'un volume de démarrage. C'est une réponse fausse.
 
 ##### **Type de stockage (Hors EBS)**
 
