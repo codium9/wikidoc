@@ -50,21 +50,9 @@ Points clés à retenir :
 | Dépend du TTL DNS (plus lent)      | Failover (Panne)     | Instantané (l'IP ne change jamais) |
 | Intégration native avec WAF        | Sécurité             | Protection Shield (DDoS)           |
 
-
-
 ### 🗃️ **Stockage (Storage)**
 
-##### **Contraintes de transition S3 Lifecycle**
-
-| Classe de destination   | Délai de transition min. | Règle d'or pour l'examen                                      |
-| :---------------------- | :----------------------- | :------------------------------------------------------------ |
-| S3 Standard-IA          | 30 jours                 | L'objet doit rester 30 jours en Standard avant la transition. |
-| S3 One Zone-IA          | 30 jours                 | Idéal pour les données "re-creatable" après 30 jours.         |
-| S3 Intelligent-Tiering  | 0 jour                   | Transition immédiate possible sans délai minimum.             |
-| S3 Glacier Flexible     | 0 jour                   | Possible immédiatement si l'origine est S3 Standard.          |
-| S3 Glacier Deep Archive | 0 jour                   | Possible immédiatement si l'origine est S3 Standard.          |
-
-##### **Contraintes de transition S3 Lifecycle** (ebs & Instance store)
+##### **Type de stockage (EBS & Instance Store)**
 
 | Type de Volume | Bootable ? | Technologie | Usage principal                         |
 | :------------- | :--------- | :---------- | :-------------------------------------- |
@@ -79,15 +67,25 @@ Points clés à retenir :
 2. Instance Store est Bootable, mais attention : il est évanescent. Si l'instance s'arrête, l'OS et les données disparaissent.
 3. Le piège classique : Dans l'examen, on te proposera souvent le st1 pour réduire les coûts d'un volume de démarrage. C'est une réponse fausse.
 
-##### **Services de stockage**
+| Volume         | Type     | Bootable | Persistance | Usage Ideal                 | Performance                     |
+| :------------- | :------- | :------- | :---------- | :-------------------------- | :------------------------------ |
+| gp3            | SSD      | OUI      | Persistant  | Usage standard, boot.       | Equilibre (16k IOPS).           |
+| io1/io2        | SSD      | OUI      | Persistant  | Bases de donnees critiques. | Tres haute (Max 256k IOPS).     |
+| st1            | HDD      | NON      | Persistant  | Big Data, Log processing.   | Debit eleve (500 MiB/s).        |
+| sc1            | HDD      | NON      | Persistant  | Archives froides.           | Cout le plus bas.               |
+| Instance Store | Ephemere | NON      | Temporaire  | Cache, Tampon, Temp files.  | Latence la plus faible (Local). |
 
-| Service de stockage | Protocoles supportes | Clients cibles      | Cas d usage                                                                                          |
-| :------------------ | :------------------- | :------------------ | :--------------------------------------------------------------------------------------------------- |
-| Amazon EFS          | NFS uniquement       | Linux, Mac          | Partage de fichiers standard Linux.                                                                  |
-| FSx for Windows     | SMB uniquement       | Windows             | Partage de fichiers Windows (Active Directory).                                                      |
-| FSx for Lustre      | Lustre (haute perf)  | Linux (HPC)         | Calcul haute performance, Machine Learning.                                                          |
-| FSx for ONTAP       | NFS, SMB, iSCSI      | Windows, Linux, Mac | Environnements mixtes et migration On-premise. (Capacité de tiering automatique pour stockage froid) |
-| FSx for OpenZFS     | NFS uniquement       | Linux, Mac          | Migration de serveurs ZFS locaux.                                                                    |
+##### **Type de stockage (Hors EBS)**
+
+| Service de stockage  | Protocoles supportes | Clients cibles      | Cas d usage                                                                                          |
+| :------------------- | :------------------- | :------------------ | :--------------------------------------------------------------------------------------------------- |
+| Amazon EFS           | NFS uniquement       | Linux, Mac          | Partage de fichiers standard Linux.                                                                  |
+| FSx for Windows      | SMB uniquement       | Windows             | Partage de fichiers Windows (Active Directory).                                                      |
+| FSx for Lustre       | Lustre (haute perf)  | Linux (HPC)         | Calcul haute performance, Machine Learning.                                                          |
+| FSx for ONTAP        | NFS, SMB, iSCSI      | Windows, Linux, Mac | Environnements mixtes et migration On-premise. (Capacité de tiering automatique pour stockage froid) |
+| FSx for OpenZFS      | NFS uniquement       | Linux, Mac          | Migration de serveurs ZFS locaux.                                                                    |
+| Storage File Gateway | SMB / NFS            | Windows, Linux, Mac | Acces hybride (Local + Cloud)                                                                        |
+
 
 Points clés à retenir :
 1. Mot-clé SMB ou Windows ACLs : La réponse est obligatoirement FSx for Windows.
@@ -111,6 +109,8 @@ Points clés à retenir :
 3. Scénario d'examen : Si on demande une récupération automatique avec un budget minimal (pas d'Auto Scaling Group), la bonne réponse est l'alarme CloudWatch avec action "Recover".
 4. Limitation technique : Le Recovery n'est pas supporté si un seul volume Instance Store est attaché à l'instance.
 
+### **S3**
+
 ##### **Classe stockage S3**
 
 | Classe S3            | Latence d'accès | Fréquence d'accès idéale   | Coût stockage |
@@ -127,7 +127,24 @@ Points clés à retenir :
 3. Le compromis parfait entre accès instantané et prix bas pour du stockage massif est le Standard-IA (ou Glacier Instant Retrieval si disponible).
 4. S3 Intelligent-Tiering n'est la bonne réponse que si les patterns d'accès sont inconnus ou changeants. Ici, on sait que c'est 2x par an.
 
+##### **Contraintes de transition S3 Lifecycle**
 
+| Classe de destination   | Délai de transition min. | Règle d'or pour l'examen                                      |
+| :---------------------- | :----------------------- | :------------------------------------------------------------ |
+| S3 Standard-IA          | 30 jours                 | L'objet doit rester 30 jours en Standard avant la transition. |
+| S3 One Zone-IA          | 30 jours                 | Idéal pour les données "re-creatable" après 30 jours.         |
+| S3 Intelligent-Tiering  | 0 jour                   | Transition immédiate possible sans délai minimum.             |
+| S3 Glacier Flexible     | 0 jour                   | Possible immédiatement si l'origine est S3 Standard.          |
+| S3 Glacier Deep Archive | 0 jour                   | Possible immédiatement si l'origine est S3 Standard.          |
+
+##### **EFS**
+
+| Caractéristique   | Bursting Throughput                           | Provisioned Throughput                          |
+| :---------------- | :-------------------------------------------- | :---------------------------------------------- |
+| Débit de base     | Proportionnel à la taille (50 Kio/s par Go).  | Fixé par l utilisateur (ex: 100 Mio/s).         |
+| Gestion des pics  | Utilise des crédits accumulés.                | Débit constant garanti 24h/24.                  |
+| Coût              | Inclus dans le prix du stockage.              | Facturation supplémentaire pour le débit.       |
+| Cas d usage idéal | Charges de travail variables / imprévisibles. | Débit élevé constant / petit volume de données. |
 
 ### 🧮 **Instance EC2**
 
@@ -241,3 +258,18 @@ Points clés à retenir :
 | Debit (TPS)        | Illimite                 | Limite (300 a 3000 par defaut)    |
 | Cas d usage        | Decouplage general, logs | Transactions bancaires, commandes |
 | Nom de la file     | Libellé libre            | Doit se terminer par .fifo        |
+
+### 💾 **Backup & Recovery**
+
+##### EC2 Instance recovery
+
+| Element de l instance   | Etat apres recuperation | Precision technique                                            |
+| :---------------------- | :---------------------- | :------------------------------------------------------------- |
+| Instance ID             | Identique               | L instance garde son identifiant unique.                       |
+| Adresse IP Privee       | Identique               | L adresse IP interne ne change pas.                            |
+| Adresse IP Publique     | Identique               | Cas unique : elle est gardee meme sans Elastic IP.             |
+| Elastic IP (EIP)        | Identique               | Si une EIP etait liee, elle reste liee.                        |
+| Metadonnees (Tags, IAM) | Identique               | Tout le profil de l instance est conserve.                     |
+| Placement physique      | Change                  | L instance demarre sur un nouvel hote (Host) sain.             |
+| Memoire vive (RAM)      | Perdue                  | L instance subit un reboot : le cache RAM est vide.            |
+| Statut du volume EBS    | Conserve                | Le disque est detache de l ancien hote et rattache au nouveau. |
