@@ -166,7 +166,17 @@ Points clés à retenir :
 | Patch Group             | Utilisation de Tags pour associer des instances à une stratégie.       | Ciblage précis des environnements (Prod vs Dev).       |
 | Maintenance Windows     | Plages horaires définies pour l'exécution des tâches de patching.      | Prévention des interruptions de service en production. |
 
+##### **EC2 Auto Scaling - Priorisation d'extinction EC2**
 
+| Priorité | Critere de Terminaison (Default)                  | Objectif                          |
+| :------- | :------------------------------------------------ | :-------------------------------- |
+| 1        | AZ avec le plus d instances                       | Maintenir l équilibre regional.   |
+| 2        | Instance avec l ancienne Launch Config            | Mettre a jour le parc applicatif. |
+| 3        | Instance la plus proche de l heure de facturation | Optimisation des couts FinOps.    |
+| 4        | Selection aleatoire                               | Dernier recours.                  |
+
+Bonus : 
+1. Il existe un mécanisme de "Scale In protection" qui empêche une instance d'être terminée par Auto Scaling, même si elle correspond aux critères de terminaison.C'est utile pour protéger des instances critiques ou en cours de déploiement.
 
 ### 🔒 **Sécurité AWS**
 
@@ -215,6 +225,17 @@ Points clés à retenir :
 3. Mise à jour : Si vous modifiez le template du StackSet, CloudFormation met à jour les stacks correspondantes dans tous les comptes et régions cibles.
 4. Tolérance aux pannes : Vous pouvez définir combien de comptes peuvent échouer avant que le déploiement global ne s'arrête.
 
+### 📈 **Monitoring & Observabilité**
+
+##### CloudWatch Alarms - Types d'actions
+
+| Type de Scaling | Declencheur                  | Cas d usage ideal (Examen)                             |
+| :-------------- | :--------------------------- | :----------------------------------------------------- |
+| Simple          | Alarme CloudWatch (1 regle)  | Charge stable, peu de variations.                      |
+| Step            | Alarme CloudWatch (Paliers)  | Pics agressifs, besoin de granularite.                 |
+| Target Tracking | Metrique cible (ex: 50% CPU) | La configuration par defaut recommandee.               |
+| Scheduled       | Heure/Date precise           | Evenement connu (ex: Black Friday).                    |
+| Predictive      | Modele de Machine Learning   | Trafic cyclique/previsible (ex: tous les jours a 18h). |
 
 
 ### 🛢️ **Base de données**
@@ -251,6 +272,7 @@ Points clés à retenir :
 | Cas d usage        | Decouplage general, logs | Transactions bancaires, commandes |
 | Nom de la file     | Libellé libre            | Doit se terminer par .fifo        |
 
+
 ### 💾 **Backup & Recovery**
 
 ##### EC2 Instance recovery
@@ -265,3 +287,16 @@ Points clés à retenir :
 | Placement physique      | Change                  | L instance demarre sur un nouvel hote (Host) sain.             |
 | Memoire vive (RAM)      | Perdue                  | L instance subit un reboot : le cache RAM est vide.            |
 | Statut du volume EBS    | Conserve                | Le disque est detache de l ancien hote et rattache au nouveau. |
+
+
+### 🤔 **Autres services AWS**
+
+##### DMS (Database Migration Service) - Cas d'usage
+
+| Source       | Destination   | Cas d usage Examen                                  |
+| :----------- | :------------ | :-------------------------------------------------- |
+| Amazon S3    | Kinesis / RDS | Charger de l historique + flux continu.             |
+| RDS (Toutes) | Amazon S3     | Creer un Data Lake pour Athena/Redshift.            |
+| On-premises  | AWS (Any)     | Migration hybride ou extension Cloud.               |
+| MongoDB      | DocumentDB    | Migration NoSQL (DMS gere aussi le NoSQL).          |
+| RDS          | OpenSearch    | Indexer des donnees pour de la recherche full-text. |
