@@ -6,7 +6,7 @@ import remarkEmoji from 'remark-emoji';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://wiki.itdata.fr',
+  site: 'https://wiki.xscale.fr',
   markdown: {
     remarkPlugins: [remarkEmoji],
     shikiConfig: {
