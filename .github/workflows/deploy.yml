@@ -20,6 +20,11 @@ jobs:
     steps:
       - name: Extraire votre dépôt à l'aide de git
         uses: actions/checkout@v5
+      - name: Supprimer les anciens artefacts
+        uses: geekyeggo/delete-artifact@v5
+        with:
+          name: github-pages
+          failOnError: false
       - name: Installer, compiler et télécharger votre site
         uses: withastro/action@v5
         # with:
