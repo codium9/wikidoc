@@ -50,6 +50,24 @@ Points clés à retenir :
 | Dépend du TTL DNS (plus lent)      | Failover (Panne)     | Instantané (l'IP ne change jamais) |
 | Intégration native avec WAF        | Sécurité             | Protection Shield (DDoS)           |
 
+#### **Fonctionnalités avancées de CloudFront**
+
+| Fonctionnalité CloudFront | Usage                               | Bénéfice Examen                                          |
+| :------------------------ | :---------------------------------- | :------------------------------------------------------- |
+| Origin Groups             | Haute disponibilité (Failover)      | Bascule auto vers un S3 secondaire si le primaire echoue |
+| Content Type Routing      | Routage par comportement (Behavior) | Envoie les images vers S3 et le dynamique vers l ALB     |
+| Field-level encryption    | Chiffrement de champs specifiques   | Protege les donnees sensibles de bout en bout (PII/PCI)  |
+| Geo Restriction           | Blocage de pays                     | Empeche l acces selon la localisation géographique       |
+
+#### **Typde de certificat TLS sur un load balancer**
+
+| Type de certificat  | Usage                                                  | Limite majeure                                         |
+| :------------------ | :----------------------------------------------------- | :----------------------------------------------------- |
+| Certificat Unique   | Un seul nom de domaine (ex: mycorp.com)                | Ne gere pas les sous-domaines ou domaines tiers        |
+| Certificat Wildcard | Un domaine et ses sous-domaines directs (*.mycorp.com) | Incompatible avec un second domaine (ex: yourcorp.com) |
+| Certificat SAN      | Plusieurs noms specifiques dans un seul certificat     | Lourd a mettre a jour car il faut regenerer le fichier |
+| SNI                 | Plusieurs certificats distincts sur un seul ALB        | Solution native pour le multi-domaine et microservices |
+
 ### 🗃️ **Stockage (Storage)**
 
 ##### **Type de stockage (EBS & Instance Store)**
@@ -138,6 +156,16 @@ Points clés à retenir :
 | Coût              | Inclus dans le prix du stockage.              | Facturation supplémentaire pour le débit.       |
 | Cas d usage idéal | Charges de travail variables / imprévisibles. | Débit élevé constant / petit volume de données. |
 
+#### **Cas d'usage des transferts S3**
+
+| Methode de transfert     | Cas d usage                         | Seuil critique                |
+| :----------------------- | :---------------------------------- | :---------------------------- |
+| Single Put               | Petits fichiers                     | Max 5 Go                      |
+| Multi-part Upload        | Gros fichiers (> 100 Mo recommende) | Obligatoire > 5 Go            |
+| S3 Transfer Acceleration | Longue distance (intercontinental)  | Utilise les Edge Locations    |
+| Direct Connect           | Connexion privee reseau permanente  | Pas specifique a un upload S3 |
+| Snowball                 | Petabytes de donnees (hors ligne)   | Quand le reseau est trop lent |
+
 ### 🧮 **Instance EC2**
 
 ##### **EC2 Spot Fleet**
@@ -206,7 +234,15 @@ Points clés à retenir :
 | AWS App Runner            | Regional                | Securisation des services d application conteneurises.    |
 | AWS Verified Access       | Regional                | Securisation des acces distants aux applications privees. |
 
+#### Policy
 
+| Type de Politique    | Attache a quoi               | Fonction principale                              |
+| :------------------- | :--------------------------- | :----------------------------------------------- |
+| Identity-based       | Utilisateur, Groupe, Role    | Definit ce que l identite peut faire             |
+| Resource-based       | S3, SNS, Role (Trust Policy) | Definit qui peut acceder a cette ressource       |
+| Trust Policy         | Role IAM                     | Definit qui est autorise a endosser le Role      |
+| Permissions Boundary | Utilisateur, Role            | Definit le plafond maximum de droits             |
+| SCP (Organizations)  | Compte, OU                   | Limite les actions possibles au niveau du compte |
 
 ### 🏗️ **Gestion d'infrastructure**
 
@@ -248,6 +284,16 @@ Points clés à retenir :
 | Read Replica         | Asynchrone          | Performance en lecture et scalabilite.            |
 | EC2 avec MySQL       | Manuelle            | Controle total mais effort administratif maximum. |
 | Cross-Region Replica | Asynchrone          | Desastre Recovery a l echelle mondiale.           |
+
+#### DynamoDB - Type de table
+
+| Caractéristique | Table Standard                      | Global Table                                  |
+| :-------------- | :---------------------------------- | :-------------------------------------------- |
+| Portée          | Une seule région AWS                | Multiples régions AWS                         |
+| Cas d usage     | Application locale ou régionale     | Application mondiale / Disaster Recovery      |
+| Réplication     | Automatique sur 3 AZ                | Automatique entre plusieurs régions           |
+| Complexité      | Faible                              | Élevée (gestion des conflits d ecriture)      |
+| Utile si        | Traffic variable et pic d'activitée | Latence faible ou restauration suite désastre |
 
 
 ### 🔀 **SQS**
@@ -300,3 +346,11 @@ Points clés à retenir :
 | On-premises  | AWS (Any)     | Migration hybride ou extension Cloud.               |
 | MongoDB      | DocumentDB    | Migration NoSQL (DMS gere aussi le NoSQL).          |
 | RDS          | OpenSearch    | Indexer des donnees pour de la recherche full-text. |
+
+##### Service PaaS - Comparatif
+
+| Service               | Cas d usage ideal                                | Mot-cle Examen                             |
+| :-------------------- | :----------------------------------------------- | :----------------------------------------- |
+| AWS Amplify           | Applications mobiles et web modernes (React/Vue) | Full-stack, Mobile, Serverless backend     |
+| AWS Elastic Beanstalk | Applications web classiques (Java, PHP, .NET)    | PaaS, Auto Scaling, Full control EC2       |
+| Amazon Lightsail      | Petits projets, blogs ou environnements de test  | VPS, Predictable monthly price, Simplicity |

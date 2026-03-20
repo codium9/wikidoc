@@ -36,6 +36,7 @@ title: Lexique services
 	- Global Accelerator : Optimise le trajet réseau via des IP statiques pour la performance mondiale.
 	- API Gateway : Point d'entrée sécurisé pour exposer et gérer des API à grande échelle. (caching API possible pour données peu rafraîchies)
 	- Direct Connect : Connexion réseau privée et dédiée entre votre centre de données et AWS.
+	- VPC Peering : Connexion privée entre deux VPC pour un trafic sécurisé et à faible latence. (valable pour peu de vpc / même région et account)
 	- Transit Gateway : Hub central pour simplifier le réseau entre des milliers de VPC et sites distants.
 	- PrivateLink / VPC Endpoints : Accès sécurisé aux services AWS sans exposition à l'internet public.
 	- Wavelength / Local Zones : Extension de l'infrastructure AWS pour la 5G et les zones métropolitaines à faible latence.
@@ -114,6 +115,7 @@ title: Lexique services
 	- Config : Historique des modifications de ressources et vérification de la conformité.
 	- Systems Manager (SSM) : Gestion centralisée des configurations, correctifs et accès aux serveurs.
 	- Trusted Advisor : Recommandations automatiques pour réduire les coûts et améliorer la sécurité.
+	- Compute Optimizer : Recommandations basées sur les métrics cloudwatch (CPU/RAM) pour optimiser les ressources de calcul (EC2, Lambda, EBS).
 
 ### 🖥️ **End User Computing et Gestion**
 	- Control Tower : Mise en place d'une "Landing Zone" multi-comptes sécurisée et conforme par défaut.
@@ -121,3 +123,8 @@ title: Lexique services
 	- WorkSpaces : Bureaux virtuels (DaaS) persistants pour le travail à distance.
 	- AppStream 2.0 : Streaming d'applications spécifiques vers n'importe quel navigateur sans installation.
 
+### 🏗️ **Service PaaS**
+	- Amplify : Plateforme de développement d'applications web et mobiles full-stack avec backend serverless.
+	- Lightsail : Service PaaS simplifié pour les petites applications web, blogs ou sites e-commerce.(full managed VPS)
+	- Elastic Beanstalk : Déploiement facile d'applications web dans des environnements managés (EC2, RDS). Ici, on ne gère pas les serveurs, mais on peut choisir la configuration (type d'instance, autoscaling, etc).
+	- App Runner : Service entièrement managé pour déployer des applications conteneurisées à partir du code source ou d'une image de conteneur.
