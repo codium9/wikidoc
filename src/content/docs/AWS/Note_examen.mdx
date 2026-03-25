@@ -40,15 +40,17 @@ Points clés à retenir :
 
 ##### **Comparatif : CloudFront vs Global Accelerator**
 
-| Amazon CloudFront                  | Caractéristique      | AWS Global Accelerator             |
-| :--------------------------------- | :------------------- | :--------------------------------- |
-| Mise en cache de contenu (CDN)     | Objectif principal   | Optimisation réseau (Routage)      |
-| Couche 7 (HTTP / HTTPS)            | Couche OSI           | Couches 3 & 4 (TCP / UDP)          |
-| IP dynamiques (via DNS)            | Type d'IP            | 2 IP Statiques Anycast             |
-| HTTP, HTTPS, WebSockets            | Protocoles supportés | TCP, UDP, HTTP, HTTPS              |
-| Vidéo, Images, Sites Web statiques | Cas d'usage typique  | Gaming, VoIP, IoT, Apps non-HTTP   |
-| Dépend du TTL DNS (plus lent)      | Failover (Panne)     | Instantané (l'IP ne change jamais) |
-| Intégration native avec WAF        | Sécurité             | Protection Shield (DDoS)           |
+| Caractéristique      | Amazon CloudFront                  | AWS Global Accelerator             |
+| :------------------- | :--------------------------------- | :--------------------------------- |
+| Objectif principal   | Mise en cache de contenu (CDN)     | Optimisation réseau (Routage)      |
+| Mecanisme principal  | Mise en cache (Edge Caching)       | Routage optimise via IP Anycast    |
+| Couche OSI           | Couche 7 (HTTP / HTTPS)            | Couches 3 & 4 (TCP / UDP)          |
+| Type d'IP            | IP dynamiques (via DNS)            | 2 IP Statiques Anycast             |
+| Protocoles supportés | HTTP, HTTPS, WebSockets            | TCP, UDP, HTTP, HTTPS              |
+| Cas d'usage typique  | Vidéo, Images, Sites Web statiques | Gaming, VoIP, IoT, Apps non-HTTP   |
+| Failover (Panne)     | Dépend du TTL DNS (plus lent)      | Instantané (l'IP ne change jamais) |
+| Sécurité             | Intégration native avec WAF        | Protection Shield (DDoS)           |
+
 
 #### **Fonctionnalités avancées de CloudFront**
 
@@ -103,6 +105,15 @@ Points clés à retenir :
 3. Performance brute (Big Data) : Si on parle de calcul haute performance, c'est FSx for Lustre.
 4. Simplicité Linux : Pour du partage pur Linux sans AD, c'est EFS.
 5. Si NFS + SMB : Le seul choix possible dans ce cas est FSx for ONTAP 
+
+#### **Storage Gateway - Comparatif des modes**
+
+| Mode Gateway            | Stockage Primaire      | Cache Local           | Cas d usage ideal                           |
+| :---------------------- | :--------------------- | :-------------------- | :------------------------------------------ |
+| Volume Gateway (Cached) | Amazon S3              | Oui (donnees actives) | Extension de stockage local illimitee       |
+| Volume Gateway (Stored) | Local (On-premises)    | Non (tout est local)  | Backup et Disaster Recovery                 |
+| S3 File Gateway         | Amazon S3              | Oui                   | Acces NFS/SMB aux fichiers S3               |
+| Amazon FSx File Gateway | Amazon FSx for Windows | Oui                   | Performance native Windows/AD dans le cloud |
 
 ##### **EC2 Automatic recovery**
 
@@ -294,6 +305,17 @@ Points clés à retenir :
 | Réplication     | Automatique sur 3 AZ                | Automatique entre plusieurs régions           |
 | Complexité      | Faible                              | Élevée (gestion des conflits d ecriture)      |
 | Utile si        | Traffic variable et pic d'activitée | Latence faible ou restauration suite désastre |
+
+#### Elasticache VS DynamoBD
+
+| Caracteristique   | ElastiCache                         | DynamoDB                               |
+| :---------------- | :---------------------------------- | :------------------------------------- |
+| Support physique  | Memoire vive (RAM)                  | Disque SSD                             |
+| Latence type      | Microsecondes                       | Millisecondes                          |
+| Mot-cle examen    | In-memory cache-based               | Serverless, Key-value store            |
+| Gestion du TTL    | Immediate et precise                | Jusqu a 48h pour suppression reelle    |
+| Persistance       | Perte possible si crash sans backup | Garantie (ecriture sur disque)         |
+| Cas d usage ideal | Performance extreme, sessions web   | Simplicite, cout a l usage, Serverless |
 
 
 ### 🔀 **SQS**
